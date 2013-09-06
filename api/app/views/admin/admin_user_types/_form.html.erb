@@ -1,0 +1,9 @@
+<%= semantic_form_for  [:admin, @admin_user_type] do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :title %>
+		<%= f.input 'area', :as => :check_with_select_all, :input_html => {:underscore_count => 3 }%>
+		<%= f.input :areas,  :as => :check_boxes, :collection => Area.order(:title), :input_html => {:onchange => "act_on_one_check_admin_user_type_area(this)"} %>
+	<% end -%>
+
+	<%= f.actions %>
+<% end %>

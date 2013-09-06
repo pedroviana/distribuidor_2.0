@@ -1,0 +1,332 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        just_datetime_invalid_date: "Data inválida"
+        just_datetime_invalid_time_hour: "Hora inválida"
+        just_datetime_invalid_time_minute: "Minuto inválido"
+  date:
+    formats:
+      default: "%d-%m-%Y"
+      short: "%b %d"
+      long: "%d %B, %Y"
+  views:
+    pagination:
+      first: 'Primeiro'
+  active_admin:
+    pagination:
+      next: ""
+  formtastic:
+    create: 'Criar %{model}'
+    update: 'Atualizar %{model}'
+    submit: 'Salvar %{model}'
+    date:
+      formats:
+        default: "%d-%m-%Y"
+        short: "%b %d"
+        long: "%d %B, %Y"
+  date:
+    abbr_day_names:
+    - Dom
+    - Seg
+    - Ter
+    - Qua
+    - Qui
+    - Sex
+    - Sáb
+    abbr_month_names:
+    - 
+    - Jan
+    - Fev
+    - Mar
+    - Abr
+    - Mai
+    - Jun
+    - Jul
+    - Ago
+    - Set
+    - Out
+    - Nov
+    - Dez
+    day_names:
+    - Domingo
+    - Segunda
+    - Terça
+    - Quarta
+    - Quinta
+    - Sexta
+    - Sábado
+    formats:
+      default: ! '%d/%m/%Y'
+      long: ! '%d de %B de %Y'
+      short: ! '%d de %B'
+    month_names:
+    - 
+    - Janeiro
+    - Fevereiro
+    - Março
+    - Abril
+    - Maio
+    - Junho
+    - Julho
+    - Agosto
+    - Setembro
+    - Outubro
+    - Novembro
+    - Dezembro
+    order:
+    - :day
+    - :month
+    - :year
+  datetime:
+    distance_in_words:
+      about_x_hours:
+        one: aproximadamente 1 hora
+        other: aproximadamente %{count} horas
+      about_x_months:
+        one: aproximadamente 1 mês
+        other: aproximadamente %{count} meses
+      about_x_years:
+        one: aproximadamente 1 ano
+        other: aproximadamente %{count} anos
+      almost_x_years:
+        one: quase 1 ano
+        other: quase %{count} anos
+      half_a_minute: meio minuto
+      less_than_x_minutes:
+        one: menos de um minuto
+        other: menos de %{count} minutos
+      less_than_x_seconds:
+        one: menos de 1 segundo
+        other: menos de %{count} segundos
+      over_x_years:
+        one: mais de 1 ano
+        other: mais de %{count} anos
+      x_days:
+        one: 1 dia
+        other: ! '%{count} dias'
+      x_minutes:
+        one: 1 minuto
+        other: ! '%{count} minutos'
+      x_months:
+        one: 1 mês
+        other: ! '%{count} meses'
+      x_seconds:
+        one: 1 segundo
+        other: ! '%{count} segundos'
+    prompts:
+      day: Dia
+      hour: Hora
+      minute: Minuto
+      month: Mês
+      second: Segundo
+      year: Ano
+  errors: &errors
+    format: ! '%{attribute} %{message}'
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: Confirmação de senha não está correta.
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      record_invalid: ! 'A validação falhou: %{errors}'
+      taken: já está em uso
+      too_long: ! 'é muito longo (máximo: %{count} caracteres)'
+      too_short: ! 'é muito curto (mínimo: %{count} caracteres)'
+      wrong_length: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: ! 'Por favor, verifique o(s) seguinte(s) campo(s):'
+      header:
+        one: ! 'Não foi possível gravar %{model}: 1 erro'
+        other: ! 'Não foi possível gravar %{model}: %{count} erros.'
+  helpers:
+    select:
+      prompt: Por favor selecione
+    submit:
+      create: Criar %{model}
+      submit: Salvar %{model}
+      update: Atualizar %{model}
+  number:
+    currency:
+      format:
+        delimiter: .
+        format: ! '%u %n'
+        precision: 2
+        separator: ! ','
+        significant: false
+        strip_insignificant_zeros: false
+        unit: R$
+    format:
+      delimiter: .
+      precision: 3
+      separator: ! ','
+      significant: false
+      strip_insignificant_zeros: false
+    human:
+      decimal_units:
+        format: ! '%n %u'
+        units:
+          billion:
+            one: bilhão
+            other: bilhões
+          million:
+            one: milhão
+            other: milhões
+          quadrillion:
+            one: quatrilhão
+            other: quatrilhões
+          thousand: mil
+          trillion:
+            one: trilhão
+            other: trilhões
+          unit: ''
+      format:
+        delimiter: .
+        precision: 2
+        significant: true
+        strip_insignificant_zeros: true
+      storage_units:
+        format: ! '%n %u'
+        units:
+          byte:
+            one: Byte
+            other: Bytes
+          gb: GB
+          kb: KB
+          mb: MB
+          tb: TB
+    percentage:
+      format:
+        delimiter: .
+    precision:
+      format:
+        delimiter: .
+  support:
+    array:
+      last_word_connector: ! ' e '
+      two_words_connector: ! ' e '
+      words_connector: ! ', '
+  time:
+    am: ''
+    formats:
+      default: ! '%a, %d de %B de %Y, %H:%M:%S %z'
+      long: ! '%d de %B de %Y, %H:%M'
+      short: ! '%d de %B, %H:%M'
+    pm: ''
+  # remove these aliases after 'activemodel' and 'activerecord' namespaces are removed from Rails repository
+  activemodel:
+    errors:
+      <<: *errors
+  activerecord:
+    errors:
+      <<: *errors
+    models:
+      logs: "Logs"
+      dashboard: "Painel"
+      admin_user: "Usuário"
+      area: "Área"
+      admin_user_type: "Tipo de Usuário"
+      admin_user_type_area: "Área do Tipo de Usuário"
+      user: "Cliente"
+      user_event: "Eventos do Cliente"
+      event: "Evento"
+    type_attributes:
+      clipping:
+          product_id: "Belong|Product"
+          json_key: "String"
+          title_en: "String"
+          title_pt: "String"
+      attachment:
+          kind_file: "String|Method"
+          identification: "String"
+          video_file_name: "String"
+          video_content_type: "String"
+          video_file_size: "String"
+          video_updated_at: "Time"
+          audio_file_name: "String"
+          audio_content_type: "String"
+          audio_file_size: "String"
+          audio_updated_at: "Time"
+          image_file_name: "String"
+          image_content_type: "String"
+          image_file_size: "String"
+          image_updated_at: "Time"
+    attributes:
+      user:
+        name: "Nome"
+        email: "Email"
+        company: "Empresa"
+        position: "Cargo"
+        address: "Endereço"
+        address_number: "Número"
+        complement: "Complemento"
+        cep: "CEP"
+        state: "Estado"
+        city: "Cidade"
+        celnumber: "Telefone"
+        is_smartphone: "É Smartphone?"
+        image_usage: "Uso de Imagem?"
+        sms_usage: "Uso de SMS?"
+        email_usage: "Uso de Email?"
+        completed: "Cadastro Completo?"
+        created_at: "Criado em"
+        updated_at: "Alterado em"
+      user_event:
+        user_id: "Código do Usuário"
+        user: "Usuário"
+        event_id: "Código do Evento"
+        event: "Evento"
+        created_at: "Criado em"
+        updated_at: "Alterado em"        
+      event:
+        title: "Nome"
+        address: "Endereço"
+        datetime: "Data e Hora"
+        status: "Situação"
+        created_at: "Criado em"
+        updated_at: "Alterado em"
+      admin_user:
+        sent_welcome_mail: "Enviado email de boas vindas"
+        sent_welcome_mail_html: "Enviado email de boas vindas"
+        language: "Idioma"
+        email: "E-mail"
+        name: "Nome"
+        current_password: "Senha Atual"
+        password: "Senha"
+        password_confirmation: "Confirmação de Senha"
+        reset_password_sent_at: "Reset de senha enviado em"
+        confirmed_at: "Confirmado em"
+        confirmation_sent_at: "Confirmação enviado em"
+        confirmation_sent_at: "Confirmação enviado em"
+        current_sign_in_at: "Acesso atual em"
+        sign_in_count: "Quantidade de acessos"
+        last_sign_in_at: "Último acesso em"
+        admin_user_type_id: "Código de Tipo de Usuário" 
+        admin_user_type: "Tipo de Usuário" 
+        created_at: "Criado em"
+        updated_at: "Alterado em"
+      area:
+        title: "Nome"
+        created_at: "Criado em"
+        updated_at: "Alterado em"
+      admin_user_type:
+        title: "Nome"
+        admin_user_type_areas: "Áreas de acesso"
+        created_at: "Criado em"
+        updated_at: "Alterado em"
+      admin_user_type_area:
+        admin_user_type_id: "Tipo do Usuário"
+        area_id: "Área"
+        created_at: "Criado em"
+        updated_at: "Alterado em"

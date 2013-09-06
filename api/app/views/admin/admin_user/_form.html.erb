@@ -1,0 +1,157 @@
+<%# @admin_user.hidden_update = true %>
+
+<%= semantic_form_for  [:admin, @admin_user], :html => {:multipart => true} do |f| %>
+	<%= f.inputs do %>
+		<%= f.input :email, :input_html => {:disabled => @admin_user.new_record? ? false : true} %>
+
+		<%= f.input :name %>
+
+		<%= f.input :admin_user_type, :as => :select, :collection => AdminUserType.all, :onchange => 'ae()' %>
+	<% end -%>
+
+	<%= f.actions %>
+<% end %>
+
+<script type="text/javascript">
+
+function ae(){
+	alert('oi');
+}
+
+$(document).ready(function(){
+	$('form').submit(function() {
+  		return validates();
+	});
+
+	if($('#admin_user_company_id').val() != 0){
+		
+	}
+
+	//if(<%= !@admin_user.new_record? and !@admin_user.company.nil? %>){
+	//	load_products_with_company();
+	//}
+
+	if(<%= @admin_user.new_record? %>){
+		hide_select_all( 'product' );
+		uncheck_selects_all();
+	}
+});
+
+var msgs = [];
+
+function validates(){
+	var success = true;
+
+	if ($('#admin_user_email').val() != '' && !is_valid_email($('#admin_user_email'))) {
+		success = false;
+		msgs.push("Email inválido.");
+	}
+
+	if (!success) show_alerts(msgs);
+
+	return success;
+}
+
+var admin_user_id = <%= @admin_user.code.nil? ? 0 : @admin_user.code %>;
+var admin_user_products = <%= @admin_user.user_company_products.map(&:id) %>;
+
+function load_products_with_company() {
+	var company_id = $('#admin_user_company_id').val();
+
+	if (company_id == '' || !company_id) {
+		clean_checks('product');
+		return;
+	}
+
+   $.ajax({
+		url: '<%= company_products_admin_admin_users_path %>',
+		dataType: 'html',
+		type: 'post',
+		data: { company_id: company_id, admin_user_id: admin_user_id, authenticity_token: $('meta[name=csrf-token]').attr("content")},
+		success: function(data) {
+			current_choices_element('product').html(data);
+			//manage_select_all_with_element_and_resource(data, 'product');	
+			set_checked_produts_to_existed_records( admin_user_products );
+		}
+   });	
+}
+
+// *** View Controls *** // 
+
+function set_checked_produts_to_existed_records (p_products, p_data) {
+	var inputs = current_choices_element('product').find('input[type=checkbox]');
+	$.each(inputs, function(i, e){
+		var value = $(e).val();
+		if ($.inArray(parseInt(value), admin_user_products) > -1 ){
+			$(e).prop('checked', true);
+		}
+	});
+
+	manage_select_all_with_element_and_resource(current_choices_element('product'), 'product');
+}
+
+function clean_checks( resource ) {
+	if(resource == 'product'){
+		current_choices_element('product').html('')
+	}
+
+	hide_select_all(resource);
+}
+
+function hide_select_all( resource ) {
+	if (resource == 'product'){
+		$('#user_company_product_select_all').parent().hide();
+	}
+}
+
+function show_select_all( resource ) {
+	if (resource == 'product'){
+		$('#user_company_product_select_all').parent().show();
+	}
+}
+
+function check_select_all( resource ) {
+	if (resource == 'product'){
+		$('#user_company_product_select_all').attr('checked', 'checked');
+	}
+}
+
+function uncheck_select_all( resource ) {
+	if (resource == 'product'){
+		$('#user_company_product_select_all').removeAttr('checked');
+	}
+}
+
+// uncheck_selects_all : at the start of page, needs to uncheck the select all inputs because it dont have any object
+function uncheck_selects_all(){
+	$('#user_company_product_select_all').removeAttr('checked');
+}
+
+function manage_select_all_with_element_and_resource( el, resource ){
+	count_itens = $(el).find('input[type=checkbox]').length;
+	count_itens_checked = $(el).find('input[type=checkbox]:checked').length;
+
+	if(count_itens > 0) {
+		//alert('show_select_all ' + resource);
+		show_select_all(resource);
+	} else {
+		//alert('else show_select_all ' + resource);
+		hide_select_all(resource);
+	}
+
+	if (count_itens_checked == count_itens) {
+		//alert('check_select_all ' + resource);
+		check_select_all(resource);
+	} else {
+//		alert('else check_select_all ' + resource);
+		uncheck_select_all(resource);
+	}
+}
+
+function current_choices_element( resource ){
+	if(resource == 'product') {
+		return $('#admin_user_user_company_products_input').children();
+	}
+}
+
+</script>
