@@ -2,7 +2,7 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
   def migrate(direction)
     super
     # Create a default user
-    AdminUser.create!(:name => 'Administrador', :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password') if direction == :up
+    #AdminUser.create!(:name => 'Administrador', :email => 'admin@example.com', :password => 'password', :password_confirmation => 'password', :admin_user_type_id => 1, :skip_all_callbacks => true) if direction == :up
   end
 
   def change
@@ -30,10 +30,10 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
       t.references :admin_user_type
 
       ## Confirmable
-      # t.string   :confirmation_token
-      # t.datetime :confirmed_at
-      # t.datetime :confirmation_sent_at
-      # t.string   :unconfirmed_email # Only if using reconfirmable
+      t.string   :confirmation_token
+      t.datetime :confirmed_at
+      t.datetime :confirmation_sent_at
+      t.string   :unconfirmed_email # Only if using reconfirmable
 
       ## Lockable
       # t.integer  :failed_attempts, :default => 0 # Only if lock strategy is :failed_attempts

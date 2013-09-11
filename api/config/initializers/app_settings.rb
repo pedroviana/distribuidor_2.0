@@ -34,13 +34,11 @@ class AppSettings
 		end
 
 		def mailer_sender
-#			"interactivefan@interactivefan.com.br"
-      "developer@dnacom.com.br"
+      "contato@fordeconoshow.com.br"
 		end
 
 		def mailer_password
-#			"w9y9h4bX1B"
-      "ap050604"
+      "Dna32979391"
 		end	
 		# Mail	
 
@@ -50,12 +48,16 @@ class AppSettings
 			['Administrador', 'Criador de Eventos', 'Criador de Convites']
 		end
 
+    def invite_creator
+		  UnicodeUtils.upcase(user_types[2])      
+    end
+
 		def administrator
 		  UnicodeUtils.upcase(user_types[0])
 		end
 
-		def ios
-		  UnicodeUtils.upcase(user_types[3])
+		def event_creator
+		  UnicodeUtils.upcase(user_types[1])
 		end
 
 		# Areas

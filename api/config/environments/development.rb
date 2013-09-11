@@ -27,20 +27,21 @@ Api::Application.configure do
   # number of complex assets.
   config.assets.debug = true
   
-  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.delivery_method = :smtp  
+
+  config.action_mailer.default_url_options = { :host => '192.168.1.133:3000' }
 
   # LOCAWEB SETTINGS
-=begin
+
   ActionMailer::Base.smtp_settings = {
-    :address => "smtp.topazioadm.com.br",
+    :address => "smtp.fordeconoshow.com.br",
     :port => 587,
     :authentication => :login,
-    :domain => "webmail.topazioadm.com.br",
-    :user_name => "sistema@topazioadm.com.br",
-    :password => "Tpz55017800"
+    :domain => "webmail.fordeconoshow.com.br",
+    :user_name => "contato@fordeconoshow.com.br",
+    :password => "Dna32979391"
   }
-=end
 
   config.action_mailer.perform_deliveries = true
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.raise_delivery_errors = true
 end

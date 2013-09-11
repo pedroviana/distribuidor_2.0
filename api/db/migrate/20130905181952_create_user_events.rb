@@ -4,6 +4,11 @@ class CreateUserEvents < ActiveRecord::Migration
       t.references :user, index: true
       t.references :event, index: true
 
+      # "I" Invite
+      t.string :status, :default => "I", :null => false
+      t.string :token, :default => "0", :null => false
+      t.boolean :presence, :default => false, :null => false
+
       t.timestamps
     end
   end

@@ -6,9 +6,23 @@ class AdminUserType < ActiveRecord::Base
 
   validates_uniqueness_of :title
   
-  default_scope order('title')
+  default_scope { order('title') }
   
   def code
     read_attribute('id')
+  end
+  
+  class << self
+    def invitor_id
+      find_by_title(AppSettings.invite_creator).read_attribute('id')      
+    end
+    
+    def event_creator_id
+      find_by_title(AppSettings.event_creator).read_attribute('id')
+    end
+    
+    def administrator_id
+      find_by_title(AppSettings.administrator).read_attribute('id')
+    end
   end
 end

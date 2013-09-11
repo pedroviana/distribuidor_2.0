@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130906190334) do
+ActiveRecord::Schema.define(version: 20130911162623) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -27,6 +27,16 @@ ActiveRecord::Schema.define(version: 20130906190334) do
   add_index "active_admin_comments", ["author_type", "author_id"], name: "index_active_admin_comments_on_author_type_and_author_id", using: :btree
   add_index "active_admin_comments", ["namespace"], name: "index_active_admin_comments_on_namespace", using: :btree
   add_index "active_admin_comments", ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id", using: :btree
+
+  create_table "admin_user_events", force: true do |t|
+    t.integer  "admin_user_id"
+    t.integer  "event_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "admin_user_events", ["admin_user_id"], name: "index_admin_user_events_on_admin_user_id", using: :btree
+  add_index "admin_user_events", ["event_id"], name: "index_admin_user_events_on_event_id", using: :btree
 
   create_table "admin_user_type_areas", force: true do |t|
     t.integer  "admin_user_type_id"
@@ -57,6 +67,10 @@ ActiveRecord::Schema.define(version: 20130906190334) do
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
     t.integer  "admin_user_type_id"
+    t.string   "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -80,9 +94,33 @@ ActiveRecord::Schema.define(version: 20130906190334) do
     t.float    "longitude"
   end
 
+  create_table "user_event_confirmations", force: true do |t|
+    t.integer  "user_event_id"
+    t.string   "function"
+    t.string   "address"
+    t.string   "number"
+    t.string   "complement"
+    t.string   "cep"
+    t.string   "state"
+    t.string   "city"
+    t.string   "cellnumber"
+    t.boolean  "smartphone"
+    t.boolean  "sms_usage"
+    t.boolean  "email_usage"
+    t.boolean  "image_usage"
+    t.text     "report_csv"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "user_event_confirmations", ["user_event_id"], name: "index_user_event_confirmations_on_user_event_id", using: :btree
+
   create_table "user_events", force: true do |t|
     t.integer  "user_id"
     t.integer  "event_id"
+    t.string   "status",     default: "I",   null: false
+    t.string   "token",      default: "0",   null: false
+    t.boolean  "presence",   default: false, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

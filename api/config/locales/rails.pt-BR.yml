@@ -240,6 +240,7 @@ pt-BR:
       admin_user_type_area: "Área do Tipo de Usuário"
       user: "Cliente"
       user_event: "Eventos do Cliente"
+      user_event_confirmation: "Confirmação de Evento do Cliente"
       event: "Evento"
     type_attributes:
       clipping:
@@ -263,7 +264,21 @@ pt-BR:
           image_file_size: "String"
           image_updated_at: "Time"
     attributes:
+      user_event_confirmation:
+        function: "Cargo"
+        address: "Endereço"
+        number: "Número"
+        complement: "Complemento"
+        cep: "CEP"
+        state: "Estado" 
+        city: "Cidade"
+        cellnumber: "Celular"
+        smartphone: "É smartphone?"
+        sms_usage: "Deseja receber informações da Caravana via SMS sem custo ?"
+        email_usage: "Deseja receber informações da Caravana via email ?"
+        image_usage: "Autoriza o uso de sua imagem ?"
       user:
+        events: "Eventos para participar"
         name: "Nome"
         email: "Email"
         company: "Empresa"
@@ -297,6 +312,7 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Alterado em"
       admin_user:
+        event_name_shortcut: "Deseja já criar um evento para esse usuário?"
         sent_welcome_mail: "Enviado email de boas vindas"
         sent_welcome_mail_html: "Enviado email de boas vindas"
         language: "Idioma"

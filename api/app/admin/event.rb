@@ -1,9 +1,15 @@
 ActiveAdmin.register Event do
   menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.event') ) rescue false }
   
+  scope_to :current_admin_user
+  
   filter :title
   filter :address
   filter :datetime
+
+  action_item :only => :show, :if => proc { event.user_events.without_token.count > 0 } do
+    link_to 'Enviar Convites', send_invites_admin_event_path(event)
+  end
   
   index do |admin_user|
     selectable_column
@@ -28,20 +34,28 @@ ActiveAdmin.register Event do
     attrs << new_fields
     attributes_table(*attrs.flatten)
     
-    panel 'Clientes' do
-      if event.users.count > 0
-        table_for event.users do |user|
-          column 'Nome' do |user| 
-            user.name
+    panels = [
+      {label: 'Clientes sem convite', users: event.user_events.without_token}, 
+      {label: 'Clientes convidados', users: event.user_events.invited}, 
+      {label: 'Clientes confirmados', users: event.user_events.confirmed}
+    ]
+
+    panels.each do |p|
+      panel p[:label] do
+        if p[:users].count > 0
+          table_for p[:users].map(&:user) do |user|
+            column 'Nome' do |user| 
+              user.name
+            end
+
+            column 'Email' do |user| 
+              user.email
+            end
           end
-          
-          column 'Email' do |user| 
-            user.email
+        else
+          span do 
+            "Nenhum Cliente convidado para o Evento."
           end
-        end
-      else
-        span do 
-          "Nenhum Cliente cadastrado nesse Evento."
         end
       end
     end
@@ -63,7 +77,7 @@ ActiveAdmin.register Event do
   end
   
   form do |f| 
-    f.inputs "Details" do
+    f.inputs "Detalhes" do
       f.input :title
       f.input :address
       f.input :datetime, :as => :just_datetime_picker
@@ -71,6 +85,18 @@ ActiveAdmin.register Event do
     f.actions
   end
 
+  member_action :send_invites do
+    @event = Event.find params[:id] rescue nil
+    if @event
+      if @event.send_invites
+        redirect_to admin_event_path(@event), notice: 'Convites enviados com sucesso!' and return
+      else
+        redirect_to admin_event_path(@event), :alert => 'Ocorreu um problema ao enviar os convites.' and return
+      end
+    else
+      redirect_to admin_events_path, :alert => 'Evento não encontrado.' and return
+    end
+  end
 
   controller do
 		def destroy

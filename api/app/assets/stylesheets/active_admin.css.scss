@@ -19,3 +19,13 @@
 //
 //   .status_tag { background: #6090DB; }
 
+select {
+   width: auto;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+   height: 30px;
+   overflow: hidden;
+   //background: url(new_arrow.png) no-repeat right #ddd;
+   border: 1px solid #ccc;
+}

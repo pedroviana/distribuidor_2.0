@@ -1,0 +1,194 @@
+<%= javascript_include_tag "jquery.maskedinput.min" %>
+
+<style>
+	input {
+		text-align: left;
+	}
+</style>
+
+<br/>
+<h2>Olá <%= @user_event.user.name %>, por favor complete com suas informações abaixo:</h2>
+<h4>Essas informações são necessárias para gerar seu QR Code que irá identifica-lo no dia do evento.</h4>
+
+<%= semantic_form_for  @user_event_confirmation do |f| %>
+	<%= f.inputs 'Dados' do %>
+		<%= f.input :name %>
+		<%= f.input :company %>
+		<%= f.input :function %>
+		<%= f.input :address %>
+		<%= f.input :number %>
+		<%= f.input :complement %>
+		<%= f.input :cep %>
+		<%= f.input :state %>
+		<%= f.input :city %>
+		<%= f.input :cellnumber %>
+		<%= f.input :smartphone, as: :boolean %>
+		<%= f.input :image_usage, as: :boolean %>
+		<%= f.input :sms_usage, as: :boolean %>
+		<%= f.input :email_usage, as: :boolean %>
+	<% end -%>
+
+	<%= f.inputs 'Hábitos de Mídia' do %>
+		<%= text_field_tag "user_event_confirmation_other_fake", nil, :style => "display:none", :disabled => 'disabled' %>
+		<%= f.input :le_revista, as: :radio,:collection => ["Sim", "Não"] %>
+		<%= f.input :quais, label: "Se lê, quais?", as: :check_boxes, collection: UserEventConfirmation.magazines %>
+		
+		<%= f.input :le_jornal, as: :radio,:collection => ["Sim", "Não"] %>
+		<%= f.input :jornais, label: "Se lê, quais?" %>
+
+		<%= f.input :ouve_radio, as: :radio,:collection => ["Sim", "Não"] %>
+		<%= f.input :radios, label: "Se ouve, o que?", as: :check_boxes, collection: UserEventConfirmation.radios %>
+		
+		<%= f.input :assisti_tv, as: :radio,:collection => ["Sim", "Não"] %>
+		<%= f.input :frequencia_tv, label: "Se assiste, com que frequência?", as: :radio, collection: UserEventConfirmation.tv_frequencies %>
+		<%= f.input :canais, label: "Que canais gosta de ver na TV?", as: :check_boxes, collection: UserEventConfirmation.channels %>
+		<%= f.input :programas_preferidos, label: "Qual(is) o(s) programa(s) preferido(s)?", as: :check_boxes, collection: UserEventConfirmation.programs %>
+
+		<%= f.input :envia_recebe_sms, label: "Envia/Recebe SMS ?", as: :radio,:collection => ["Sim", "Não"] %>
+		<%= f.input :usa_internet, label: "Usa Internet ?", as: :radio,:collection => ["Sim", "Não"] %>				
+		<%= f.input :tipo_internet, label: "", as: :check_boxes, collection: UserEventConfirmation.internet %>
+		
+		<%= f.input :frequencia_internet, label: "Com qual frequencia usa a internet?", as: :radio, collection: UserEventConfirmation.internet_frequencies %>
+		
+		<%= f.input :locais_internet, label: "Locais onde acessa a internet:", as: :check_boxes, collection: UserEventConfirmation.internet_places %>
+		
+		<%= f.input :o_que_ve_internet, label: "O que costuma olhar na internet?", as: :check_boxes, collection: UserEventConfirmation.internet_contents %>
+		
+		<%= f.input :acessa_redes_sociais, label: "Acessa redes sociais?", as: :radio,:collection => ["Sim", "Não"] %>
+		
+		<%= f.input :quais_redes_sociais, label: "Se acessa, quais?", as: :check_boxes, collection: UserEventConfirmation.socials %>
+		
+		<%= f.input :visita_site_especializado, label: "Visita algum site especializado em caminhões?", as: :radio,:collection => ["Sim", "Não"] %>
+		
+		<%= f.input :sites_especializados, label: "Se acessa, quais?", as: :check_boxes, collection: UserEventConfirmation.sites %>
+	<% end -%>
+
+	<%= f.actions %>
+<% end %>
+	
+
+<script type="text/javascript">
+
+jQuery.fn.outerHTML = function(s) {
+    return s
+        ? this.before(s).remove()
+        : jQuery("<p>").append(this.eq(0).clone()).html();
+};
+
+var input_ids = ['name', 'company', 'function', 'address', 'number','complement','cep','state','city','cellnumber','smartphone'];
+//$('#user_event_confirmation_quais_outra').parent().after($('#user_event_confirmation_cellnumber').outerHTML())
+
+var ids_to_insert_other_input_text = [
+	["user_event_confirmation_quais_outra", "outra_revista"],
+	["user_event_confirmation_radios_msica", "tipo_musica"],
+	["user_event_confirmation_radios_outros", "outra_radio"],
+	["user_event_confirmation_canais_canais_fechados", "canais_fechados"],
+	["user_event_confirmation_canais_outros", "outros_canais"],
+	["user_event_confirmation_programas_preferidos_outros", "outro_preferido"],
+	["user_event_confirmation_o_que_ve_internet_site_de_notcias", "outros_sites_noticias"],
+	["user_event_confirmation_o_que_ve_internet_outros", "outros_sites"],
+	["user_event_confirmation_quais_redes_sociais_blogs", "quais_blogs"],
+	["user_event_confirmation_sites_especializados_outro", "outro_site_especializado"]
+]
+
+function load_other_inputs(){
+	$.each(ids_to_insert_other_input_text, function(i, element_name){
+		var other_input_clone 	= $('#user_event_confirmation_other_fake').clone();
+		var el 				  	= $('#'+element_name[0]);
+		var name 				= 'user_event_confirmation['+element_name[1]+']';
+		var id 					= 'user_event_confirmation_'+element_name[1];
+		
+		other_input_clone.prop('name', name);
+		other_input_clone.prop('id', id);
+		other_input_clone.prop('disabled', '');
+
+		el.parent().after(other_input_clone.outerHTML());
+		
+		el.change(function() {
+			show_other_input($(this).is(":checked"), $('#'+id));
+		});
+	});
+}
+
+function show_other_input(p_checked, p_input){
+	if(p_checked){
+		p_input.show();
+	} else {
+		p_input.hide();		
+	}
+}
+
+function description_id(p_id){
+	switch (p_id) {
+	    case "name":
+			return "Nome";
+	    break;
+	    case "company":
+			return "Empresa";
+	    break;
+		case "function":
+			return "Cargo";
+	    break;	
+		case "address":
+			return "Endereço";
+	    break;
+		case "number":
+			return "Número";
+	    break;
+		case "complement":
+			return "Complemento";
+	    break;
+		case "cep":
+			return "CEP";
+	    break;
+		case "state":
+			return "Estado";
+	    break;
+		case "city":
+			return "Cidade";
+	    break;
+		case "cellnumber":
+			return "Celular";
+	    break;
+		case "smartphone":
+			return "É Smartphone?";
+	    break;
+	}
+}
+
+function validates(){
+	var success = true;
+
+	var msgs = [];
+
+	$.each(input_ids, function(i, e){
+		var element = $('#user_event_confirmation_'+e);
+		if(element.val() == ''){
+			if(success) msgs.push("Informações obrigatórias não podem ficar em branco: \n")
+			success = false;
+			msgs.push(description_id(e));
+		}
+	})
+
+	if (!success) alert(msgs.join("\n"));
+
+	return success;
+}
+
+function mask_fields(){
+	$("#number").mask("9?999999999",{placeholder:"", numericInput: true});
+	$("#cep").mask("99999-999",{placeholder:"", numericInput: true});
+	$("#cellnumber").mask("99999-999?9",{placeholder:"", numericInput: true});
+}
+
+$(document).ready(function(){
+	mask_fields();
+	
+	$('form').submit(function() {
+  		return validates();
+	});
+	
+	load_other_inputs();
+});
+
+</script>
