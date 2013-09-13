@@ -44,4 +44,6 @@ Api::Application.configure do
 
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end

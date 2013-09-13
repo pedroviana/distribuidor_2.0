@@ -59,6 +59,10 @@ class Event < ActiveRecord::Base
     tomorrow = ( Time.now.beginning_of_day + 1.day ).beginning_of_day
     errors.add :datetime , "Data muito próxima, no mínimo #{tomorrow.to_formatted_s(:long)}" if datetime < tomorrow
   end
+
+  def code
+    read_attribute('id')
+  end
 	
 	private
 	def link_administrators

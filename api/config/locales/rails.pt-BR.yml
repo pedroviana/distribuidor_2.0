@@ -265,6 +265,9 @@ pt-BR:
           image_updated_at: "Time"
     attributes:
       user_event_confirmation:
+        email: "Email"
+        company: "Empresa"
+        name: "Nome"
         function: "Cargo"
         address: "Endereço"
         number: "Número"

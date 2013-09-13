@@ -69,3 +69,5 @@ gem 'unicode_utils'
 
 #locaweb 
 gem 'tlsmail'
+
+gem 'paperclip'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130911162623) do
+ActiveRecord::Schema.define(version: 20130913210517) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -93,6 +93,18 @@ ActiveRecord::Schema.define(version: 20130911162623) do
     t.float    "latitude"
     t.float    "longitude"
   end
+
+  create_table "midia_attachments", force: true do |t|
+    t.integer  "user_event_confirmation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
+  end
+
+  add_index "midia_attachments", ["user_event_confirmation_id"], name: "index_midia_attachments_on_user_event_confirmation_id", using: :btree
 
   create_table "user_event_confirmations", force: true do |t|
     t.integer  "user_event_id"
