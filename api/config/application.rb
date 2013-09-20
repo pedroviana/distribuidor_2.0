@@ -37,12 +37,17 @@ module Api
         I18n.reload!
         config.i18n.reload!
     end
-
-
+    
+    config.after_initialize do
+      UserEventConfirmation.start_invites_schedule
+    end
+    
     config.i18n.available_locales = [:en, :"pt-BR"]
     config.i18n.default_locale = :"pt-BR"
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
+    
+    config.autoload_paths += %W(#{config.root}/lib)
   end
 end

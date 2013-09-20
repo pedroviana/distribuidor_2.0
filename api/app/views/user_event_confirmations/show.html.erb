@@ -8,6 +8,8 @@
 </div>
 <%= semantic_form_for  @user_event_confirmation do |f| %>
 	<%= f.inputs 'Dados' do %>
+		
+		<%= f.input :token, as: :hidden %>
 		<%= f.input :name %>
 		<%= f.input :company %>
 		<%= f.input :function %>

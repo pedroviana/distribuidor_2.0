@@ -232,6 +232,7 @@ pt-BR:
     errors:
       <<: *errors
     models:
+      report: "Relatório"
       logs: "Logs"
       dashboard: "Painel"
       admin_user: "Usuário"
@@ -243,6 +244,34 @@ pt-BR:
       user_event_confirmation: "Confirmação de Evento do Cliente"
       event: "Evento"
     type_attributes:
+      user_event:
+        user_id: "Belong|User"
+        event_id: "Belong|Event"
+      user: 
+        name: "String"
+        email: "String"
+        company: "String"   
+        position: "String"
+        function: "String"
+        address: "String"
+        address_number: "String"
+        complement: "String"
+        cep: "String"
+        state: "String"
+        city: "String"
+        celnumber: "String"
+        is_smartphone: "Boolean"
+        image_usage: "Boolean"
+        sms_usage: "Boolean"
+        email_usage: "Boolean"
+      admin_user:
+        name: "String"
+        email: "String"
+        admin_user_type_id: "Belong|AdminUserType"
+      event:
+        title: "String"
+        datetime: "DateTime"
+        address: "String"
       clipping:
           product_id: "Belong|Product"
           json_key: "String"
@@ -264,6 +293,17 @@ pt-BR:
           image_file_size: "String"
           image_updated_at: "Time"
     attributes:
+      report:
+        admin_user_id: "Código do usuário que criou"
+        admin_user: "Usuário que criou"
+        user_event_id: "Código do usuário/evento"
+        user_event: "Usuário/evento"
+        user: "Usuário"
+        schema: "Tipo"
+        schema_description: "Tipo"
+        event: "Evento"
+        created_at: "Criado em"
+        updated_at: "Alterado em"
       user_event_confirmation:
         email: "Email"
         company: "Empresa"
@@ -301,6 +341,7 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Alterado em"
       user_event:
+        presence: "Presença"
         user_id: "Código do Usuário"
         user: "Usuário"
         event_id: "Código do Evento"

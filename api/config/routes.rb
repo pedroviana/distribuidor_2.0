@@ -11,6 +11,8 @@ Api::Application.routes.draw do
   resources :user_event_confirmations do
     collection do
       get 'invalid_token'
+      get 'already_confirmed'
+      get 'thanks'
     end
   end
 end

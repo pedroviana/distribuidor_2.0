@@ -1,6 +1,7 @@
 # encoding: UTF-8
 
 require 'csv'
+require 'qrcode_lib'
 
 class UserEventConfirmation < ActiveRecord::Base
   belongs_to :user_event
@@ -8,11 +9,13 @@ class UserEventConfirmation < ActiveRecord::Base
   has_one :event, through: :user_event
   has_one :midia_attachment
   
-  before_save do |u|
+  before_create do |u|
+    u.check_booleans
+    u.update_user_attributes
     u.generate_report_csv
   end
 
-  attr_accessor :name, :company,
+  attr_accessor :name, :company, :function, :address, :number, :complement, :cep, :state, :city, :celnumber, :smartphone, :image_usage, :sms_usage, :email_usage,
                 # csv accessors
                 :le_revista, :revistas, :outra_revista,
                 :le_jornal, :jornais,
@@ -23,74 +26,137 @@ class UserEventConfirmation < ActiveRecord::Base
                 :acessa_redes_sociais, :quais_redes_sociais, :quais_blogs, :outras_redes,
                 :visita_site_especializado, :sites_especializados, :outro_site_especializado,
                 # newspapers
-                :jornais_acres,:jornais_acres_outro,
-                :jornais_alagoass,:jornais_alagoass_outro,
-                :jornais_amazonass,:jornais_amazonass_outro, 		
-                :jornais_bahias,:jornais_bahias_outro, 			
-                :jornais_cears,:jornais_cears_outro,			
-                :jornais_distrito_federals,:jornais_distrito_federals_outro, 
-                :jornais_esprito_santos,:jornais_esprito_santos_outro, 	
-                :jornais_goiss,:jornais_goiss_outro, 			
-                :jornais_goinias,:jornais_goinias_outro, 			
-                :jornais_maranhos,:jornais_maranhos_outro, 		
-                :jornais_mato_grosso_do_suls,:jornais_mato_grosso_do_suls_outro,
-                :jornais_minas_geraiss,:jornais_minas_geraiss_outro, 	
-                :jornais_parans,:jornais_parans_outro, 			
-                :jornais_parabas,:jornais_parabas_outro, 			
-                :jornais_pars,:jornais_pars_outro, 			
-                :jornais_pernambucos,:jornais_pernambucos_outro, 		
-                :jornais_piaus,:jornais_piaus_outro, 			
-                :jornais_rio_grande_do_nortes,:jornais_rio_grande_do_nortes_outro,
-                :jornais_rio_grande_do_suls,:jornais_rio_grande_do_suls_outro,
-                :jornais_rio_de_janeiros,:jornais_rio_de_janeiros_outro,	
-                :jornais_rondnias,:jornais_rondnias_outro, 		
-                :jornais_roraimas,:jornais_roraimas_outro, 		
-                :jornais_santa_catarinas,:jornais_santa_catarinas_outro, 	
-                :jornais_so_paulos,:jornais_so_paulos_outro,		
-                :jornais_sergipes,:jornais_sergipes_outro
+                :jornais_acres,:jornais_acres_other,
+                :jornais_alagoass,:jornais_alagoass_other,
+                :jornais_amazonass,:jornais_amazonass_other, 		
+                :jornais_bahias,:jornais_bahias_other, 			
+                :jornais_cears,:jornais_cears_other,			
+                :jornais_distrito_federals,:jornais_distrito_federals_other, 
+                :jornais_esprito_santos,:jornais_esprito_santos_other, 	
+                :jornais_goiss,:jornais_goiss_other, 			
+                :jornais_goinias,:jornais_goinias_other, 			
+                :jornais_maranhos,:jornais_maranhos_other, 		
+                :jornais_mato_grosso_do_suls,:jornais_mato_grosso_do_suls_other,
+                :jornais_minas_geraiss,:jornais_minas_geraiss_other, 	
+                :jornais_parans,:jornais_parans_other, 			
+                :jornais_parabas,:jornais_parabas_other, 			
+                :jornais_pars,:jornais_pars_other, 			
+                :jornais_pernambucos,:jornais_pernambucos_other, 		
+                :jornais_piaus,:jornais_piaus_other, 			
+                :jornais_rio_grande_do_nortes,:jornais_rio_grande_do_nortes_other,
+                :jornais_rio_grande_do_suls,:jornais_rio_grande_do_suls_other,
+                :jornais_rio_de_janeiros,:jornais_rio_de_janeiros_other,	
+                :jornais_rondnias,:jornais_rondnias_other, 		
+                :jornais_roraimas,:jornais_roraimas_other, 		
+                :jornais_santa_catarinas,:jornais_santa_catarinas_other, 	
+                :jornais_so_paulos,:jornais_so_paulos_other,		
+                :jornais_sergipes,:jornais_sergipes_other
 
+  def check_booleans
+    smartphone  == '1' ? true : false rescue false
+    image_usage == '1' ? true : false rescue false
+    sms_usage   == '1' ? true : false rescue false
+    email_usage == '1' ? true : false rescue false
+  end
+#    , :smartphone, :image_usage, :sms_usage, :email_usage
 
-#  def keys
-#    [:name, :company, :email, :cep, :address, :state, :city, :cellnumber, :smartphone, :function, :complement, :number, :image_usage, :sms_usage, :email_usage]
-#  end
+  def update_user_attributes
+    user.attributes = {
+      is_smartphone: smartphone, 
+      image_usage: image_usage, 
+      sms_usage: sms_usage, 
+      email_usage: email_usage,
+      name: name, 
+      company: company, 
+      position: function, 
+      address: address, 
+      address_number: number, 
+      complement: complement, 
+      cep: cep, 
+      state: state, 
+      city: city, 
+      celnumber: celnumber
+    }
+  end
+
+  def send_qr
+    write_attribute(:qr_path, LibQRCode.generate_qrcode(user.email, {:size => 4})) 
+    if qr_path.is_a?(String) and qr_sent_at.nil?
+      begin
+        UserEventConfirmationMailer.send_qr(self).deliver 
+        update_attribute(:qr_sent_at, Time.now)
+      rescue Exception => e
+        update_attribute(:qr_sent_at, nil)        
+      end
+    end
+    
+  end
+
+  def token
+    user_event.token
+  end
 
   def other_keys
-    %{Libera uso de imagem?/Libera envio de SMS?/Libera envio de e-mails?/Lê revistas?/Quais?/Outras/Lê Jornais?/Quais?/Acre/Outro/Alagoas/Outro/Amazonas/Outro/Bahia/Outro/Ceará/Outro/Distrito Federal/Outro/Espírito Santo/Outro/Goiás/Outro/Goiânia/Outro/Maranhão/Outro/Mato Grosso do Sul/Outro/Minas Gerais/Outro/Paraná/Outro/Paraíba/Outro/Pernambuco/Outro/Piauí/Outro/Rio Grande do Norte/Outro/Rio Grande do Sul/Outro/Rio De Janeiro/Outro/Rondônia/Outro/Roraima/Outro/Santa Catarina/Outro/São Paulo/Outro/Sergipe/Ouve Rádio?/O que ouve no rádio?/Que tipo de música ouve?/Outro/Assiste TV?/Com qualfrequência?/Quais canais gosta de ver na TV?/Outros/Qual(is) o(s) programa(s) preferido(s)?/Envia ou Recebe SMS?/Usa internet?/Com qual frequência usa a internet?/Locais onde acessa a internet:/O que costuma olhar na internet?/Quais redes sociais acessa?/Blogs/Outros/Visita algum site especializado em caminhões?/Quais sites?/Outro?}.split('/')
+    %{Libera uso de imagem?/Libera envio de SMS?/Libera envio de e-mails?/Lê revistas?/Quais?/Outras/Lê Jornais?/Quais?/Acre/Outro/Alagoas/Outro/Amazonas/Outro/Bahia/Outro/Ceará/Outro/Distrito Federal/Outro/Espírito Santo/Outro/Goiás/Outro/Goiânia/Outro/Maranhão/Outro/Mato Grosso do Sul/Outro/Minas Gerais/Outro/Paraná/Outro/Paraíba/Outro/Pará/Outro/Pernambuco/Outro/Piauí/Outro/Rio Grande do Norte/Outro/Rio Grande do Sul/Outro/Rio De Janeiro/Outro/Rondônia/Outro/Roraima/Outro/Santa Catarina/Outro/São Paulo/Outro/Sergipe/Outro/Ouve Rádio?/O que ouve no rádio?/Que tipo de música ouve?/Outro/Assiste TV?/Com qual frequência?/Quais canais gosta de ver na TV?/Outros/Qual(is) o(s) programa(s) preferido(s)?/Envia ou Recebe SMS?/Usa internet?/Com qual frequência usa a internet?/Locais onde acessa a internet:/O que costuma olhar na internet?/Quais redes sociais acessa?/Blogs/Outros/Visita algum site especializado em caminhões?/Quais sites?/Outro?}.split('/')
+  end
+  
+  def csv_methods
+    [image_usage, sms_usage, email_usage, le_revista, revistas, outra_revista, le_jornal, jornais,
+      jornais_acres,                jornais_acres_other,
+      jornais_alagoass,             jornais_alagoass_other,
+      jornais_amazonass,            jornais_amazonass_other, 		
+      jornais_bahias,               jornais_bahias_other, 			
+      jornais_cears,                jornais_cears_other,			
+      jornais_distrito_federals,    jornais_distrito_federals_other, 
+      jornais_esprito_santos,       jornais_esprito_santos_other, 	
+      jornais_goiss,                jornais_goiss_other, 			
+      jornais_goinias,              jornais_goinias_other, 			
+      jornais_maranhos,             jornais_maranhos_other, 		
+      jornais_mato_grosso_do_suls,  jornais_mato_grosso_do_suls_other,
+      jornais_minas_geraiss,        jornais_minas_geraiss_other, 	
+      jornais_parans,               jornais_parans_other, 			
+      jornais_parabas,              jornais_parabas_other, 			
+      jornais_pars,                 jornais_pars_other, 			
+      jornais_pernambucos,          jornais_pernambucos_other, 		
+      jornais_piaus,                jornais_piaus_other, 			
+      jornais_rio_grande_do_nortes, jornais_rio_grande_do_nortes_other,
+      jornais_rio_grande_do_suls,   jornais_rio_grande_do_suls_other,
+      jornais_rio_de_janeiros,      jornais_rio_de_janeiros_other,	
+      jornais_rondnias,             jornais_rondnias_other, 		
+      jornais_roraimas,             jornais_roraimas_other, 		
+      jornais_santa_catarinas,      jornais_santa_catarinas_other, 	
+      jornais_so_paulos,            jornais_so_paulos_other,		
+      jornais_sergipes,             jornais_sergipes_other,
+      ouve_radio, radios, tipo_musica, outra_radio, assisti_tv, frequencia_tv, canais, outros_canais, programas_preferidos, envia_recebe_sms, usa_internet, frequencia_internet, locais_internet, o_que_ve_internet, quais_redes_sociais, quais_blogs, outras_redes, visita_site_especializado, sites_especializados, outro_site_especializado
+    ]
   end
   
   def generate_report_csv
-    build_midia_attachment
+    #build_midia_attachment
     
-    midia_attachment.file_file_name = 'midia_survey.csv'
+    file_path = "temp_midia_survey_#{self.token}"
+    file = Tempfile.new(file_path)
+    
+    user_header = other_keys
 
-    if midia_attachment.save
-      path = "temp_midia_survey_#{self.code}.csv"
-      begin
-        File.delete(path)
-      rescue Errno::ENOENT
-      end
-      
-      file = File.new(path, 'w')
-      file.close
-      
-      user_header = other_keys
-
-      CSV.open( file, 'w' ) do |writer|
-        writer<<other_keys
-        #writer<<'\n'
-        v = csv_methods.map! do |x|
-          if x.is_a?(Array)
-            x.reject!{ |c| c.empty? }.join(',')
-          else
-            x
-          end
+    CSV.open( file, 'w' ) do |writer|
+      writer<<other_keys
+      #writer<<'\n'
+      v = csv_methods.map! do |x|
+        if x.is_a?(Array)
+          [x.reject{ |c| c.empty? }].flatten.join(',')
+        elsif boolean?(x)
+          x ? 'Sim' : 'Não'
+        else 
+          x
         end
-        
-        values = v.flatten
-        raise values.inspect
-        writer << values
       end
+      
+      values = v.flatten
+      writer << values
     end
+    
+    build_midia_attachment(file: file)
   end
   
   def code
@@ -105,46 +171,20 @@ class UserEventConfirmation < ActiveRecord::Base
     user.company
   end
   
-  def csv_methods
-    [
-      image_usage, 
-      sms_usage, 
-      email_usage, 
-      le_revista, 
-      revistas, 
-      outra_revista, 
-      le_jornal, 
-      jornais,
-      jornais_acres,                jornais_acres_outro,
-      jornais_alagoass,             jornais_alagoass_outro,
-      jornais_amazonass,            jornais_amazonass_outro, 		
-      jornais_bahias,               jornais_bahias_outro, 			
-      jornais_cears,                jornais_cears_outro,			
-      jornais_distrito_federals,    jornais_distrito_federals_outro, 
-      jornais_esprito_santos,       jornais_esprito_santos_outro, 	
-      jornais_goiss,                jornais_goiss_outro, 			
-      jornais_goinias,              jornais_goinias_outro, 			
-      jornais_maranhos,             jornais_maranhos_outro, 		
-      jornais_mato_grosso_do_suls,  jornais_mato_grosso_do_suls_outro,
-      jornais_minas_geraiss,        jornais_minas_geraiss_outro, 	
-      jornais_parans,               jornais_parans_outro, 			
-      jornais_parabas,              jornais_parabas_outro, 			
-      jornais_pars,                 jornais_pars_outro, 			
-      jornais_pernambucos,          jornais_pernambucos_outro, 		
-      jornais_piaus,                jornais_piaus_outro, 			
-      jornais_rio_grande_do_nortes, jornais_rio_grande_do_nortes_outro,
-      jornais_rio_grande_do_suls,   jornais_rio_grande_do_suls_outro,
-      jornais_rio_de_janeiros,      jornais_rio_de_janeiros_outro,	
-      jornais_rondnias,             jornais_rondnias_outro, 		
-      jornais_roraimas,             jornais_roraimas_outro, 		
-      jornais_santa_catarinas,      jornais_santa_catarinas_outro, 	
-      jornais_so_paulos,            jornais_so_paulos_outro,		
-      jornais_sergipes,             jornais_sergipes_outro,
-      ouve_radio, radios, tipo_musica, outra_radio, assisti_tv, frequencia_tv, canais, outros_canais, programas_preferidos, envia_recebe_sms, usa_internet, frequencia_internet, locais_internet, o_que_ve_internet, quais_redes_sociais, quais_blogs, outras_redes, visita_site_especializado, sites_especializados, outro_site_especializado
-    ]
+  def boolean?(p)
+    p.is_a?(TrueClass) || p.is_a?(FalseClass) 
   end
   
   class << self
+    def start_invites_schedule
+			AppSettings.mail_schedules.every '5m' do
+	  		pending_confirmations = UserEventConfirmation.where("qr_sent_at IS NULL")
+	  		pending_confirmations.each do |pending_confirmation|
+	  		  pending_confirmation.send_qr
+  		  end
+	  	end
+    end
+    
     def magazines
       %{A Granja/Arquitetura e Construção/Autoesporte/Autoshow/Caras/Carga Pesada/Carro Estéreo/Carta Capital/Casa Jardim/Contigo/Época/Exame/Faço Parte/Giro do Caminhoneiro/Globo Rural/Isto É/Manchete/Motoshow/Mundo Estranho/Na Boléia/Nova Escola/O Caminhoneiro/O Carreteiro/O Mecânico/Oficina Mecânica/Pequenas Empresas e Grandes Negócios/Perfil/Placar/Playboy/Quatro Rodas/Quem/Sebrae/Seleções/Sexy/Siga Bem Caminhoneiro/Transpomagazine/Transporte Moderno/Transporte Mundial/Veja/Você SA/Vogue/Outras}.split('/')
     end

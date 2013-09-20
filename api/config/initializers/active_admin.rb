@@ -137,6 +137,8 @@ ActiveAdmin.setup do |config|
   config.before_filter do |controller|
     return true if controller.controller_name == 'sessions' and ( controller.action_name == 'create' or controller.action_name == 'new' )
 
+
+
     if current_admin_user.nil?
       redirect_to new_admin_user_session_path and return
     end
@@ -164,20 +166,16 @@ ActiveAdmin.setup do |config|
 
     model_name            = controller.controller_name.to_s.singularize
     translated_model_name = I18n.t("activerecord.models.#{model_name}")
-    
+
     return true if controller.controller_name == 'admin_users' and controller.action_name == 'password'
-    
-    return true if ( current_admin_user.can_access?( I18n.t("activerecord.models.#{model_name}") ) rescue false )
+
+    return true if ( current_admin_user.can_access?( translated_model_name ) rescue false )
 
     return true if ( translated_model_name == 'Painel'  )
-=begin
-  begin
-    redirect_to :back, :alert => 'Accesso negado.'
-  rescue ActionController::RedirectBackError
-    redirect_to root_path, :alert => 'Accesso negado.'
-  end
-=end
 
+    return false
+
+=begin
     # true if the Area is not created in DB
     area = Area.find_by_title(translated_model_name)
     unless area.nil?
@@ -195,7 +193,9 @@ ActiveAdmin.setup do |config|
       
       redirect_to current_admin_user.user_type_areas.first.url rescue root_path and return
     end
+=end
   end
+
 
 
   

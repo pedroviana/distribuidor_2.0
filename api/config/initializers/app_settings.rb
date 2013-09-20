@@ -2,8 +2,25 @@
 
 require "unicode_utils/upcase"
 
+class String
+   # ruby mutation methods have the expectation to return self if a mutation occurred, nil otherwise. (see http://www.ruby-doc.org/core-1.9.3/String.html#method-i-gsub-21)
+   def to_underscore!
+     gsub!(/(.)([A-Z])/,'\1_\2')
+     downcase!
+   end
+
+   def to_underscore
+     dup.tap { |s| s.to_underscore! }
+   end
+end
+
 class AppSettings
+
+  
 	class << self
+	  def k_invite_report_schema; "INVITE"; end;
+	  def k_presence_report_schema; "PRESENCE"; end;
+	  
 	  def seconds_updated_at; 10; end;	  
     def only_sunday_id; 0; end;
     def only_monday_id; 1; end;
@@ -45,7 +62,7 @@ class AppSettings
 		# User Types
 		def user_types
 			#['Administrador', 'Analista', 'Usuário Cliente', 'Assessoria', 'iOS']
-			['Administrador', 'Criador de Eventos', 'Criador de Convites']
+			['Administrador', 'Criador de Eventos', 'Criador de Convites', 'Sincronizador de Eventos']
 		end
 
     def invite_creator
@@ -59,6 +76,10 @@ class AppSettings
 		def event_creator
 		  UnicodeUtils.upcase(user_types[1])
 		end
+		
+    def sync_event
+		  UnicodeUtils.upcase(user_types[3])      
+    end
 
 		# Areas
 		def areas

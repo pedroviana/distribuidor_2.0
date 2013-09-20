@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUserType do
-  menu parent: 'Usuário'
+  menu parent: 'Usuário', :if => proc {false}
  
   config.filters = false
   

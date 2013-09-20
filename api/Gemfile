@@ -53,6 +53,7 @@ gem 'devise'
 gem 'ransack'
 
 gem 'rqrcode-rails3'
+gem 'mini_magick'
 
 gem 'just-datetime-picker'
 
@@ -71,3 +72,8 @@ gem 'unicode_utils'
 gem 'tlsmail'
 
 gem 'paperclip'
+
+# scheluder
+gem "rufus-scheduler", "~> 2.0.17"
+
+gem 'paper_trail', '>= 3.0.0.beta1'

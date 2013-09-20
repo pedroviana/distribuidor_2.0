@@ -1,42 +1,48 @@
 class UserEventConfirmationsController < ApplicationController
   def invalid_token
-
+  end
+  
+  def already_confirmed
+  end
+  
+  def thanks
   end
 
-  def update
-    @user_event_confirmation = UserEventConfirmation.find params[:id] rescue nil
-    if @user_event_confirmation
-#      begin
-        @user_event_confirmation.update_attributes(permitted_params)
-#      rescue Exception => e
-#        raise "#{e.inspect}"
-#      end
+  def user_for_paper_trail
+    "Cliente"
+  end
 
+  def create
+    @user_event = UserEvent.find_by_token params[:user_event_confirmation][:token] rescue nil
+    if @user_event
+      UserEvent.transaction do
+        @user_event.build_user_event_confirmation(permitted_params)
+        
+        if @user_event.confirm and @user_event.save
+          redirect_to thanks_user_event_confirmations_path and return          
+        else
+          redirect_to invalid_token_user_event_confirmations_path and return
+        end
+      end
     else
+      flash.now[:notice] = "Token inválido."
       redirect_to invalid_token_user_event_confirmations_path and return
     end
   end
-
-  
 
   def show
     @user_event = UserEvent.find_by_token(params[:id]) rescue nil
 
     if @user_event
-      @user_event_confirmation = @user_event.build_user_event_confirmation
-      UserEvent.transaction do
-#        begin
-          if @user_event.confirm
-          else
-          end
-#        rescue Exception => e
-#          raise e.inspect
-#        end
+      @user_event_confirmation=nil
+      if @user_event.user_event_confirmation.nil?
+        @user_event_confirmation = @user_event.build_user_event_confirmation
+      else
+        redirect_to already_confirmed_user_event_confirmations_path and return
       end
     else
       flash.now[:notice] = "Token inválido."
       redirect_to invalid_token_user_event_confirmations_path and return
-      #redirect_to change_password_admin_admin_user_path(current_admin_user), :alert => "É necessário alterar sua senha, por favor digite sua nova senha e a confirmação." and return
     end
   end
 
@@ -80,31 +86,31 @@ class UserEventConfirmationsController < ApplicationController
                       :acessa_redes_sociais,
                       :quais_blogs,
                       :visita_site_especializado,
-                      :jornais_acres_outro, 
-                      :jornais_alagoass_outro, 
-                      :jornais_amazonass_outro, 
-                      :jornais_bahias_outro, 
-                      :jornais_cears_outro, 
-                      :jornais_distrito_federals_outro, 
-                      :jornais_esprito_santos_outro, 
-                      :jornais_goiss_outro, 
-                      :jornais_goinias_outro, 
-                      :jornais_maranhos_outro, 
-                      :jornais_mato_grosso_do_suls_outro, 
-                      :jornais_minas_geraiss_outro, 
-                      :jornais_parans_outro, 
-                      :jornais_parabas_outro, 
-                      :jornais_pars_outro, 
-                      :jornais_pernambucos_outro, 
-                      :jornais_piaus_outro, 
-                      :jornais_rio_grande_do_nortes_outro, 
-                      :jornais_rio_grande_do_suls_outro, 
-                      :jornais_rio_de_janeiros_outro, 
-                      :jornais_rondnias_outro, 
-                      :jornais_roraimas_outro, 
-                      :jornais_santa_catarinas_outro, 
-                      :jornais_so_paulos_outro, 
-                      :jornais_sergipes_outro,
+                      :jornais_acres_other, 
+                      :jornais_alagoass_other, 
+                      :jornais_amazonass_other, 
+                      :jornais_bahias_other, 
+                      :jornais_cears_other, 
+                      :jornais_distrito_federals_other, 
+                      :jornais_esprito_santos_other, 
+                      :jornais_goiss_other, 
+                      :jornais_goinias_other, 
+                      :jornais_maranhos_other, 
+                      :jornais_mato_grosso_do_suls_other, 
+                      :jornais_minas_geraiss_other, 
+                      :jornais_parans_other, 
+                      :jornais_parabas_other, 
+                      :jornais_pars_other, 
+                      :jornais_pernambucos_other, 
+                      :jornais_piaus_other, 
+                      :jornais_rio_grande_do_nortes_other, 
+                      :jornais_rio_grande_do_suls_other, 
+                      :jornais_rio_de_janeiros_other, 
+                      :jornais_rondnias_other, 
+                      :jornais_roraimas_other, 
+                      :jornais_santa_catarinas_other, 
+                      :jornais_so_paulos_other, 
+                      :jornais_sergipes_other,
                       :jornais => [],
                       :outro_site_especializado => [],
                       :revistas => [],

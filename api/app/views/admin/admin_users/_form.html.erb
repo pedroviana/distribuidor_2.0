@@ -9,6 +9,7 @@
 		<%= f.input :admin_user_type, :as => :select, :collection => AdminUserType.all, :input_html => { :onchange => "admin_user_type_did_change($(this));" } %>
 		
 		<%= f.input :event_name_shortcut, :as => :string, :wrapper_html => { :style => "display:none;" } %>
+		<%#= f.input :events, :as => :check_boxes, :collection => Event.all, :wrapper_html => { :style => "" } %>
 	<% end -%>
 
 	<%= f.actions %>
@@ -17,6 +18,7 @@
 <script type="text/javascript">
 
 var admin_user_type_event_creator_id = <%= AdminUserType.event_creator_id %>;
+var admin_user_type_sync_event_id = <%= AdminUserType.sync_event_id %>;
 
 function admin_user_type_did_change(p_input){
 	if(!<%= @admin_user.new_record? %>){
@@ -28,6 +30,12 @@ function admin_user_type_did_change(p_input){
 		$('#admin_user_event_name_shortcut').parent().show();
 	} else {
 		$('#admin_user_event_name_shortcut').parent().hide();		
+	}
+	
+	if(p_input.val() == admin_user_type_sync_event_id){
+		$('#admin_user_events').parent().show();
+	} else {
+		$('#admin_user_events').parent().hide();		
 	}
 }
 

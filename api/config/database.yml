@@ -12,7 +12,7 @@ development:
   adapter: mysql2
   encoding: utf8
   database: api_development
-  pool: 5
+  pool: 20
   username: root
   password: senha
   socket: /var/run/mysqld/mysqld.sock
@@ -24,7 +24,7 @@ test:
   adapter: mysql2
   encoding: utf8
   database: api_test
-  pool: 5
+  pool: 20
   username: root
   password: senha
   socket: /var/run/mysqld/mysqld.sock
@@ -33,7 +33,7 @@ production:
   adapter: mysql2
   encoding: utf8
   database: api_production
-  pool: 5
+  pool: 20
   username: root
   password: senha
   socket: /var/run/mysqld/mysqld.sock

@@ -1,0 +1,5 @@
+#{count_created} frases cadastradas
+#{count_deleted} frases deletadas
+#{count_updated} frases atualizadas
+#{Frase.no_deleted.count} frases disponiveis
+#{Frase.no_deleted.count} frases indisponiveis

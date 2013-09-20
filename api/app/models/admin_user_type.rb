@@ -13,6 +13,10 @@ class AdminUserType < ActiveRecord::Base
   end
   
   class << self
+    def sync_event_id
+      find_by_title(AppSettings.sync_event).read_attribute('id')      
+    end
+    
     def invitor_id
       find_by_title(AppSettings.invite_creator).read_attribute('id')      
     end

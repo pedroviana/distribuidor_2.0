@@ -6,10 +6,10 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-    admin_user_types = ["Administrador", "Criador de Eventos", "Criador de Convites"]
+    admin_user_types = ["Administrador", "Criador de Eventos", "Criador de Convites", "Sincronizador de Eventos"]
     admin_user_types.each{ |admin_user_type| AdminUserType.create(title: admin_user_type)  }
     
-    areas = ["Usuário", "Evento", "Cliente", "Relatório", 'Tipo de Usuário']
+    areas = ["Usuário", "Evento", "Cliente", "Relatório", 'Tipo de Usuário', 'Relatório', 'Logs']
     areas.each{ |area| Area.create(title: area)  }
     
     adm = AdminUserType.first

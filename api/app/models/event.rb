@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+  has_paper_trail ignore: [:latitude, :longitude, :id, :created_at, :updated_at]
+  
   geocoded_by :address
 
   has_many :admin_user_events, :dependent => :destroy
@@ -8,13 +10,14 @@ class Event < ActiveRecord::Base
   has_many :users, :through => :user_events
 
 	validates_presence_of :title
+	validates_uniqueness_of :title, scope: [:address, :datetime], message: 'Já existe um evento com o mesmo nome, endereço e data.'
   
   before_destroy :check_dependents
   
 	after_validation :geocode, :if => lambda{ |obj| obj.address_changed? }
 	
 	after_create do
-	  link_administrators
+	  Event.link_administrators(self)
   end
 
   before_save :check_datetime
@@ -30,6 +33,12 @@ class Event < ActiveRecord::Base
       t=Time.now
       time = Time.parse("#{t.day}/#{t.month}/#{t.year} 00:00:00") + 1.day - 3.hour
       where("datetime > ?", time)
+    end
+    
+    def export_events( event_ids )
+      where("id IN(?)",event_ids).each do |event|
+        
+      end
     end
   end
 	
@@ -48,26 +57,65 @@ class Event < ActiveRecord::Base
 		"#{address}"
 	end
 
-  def send_invites
+  def send_invites(current_admin_user)
     user_events.without_token.includes(:user).each do |u|
       if u.generate_token and u.send_invite
+        u.invites.create(schema: AppSettings.k_invite_report_schema, admin_user: current_admin_user)
       end
     end
   end
 
-  def check_datetime	  
-    tomorrow = ( Time.now.beginning_of_day + 1.day ).beginning_of_day
-    errors.add :datetime , "Data muito próxima, no mínimo #{tomorrow.to_formatted_s(:long)}" if datetime < tomorrow
+  def check_datetime
+    if datetime < Time.now
+      errors.add :datetime , "Data não pode ser menor que a data atual." 
+      return false
+    else
+      minimum_date = ( Time.now.beginning_of_day + 1.day ).beginning_of_day + 8.hour
+      minimum_date_description = replace_en_month(minimum_date.strftime('%d de %B de %Y às %H:%M'))
+      errors.add :datetime , "Data muito próxima, no mínimo #{minimum_date_description}" if datetime < minimum_date      
+    end
+  end
+  
+  def datetime_formatted
+    replace_en_month(datetime.strftime('%d de %B de %Y às %H:%M')) rescue datetime
+  end
+  
+  def replace_en_month(string)
+    return string.gsub('January', 'Janeiro')     if string.match(/(?=January).+/)
+    return string.gsub('February', 'Fevereiro')  if string.match(/(?=February).+/)
+    return string.gsub('March', 'Março')         if string.match(/(?=March).+/)
+    return string.gsub('April', 'Abril')         if string.match(/(?=April).+/)
+    return string.gsub('May', 'Maio')            if string.match(/(?=May).+/)
+    return string.gsub('June', 'Junho')          if string.match(/(?=June).+/)
+    return string.gsub('July', 'Julho')          if string.match(/(?=July).+/)
+    return string.gsub('August', 'Agosto')       if string.match(/(?=August).+/)
+    return string.gsub('September', 'Setembro')  if string.match(/(?=September).+/)
+    return string.gsub('October', 'Outubro')     if string.match(/(?=October).+/)
+    return string.gsub('November', 'Novembro')   if string.match(/(?=November).+/)
+    return string.gsub('December', 'Dezembro')   if string.match(/(?=December).+/)
   end
 
   def code
     read_attribute('id')
   end
 	
-	private
-	def link_administrators
-	  AdminUser.administrators.each do |admin_user|
-	    admin_user_events.create(:admin_user => admin_user)
+	#private
+	def self.link_administrators( event=nil, admin_user=nil )
+	  if admin_user
+	    [Event.all, event].flatten.compact.each do |event|
+    	  admin_user.admin_user_events.create(event_id: event.code)
+      end
+    else
+      AdminUser.administrators.each do |admin_user|
+  	    if admin_user.admin_user_events.create(event_id: event.code)
+	      end
+      end
+    end
+  end
+  
+	def link_sync_eventors
+	  AdminUser.sync_eventors.each do |admin_user|
+	    admin_user.admin_user_events.create(event_id: code)
     end
   end
 end

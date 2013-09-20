@@ -32,8 +32,8 @@ Api::Application.configure do
   config.action_mailer.default_url_options = { :host => '192.168.1.133:3000' }
 
   # LOCAWEB SETTINGS
-
-  ActionMailer::Base.smtp_settings = {
+  
+  config.action_mailer.smtp_settings = {
     :address => "smtp.fordeconoshow.com.br",
     :port => 587,
     :authentication => :login,
@@ -41,9 +41,10 @@ Api::Application.configure do
     :user_name => "contato@fordeconoshow.com.br",
     :password => "Dna32979391"
   }
-
+  
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = true
+  
   
   Paperclip.options[:command_path] = "/usr/local/bin/"
 end

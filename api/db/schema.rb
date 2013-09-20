@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130913210517) do
+ActiveRecord::Schema.define(version: 20130919190208) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -106,6 +106,17 @@ ActiveRecord::Schema.define(version: 20130913210517) do
 
   add_index "midia_attachments", ["user_event_confirmation_id"], name: "index_midia_attachments_on_user_event_confirmation_id", using: :btree
 
+  create_table "reports", force: true do |t|
+    t.integer  "admin_user_id"
+    t.integer  "user_event_id"
+    t.string   "schema"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "reports", ["admin_user_id"], name: "index_reports_on_admin_user_id", using: :btree
+  add_index "reports", ["user_event_id"], name: "index_reports_on_user_event_id", using: :btree
+
   create_table "user_event_confirmations", force: true do |t|
     t.integer  "user_event_id"
     t.string   "function"
@@ -123,6 +134,8 @@ ActiveRecord::Schema.define(version: 20130913210517) do
     t.text     "report_csv"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.datetime "qr_sent_at"
+    t.string   "qr_path"
   end
 
   add_index "user_event_confirmations", ["user_event_id"], name: "index_user_event_confirmations_on_user_event_id", using: :btree
@@ -160,5 +173,17 @@ ActiveRecord::Schema.define(version: 20130913210517) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "versions", force: true do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+  end
+
+  add_index "versions", ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
 
 end

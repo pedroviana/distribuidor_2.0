@@ -1,4 +1,6 @@
 class AdminUser < ActiveRecord::Base
+  has_paper_trail ignore: [:id, :created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :unconfirmed_email, :created_at, :updated_at]
+  
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
@@ -8,14 +10,20 @@ class AdminUser < ActiveRecord::Base
   scope :administrators, -> { where(admin_user_type_id: AdminUserType.administrator_id) }
   scope :promoters, -> { where(admin_user_type_id: AdminUserType.event_creator_id) }
   scope :inviters, -> { where(admin_user_type_id: AdminUserType.invitor_id) }
+  scope :sync_eventors, -> { where(admin_user_type_id: AdminUserType.sync_event_id) }
+  
+  scope :administradores, -> { administrators }
+  scope :gerenciadores_de_convites, -> { inviters }
+  scope :gerenciadores_de_eventos, -> { promoters }
+  scope :sincronizadores, -> { sync_eventors }
 
   belongs_to :admin_user_type
   has_many :areas, :through => :admin_user_type
-  
+
   has_many :admin_user_events, :dependent => :destroy
   has_many :events, :through => :admin_user_events
 
-  cattr_accessor :event_name_shortcut, :skip_all_callbacks
+  cattr_accessor :event_name_shortcut, :skip_all_callbacks, :events
 
   before_validation :define_password, on: :create, if: :can_valid?
   
@@ -29,6 +37,10 @@ class AdminUser < ActiveRecord::Base
         # Create a event with the name given by the form and link this user with the event
         create_event unless self.event_name_shortcut.to_s.empty?
       end 
+      
+      if administrator?
+        Event.link_administrators(nil, self)
+      end
     end
   end
 
@@ -57,7 +69,11 @@ class AdminUser < ActiveRecord::Base
   end
   
   def administrator?
-    admin_user_type.title == AppSettings.administrator
+    admin_user_type.title.upcase == AppSettings.administrator.upcase
+  end
+  
+  def sync_event?
+    admin_user_type.title.upcase == AppSettings.sync_event.upcase
   end
   
   def event?

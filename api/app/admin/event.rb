@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.event') ) rescue false }
+  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.event') ) rescue false }, priority: 1
   
   scope_to :current_admin_user
   
@@ -7,11 +7,38 @@ ActiveAdmin.register Event do
   filter :address
   filter :datetime
 
-  action_item :only => :show, :if => proc { event.user_events.without_token.count > 0 } do
+  member_action :undelete do
+    revived_record = PaperTrail::Version.find(params[:id]).reify
+    if (revived_record.save rescue false)
+      PaperTrail::Version.find(params[:id]).destroy
+      redirect_to admin_event_path(revived_record), notice: 'Recadastramento realizado com sucesso!' and return
+    else
+      errors = revived_record.errors.messages.to_a.map!{|x| "#{I18n.t("activerecord.attributes.#{revived_record.class.to_s.to_underscore}.#{x.first}")} #{x.last.first}" }.join('')
+      redirect_to :back, :alert => "Ocorreu um problema ao recadastrar: #{errors}" and return
+    end
+  end
+
+  action_item :only => :show, :if => proc { event.user_events.without_token.count > 0 and !current_admin_user.sync_event? } do
     link_to 'Enviar Convites', send_invites_admin_event_path(event)
   end
+
+  batch_action :destroy, false
   
-  index do |admin_user|
+  batch_action 'Excluir ', :if => proc { !controller.current_admin_user.sync_event? }, :confirm => "Tem certeza de que deseja deletar?" do |selected_ids|
+    Event.find(selected_ids).each { |r| r.destroy }
+
+    redirect_to active_admin_config.route_collection_path(params),
+                :notice => I18n.t("active_admin.batch_actions.succesfully_destroyed",
+                                  :count => selected_ids.count,
+                                  :model => 'evento',
+                                  :plural_model => " eventos")
+  end
+
+  batch_action 'Download', :if => proc { !controller.current_admin_user.sync_event? } do |selected_ids|
+    send_file Event.export_events( selected_ids )
+  end
+  
+  index do |event|
     selectable_column
 
     column :title
@@ -19,6 +46,7 @@ ActiveAdmin.register Event do
     column :datetime        
     column :created_at           
     column :updated_at 
+    
     default_actions                   
   end
   
@@ -88,7 +116,7 @@ ActiveAdmin.register Event do
   member_action :send_invites do
     @event = Event.find params[:id] rescue nil
     if @event
-      if @event.send_invites
+      if @event.send_invites(current_admin_user)
         redirect_to admin_event_path(@event), notice: 'Convites enviados com sucesso!' and return
       else
         redirect_to admin_event_path(@event), :alert => 'Ocorreu um problema ao enviar os convites.' and return

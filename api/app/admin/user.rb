@@ -1,4 +1,6 @@
 ActiveAdmin.register User do
+  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.user') ) rescue false }, priority: 2
+  
   form :partial => 'form'
   
   filter :name
@@ -6,6 +8,29 @@ ActiveAdmin.register User do
   filter :company
   filter :state
   filter :city
+
+  member_action :undelete do
+    revived_record = PaperTrail::Version.find(params[:id]).reify
+    revived_record.dont_valid = true
+    if (revived_record.save rescue false)
+      PaperTrail::Version.find(params[:id]).destroy
+      redirect_to admin_user_path(revived_record), notice: 'Recadastramento realizado com sucesso!' and return
+    else
+      errors = revived_record.errors.messages.to_a.map!{|x| "#{I18n.t("activerecord.attributes.#{revived_record.class.to_s.to_underscore}.#{x.first}")} #{x.last.first}" }.join('')
+      redirect_to :back, :alert => "Ocorreu um problema ao recadastrar: #{errors}" and return
+    end
+  end
+  
+  member_action :undelete_user_event do
+    revived_record = PaperTrail::Version.find(params[:id]).reify
+    if (revived_record.save rescue false)
+      PaperTrail::Version.find(params[:id]).destroy
+      redirect_to admin_user_path(revived_record.user), notice: 'Recadastramento realizado com sucesso!' and return
+    else
+      errors = revived_record.errors.messages.to_a.map!{|x| "#{I18n.t("activerecord.attributes.#{revived_record.class.to_s.to_underscore}.#{x.first}")} #{x.last.first}" }.join('')
+      redirect_to :back, :alert => "Ocorreu um problema ao recadastrar: #{errors}" and return
+    end
+  end
   
   index do
     selectable_column
@@ -30,11 +55,11 @@ ActiveAdmin.register User do
       if user.user_events.count > 0
         table_for user.events do |event|
           column 'Nome' do |event| 
-            event.title
+            link_to event.title, admin_event_path(event)
           end
           
           column 'Data' do |event|
-            I18n.localize(event.datetime, :format => '%b %-d %Y, %H:%M')
+            event.datetime_formatted
           end
         end
       else

@@ -1,6 +1,6 @@
 <p>Olá <%= @record.user.name %>!</p>
 <p><%= link_to "Clique aqui para confirmar sua presença no Evento #{@record.event.title}!", user_event_confirmation_url(@record.token) %></p>
-<p>O Evento ocorre em <%= @record.event.datetime %></p>
+<p>O Evento ocorre em <%= @record.event.datetime_formatted %></p>
 <p>Onde?</p>
 <p><%= @record.event.address %></p>
 <br>
