@@ -305,6 +305,7 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Alterado em"
       user_event_confirmation:
+        celnumber: "Celular"
         email: "Email"
         company: "Empresa"
         name: "Nome"
@@ -321,6 +322,7 @@ pt-BR:
         email_usage: "Deseja receber informações da Caravana via email ?"
         image_usage: "Autoriza o uso de sua imagem ?"
       user:
+        celnumber: "Celular"
         events: "Eventos para participar"
         name: "Nome"
         email: "Email"

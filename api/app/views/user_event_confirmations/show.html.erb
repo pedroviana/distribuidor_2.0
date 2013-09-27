@@ -19,7 +19,7 @@
 		<%= f.input :cep %>
 		<%= f.input :state %>
 		<%= f.input :city %>
-		<%= f.input :cellnumber %>
+		<%= f.input :celnumber %>
 		<%= f.input :smartphone, as: :boolean %>
 		<%= f.input :image_usage, as: :boolean, input_html: {checked: 'checked'} %>
 		<%= f.input :sms_usage, as: :boolean, input_html: {checked: 'checked'} %>
@@ -78,8 +78,8 @@ jQuery.fn.outerHTML = function(s) {
         : jQuery("<p>").append(this.eq(0).clone()).html();
 };
 
-var input_ids = ['name', 'company', 'function', 'address', 'number','state','city','cellnumber','smartphone'];
-//$('#user_event_confirmation_quais_outra').parent().after($('#user_event_confirmation_cellnumber').outerHTML())
+var input_ids = ['name', 'company', 'function', 'address', 'number','state','city','celnumber','smartphone'];
+//$('#user_event_confirmation_quais_outra').parent().after($('#user_event_confirmation_celnumber').outerHTML())
 
 var ids_to_insert_other_input_text = [
 	["user_event_confirmation_revistas_outras", "outra_revista", 'a'],
@@ -226,7 +226,7 @@ function description_id(p_id){
 		case "city":
 			return "Cidade";
 	    break;
-		case "cellnumber":
+		case "celnumber":
 			return "Celular";
 	    break;
 		case "smartphone":
@@ -297,7 +297,7 @@ function validates(){
 function mask_fields(){
 	$("#user_event_confirmation_number").mask("9?999999999",{placeholder:"", numericInput: true});
 	$("#user_event_confirmation_cep").mask("99999-999",{placeholder:"", numericInput: true});
-	$("#user_event_confirmation_cellnumber").mask("99999-999?9",{placeholder:"", numericInput: true});
+	$("#user_event_confirmation_celnumber").mask("99999-999?9",{placeholder:"", numericInput: true});
 }
 
 $(document).ready(function(){

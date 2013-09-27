@@ -71,7 +71,7 @@ class UserEventConfirmationsController < ApplicationController
                       :cep,
                       :state,
                       :city,
-                      :cellnumber,
+                      :celnumber,
                       :smartphone,
                       :image_usage,
                       :sms_usage,
