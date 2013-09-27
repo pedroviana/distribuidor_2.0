@@ -9,7 +9,7 @@ class Event < ActiveRecord::Base
   has_many :user_events, :dependent => :destroy
   has_many :users, :through => :user_events
 
-	validates_presence_of :title
+	validates_presence_of :title, :datetime, :address
 	validates_uniqueness_of :title, scope: [:address, :datetime], message: 'Já existe um evento com o mesmo nome, endereço e data.'
   
   before_destroy :check_dependents
@@ -30,16 +30,22 @@ class Event < ActiveRecord::Base
     # Get all the events that will happen
     # This method is used to manage the invites os the users/events
     def active_events_for_users
-      t=Time.now
-      time = Time.parse("#{t.day}/#{t.month}/#{t.year} 00:00:00") + 1.day - 3.hour
-      where("datetime > ?", time)
+      select{|x| !x.is_late_for_invite? }
     end
     
     def export_events( event_ids )
-      where("id IN(?)",event_ids).each do |event|
-        
-      end
+      where("id IN(?)",event_ids).to_json(:include => [:user_events => {:include => [:user, :user_event_confirmation => {:include => [:midia_attachment => {:methods => :file_url}] } ] } ] )
     end
+  end
+  
+  def is_late_for_confirmation?
+    t = self.datetime
+    !(Time.zone.now < Time.zone.parse("#{t.year}-#{t.month}-#{t.day} 20:00:00") - 1.day)
+  end
+  
+  def is_late_for_invite?
+    t = self.datetime
+    !(Time.zone.now < Time.zone.parse("#{t.year}-#{t.month}-#{t.day} 18:00:00") - 1.day)
   end
 	
 	def check_dependents

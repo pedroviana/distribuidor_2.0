@@ -12,7 +12,6 @@ class DeviseMailer < Devise::Mailer
 	end
 
   def confirmation_instructions(record, opts={})
-    #record.confirmation_token = "#{record.confirmation_token}ppp#{record.generated_password}"
     headers["Custom-header"] = "Bar"
     @record = record
 	 	mail(:to => record.email, :subject => "Sua conta no Distribuidor 2.0 foi criada" )

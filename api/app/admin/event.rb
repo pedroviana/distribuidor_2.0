@@ -1,5 +1,5 @@
 ActiveAdmin.register Event do
-  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.event') ) rescue false }, priority: 1
+  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.event') ) rescue false }, priority: 2
   
   scope_to :current_admin_user
   
@@ -34,8 +34,18 @@ ActiveAdmin.register Event do
                                   :plural_model => " eventos")
   end
 
-  batch_action 'Download', :if => proc { !controller.current_admin_user.sync_event? } do |selected_ids|
-    send_file Event.export_events( selected_ids )
+  batch_action 'Download', :if => proc { controller.current_admin_user.sync_event? } do |selected_ids|
+    path = "public/temp_event_#{Time.now}.json"
+    begin
+      File.delete(path)
+    rescue Exception => e
+    end
+    
+    File.open(path,"w") do |f|
+      f.write(Event.export_events( selected_ids ))
+    end
+    
+    send_file path
   end
   
   index do |event|

@@ -28,6 +28,8 @@
 
 	<%= f.inputs 'Hábitos de Mídia' do %>
 		<%= text_field_tag "user_event_confirmation_other_fake", nil, :style => "display:none", :disabled => 'disabled' %>
+		<%= f.input :blank_midia_attachment, as: :hidden %>
+
 		<%= check_box_tag "user_event_confirmation_sub_check_fake", '', false, :disabled => true, :style => "display:none" %>
 
 		<%= f.input :le_revista, label: 'Lê revistas?', as: :radio,:collection => ["Sim", "Não"] %>
@@ -76,7 +78,7 @@ jQuery.fn.outerHTML = function(s) {
         : jQuery("<p>").append(this.eq(0).clone()).html();
 };
 
-var input_ids = ['name', 'company', 'function', 'address', 'number','complement','cep','state','city','cellnumber','smartphone'];
+var input_ids = ['name', 'company', 'function', 'address', 'number','state','city','cellnumber','smartphone'];
 //$('#user_event_confirmation_quais_outra').parent().after($('#user_event_confirmation_cellnumber').outerHTML())
 
 var ids_to_insert_other_input_text = [
@@ -278,13 +280,16 @@ function validates(){
 			
 				if (!some_radio){
 					success = confirm('Você esqueceu de preencher sua pesquisa de Hábitos de Mídia ? \nOK para continuar \nCancelar para preencher');
-				}
+					if (success){
+						$('#user_event_confirmation_blank_midia_attachment').val('1');
+					} else {
+						$('#user_event_confirmation_blank_midia_attachment').val('0');						
+					}
+				}			
 			}
 		}
 	}
-		
-
-	if (!success) alert(msgs.join("\n"));
+	if (success == false && msgs.length > 0) alert(msgs.join("\n"));
 
 	return success;
 }

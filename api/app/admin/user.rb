@@ -1,5 +1,5 @@
 ActiveAdmin.register User do
-  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.user') ) rescue false }, priority: 2
+  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.user') ) rescue false }, priority: 3
   
   form :partial => 'form'
   

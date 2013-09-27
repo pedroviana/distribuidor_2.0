@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Log Usuário" do
         		  if user.is_a?(String)
         		    user
       		    else
-      				  link_to user.title, admin_user_path(user)
+      				  link_to user.title, admin_user_path(user) if user
     		      end
         		end
       		  # =============================================

@@ -8,11 +8,15 @@ class UserEventConfirmation < ActiveRecord::Base
   has_one :user, through: :user_event
   has_one :event, through: :user_event
   has_one :midia_attachment
+
+#  validates_presence_of :function, :address, :number, :complement, :cep, :state, :city, :celnumber, :smartphone, :image_usage, :sms_usage, :email_usage, :unless => valid_presence.nil?
+#  attr_accessor :valid_presence
+  attr_accessor :blank_midia_attachment
   
   before_create do |u|
     u.check_booleans
     u.update_user_attributes
-    u.generate_report_csv
+    u.generate_report_csv unless u.blank_midia?
   end
 
   attr_accessor :name, :company, :function, :address, :number, :complement, :cep, :state, :city, :celnumber, :smartphone, :image_usage, :sms_usage, :email_usage,
@@ -53,12 +57,16 @@ class UserEventConfirmation < ActiveRecord::Base
                 :jornais_sergipes,:jornais_sergipes_other
 
   def check_booleans
-    smartphone  == '1' ? true : false rescue false
-    image_usage == '1' ? true : false rescue false
-    sms_usage   == '1' ? true : false rescue false
-    email_usage == '1' ? true : false rescue false
+    smartphone_b  = smartphone.to_s   == "1" ? true : false #rescue false
+    image_usage_b = image_usage.to_s  == "1" ? true : false #rescue false
+    sms_usage_b   = sms_usage.to_s    == "1" ? true : false #rescue false
+    email_usage_b = email_usage.to_s  == "1" ? true : false #rescue false
+    
+    self.smartphone   = smartphone_b
+    self.image_usage  = image_usage_b
+    self.sms_usage    = sms_usage_b
+    self.email_usage  = email_usage_b
   end
-#    , :smartphone, :image_usage, :sms_usage, :email_usage
 
   def update_user_attributes
     user.attributes = {
@@ -80,7 +88,7 @@ class UserEventConfirmation < ActiveRecord::Base
   end
 
   def send_qr
-    write_attribute(:qr_path, LibQRCode.generate_qrcode(user.email, {:size => 4})) 
+    write_attribute(:qr_path, LibQRCode.generate_qrcode(user.email, {:size => 4}))
     if qr_path.is_a?(String) and qr_sent_at.nil?
       begin
         UserEventConfirmationMailer.send_qr(self).deliver 
@@ -89,7 +97,6 @@ class UserEventConfirmation < ActiveRecord::Base
         update_attribute(:qr_sent_at, nil)        
       end
     end
-    
   end
 
   def token
@@ -147,7 +154,9 @@ class UserEventConfirmation < ActiveRecord::Base
           [x.reject{ |c| c.empty? }].flatten.join(',')
         elsif boolean?(x)
           x ? 'Sim' : 'Não'
-        else 
+#        elsif integer_boolean?(p)
+#          x.to_i == 1 ? 'Sim' : 'Não'
+        else
           x
         end
       end
@@ -172,17 +181,27 @@ class UserEventConfirmation < ActiveRecord::Base
   end
   
   def boolean?(p)
-    p.is_a?(TrueClass) || p.is_a?(FalseClass) 
+    p.is_a?(TrueClass) || p.is_a?(FalseClass)
+  end
+  
+  def integer_boolean?(p)
+    p.to_i.is_a?(Integer)
+  end
+  
+  def blank_midia?
+    blank_midia_attachment.to_s.to_i == 1
   end
   
   class << self
     def start_invites_schedule
+=begin
 			AppSettings.mail_schedules.every '5m' do
 	  		pending_confirmations = UserEventConfirmation.where("qr_sent_at IS NULL")
 	  		pending_confirmations.each do |pending_confirmation|
 	  		  pending_confirmation.send_qr
   		  end
 	  	end
+=end
     end
     
     def magazines
@@ -358,7 +377,7 @@ class UserEventConfirmation < ActiveRecord::Base
     end
     
     def sites
-      %{Autocaminhões/Brasil Caminhoneiro/Brasilgransportes/Cowboys do Asfalto/Distribuidoras e Concessionárias/iCaminhões/O Carreteiro/Transponline/Transporte Mundial/Webtrranspo/Outros}.split('/')
+      %{Autocaminhões/Brasil Caminhoneiro/Brasilgransportes/Cowboys do Asfalto/Distribuidoras e Concessionárias/iCaminhões/O Carreteiro/Transponline/Transporte Mundial/Webtranspo/Outros}.split('/')
     end
   end
 end

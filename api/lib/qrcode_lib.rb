@@ -21,6 +21,6 @@ class LibQRCode
     image.format 'jpeg'
     new_path = File.join(directory, filename).gsub('.svg', '.jpeg').to_s rescue nil
     image.write new_path
-    new_path  
+    raise File.join(directory, filename).to_s
   end
 end

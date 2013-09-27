@@ -1,8 +1,8 @@
 ActiveAdmin.register_page "Dashboard" do
-  menu :label => proc{ I18n.t("active_admin.dashboard") }, priority: 0
+  menu :label => proc{ I18n.t("active_admin.dashboard") }, priority: 1
 
   action_item do
-#    link_to "Trocar Senha", edit_password_admin_admin_user_path(current_admin_user)
+    link_to "Trocar Senha", edit_admin_minha_contum_path(current_admin_user)
   end
 
   content :title => proc{ I18n.t("active_admin.dashboard") } do

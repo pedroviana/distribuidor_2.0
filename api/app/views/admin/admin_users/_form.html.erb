@@ -1,6 +1,6 @@
 <%# @admin_user.hidden_update = true %>
 
-<%= semantic_form_for  [:admin, @admin_user], :html => {:multipart => true} do |f| %>
+<%= semantic_form_for  [:admin, @admin_user] do |f| %>
 	<%= f.inputs "Detalhes" do %>
 		<%= f.input :name %>
 	
@@ -9,8 +9,16 @@
 		<%= f.input :admin_user_type, :as => :select, :collection => AdminUserType.all, :input_html => { :onchange => "admin_user_type_did_change($(this));" } %>
 		
 		<%= f.input :event_name_shortcut, :as => :string, :wrapper_html => { :style => "display:none;" } %>
-		<%#= f.input :events, :as => :check_boxes, :collection => Event.all, :wrapper_html => { :style => "" } %>
+		<%#= f.input :events_form_sync, :as => :check_boxes, :collection => Event.all, :wrapper_html => { :style => "display:none;" } %>
 	<% end -%>
+	
+	<%= f.inputs 'Eventos' do %>
+		<%# if !@admin_user.new_record? %>
+			<%#= f.input 'events', :as => :check_with_select_all %>
+			<%#= f.input :events,  :as => :check_boxes, :collection => Event.order(:title), :input_html => {:onchange => "act_on_one_check_events(this)"} %>
+			<%= f.input :events,  :as => :check_boxes, :collection => Event.order(:title) %>
+		<%# end %>
+	<% end%>
 
 	<%= f.actions %>
 <% end %>
@@ -33,9 +41,9 @@ function admin_user_type_did_change(p_input){
 	}
 	
 	if(p_input.val() == admin_user_type_sync_event_id){
-		$('#admin_user_events').parent().show();
+		$('#admin_user_events_form_sync_none').parent().parent().show();
 	} else {
-		$('#admin_user_events').parent().hide();		
+		$('#admin_user_events_form_sync_none').parent().parent().hide();		
 	}
 }
 

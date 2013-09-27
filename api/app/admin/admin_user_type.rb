@@ -1,5 +1,5 @@
 ActiveAdmin.register AdminUserType do
-  menu parent: 'Usuário', :if => proc {false}
+  menu parent: 'Usuário', :if => proc {!Rails.env.production?}
  
   config.filters = false
   

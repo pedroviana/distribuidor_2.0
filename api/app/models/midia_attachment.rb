@@ -5,6 +5,10 @@ class MidiaAttachment < ActiveRecord::Base
   has_one :event, through: :user_event
   
   has_attached_file :file,
-    :path => ":rails_root/public/:attachment/:id/:filename",
-    :url => "/:attachment/:id/:filename"
+    :path => ":rails_root/public/#{Rails.env}/:attachment/:id/:filename",
+    :url => "/#{Rails.env}/:attachment/:id/:filename"
+    
+  def file_url
+    file.url
+  end
 end

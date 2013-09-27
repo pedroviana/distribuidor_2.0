@@ -21,15 +21,21 @@ class AdminUser < ActiveRecord::Base
   has_many :areas, :through => :admin_user_type
 
   has_many :admin_user_events, :dependent => :destroy
-  has_many :events, :through => :admin_user_events
+  has_many :events, :through => :admin_user_events, :uniq => true
+  accepts_nested_attributes_for :admin_user_events
 
-  cattr_accessor :event_name_shortcut, :skip_all_callbacks, :events
+  cattr_accessor :event_name_shortcut, :skip_all_callbacks, :events_form_sync
 
-  before_validation :define_password, on: :create, if: :can_valid?
-  
   validates_presence_of :email, :name, :admin_user_type
+  validate :password_complexity, :if => lambda { Rails.env.production? }
+  
+  before_validation :define_password, on: :create, if: :can_valid?
 
-#  validate :password_complexity, :if => lambda { Rails.env.production? }
+  before_update do
+    unless self.confirmed_at.nil?
+      self.generated_password = nil unless self.generated_password.nil?
+    end
+  end
 
   after_create do 
     if can_valid?
@@ -41,6 +47,14 @@ class AdminUser < ActiveRecord::Base
       if administrator?
         Event.link_administrators(nil, self)
       end
+
+=begin      
+      if sync_event?
+        events_form_sync.reject{|x| x.empty?}.each do |event_id|
+          admin_user_events.create(event_id: event_id)
+        end
+      end
+=end
     end
   end
 
@@ -83,10 +97,10 @@ class AdminUser < ActiveRecord::Base
   private
   def define_password
     random_password = Devise.friendly_token.first(8)
-#    write_attribute(:password, random_password)
-#    write_attribute(:password_confirmation, random_password)
     self.password = random_password
     self.password_confirmation = random_password
+    self.generated_password = random_password
+    return true
   end
   
   def create_event

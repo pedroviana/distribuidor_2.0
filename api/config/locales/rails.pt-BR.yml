@@ -356,6 +356,8 @@ pt-BR:
         created_at: "Criado em"
         updated_at: "Alterado em"
       admin_user:
+        events: "Eventos"
+        events_form_sync: "Eventos"
         event_name_shortcut: "Deseja já criar um evento para esse usuário?"
         sent_welcome_mail: "Enviado email de boas vindas"
         sent_welcome_mail_html: "Enviado email de boas vindas"

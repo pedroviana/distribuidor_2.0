@@ -1,6 +1,6 @@
 ActiveAdmin.register AdminUser do
   #menu parent: 'Usuário', :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.admin_user') ) rescue false }
-  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.admin_user') ) rescue false }, priority: 3
+  menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.admin_user') ) rescue false }, priority: 4
   
   filter :email
   filter :name
@@ -46,6 +46,10 @@ ActiveAdmin.register AdminUser do
       :last_sign_in_at,
       :admin_user_type_id
     ]
+    
+    if Rails.env.production?
+      unavailable_fields << :generated_password
+    end
 
     new_fields = [
       :admin_user_type
@@ -76,7 +80,7 @@ ActiveAdmin.register AdminUser do
   
   controller do
     def permitted_params
-      params.permit admin_user: [:name, :email, :admin_user_type_id, :event_name_shortcut]
+      params.permit admin_user: [:name, :email, :admin_user_type_id, :event_name_shortcut, :events_form_sync => [], :event_ids => []]
     end
   end
 end

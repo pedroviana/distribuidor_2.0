@@ -18,6 +18,7 @@ class UserEvent < ActiveRecord::Base
   scope :presences, -> {where("type = ?", AppSettings.k_presence_report_schema)}
   
   validates_presence_of :user_event_confirmation, :unless => Proc.new { user_event_confirmation.nil? }
+  validates_uniqueness_of :user_id, :scope => :event_id
   
   after_update :check_presence
   

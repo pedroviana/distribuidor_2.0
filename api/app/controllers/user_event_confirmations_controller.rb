@@ -11,6 +11,9 @@ class UserEventConfirmationsController < ApplicationController
   def user_for_paper_trail
     "Cliente"
   end
+  
+  def confirmations_closed
+  end
 
   def create
     @user_event = UserEvent.find_by_token params[:user_event_confirmation][:token] rescue nil
@@ -34,11 +37,16 @@ class UserEventConfirmationsController < ApplicationController
     @user_event = UserEvent.find_by_token(params[:id]) rescue nil
 
     if @user_event
+      if !@user_event.event.is_late_for_confirmation?
       @user_event_confirmation=nil
       if @user_event.user_event_confirmation.nil?
         @user_event_confirmation = @user_event.build_user_event_confirmation
       else
         redirect_to already_confirmed_user_event_confirmations_path and return
+      end
+      else
+        flash.now[:notice] = "Confirmações foram encerradas"
+        redirect_to confirmations_closed_user_event_confirmations_path and return
       end
     else
       flash.now[:notice] = "Token inválido."
@@ -53,6 +61,7 @@ class UserEventConfirmationsController < ApplicationController
     # with per-user checking of permissible attributes.
     def permitted_params
       params.require(:user_event_confirmation).permit(
+                      :blank_midia_attachment,
                       :name,
                       :company,
                       :function,

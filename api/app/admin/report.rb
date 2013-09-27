@@ -1,5 +1,5 @@
 ActiveAdmin.register Report do
-  menu if: proc { current_admin_user.can_access?( I18n.t('activerecord.models.report') ) rescue false }, label: 'Convites/Confirmados', parent: 'Relatório', priority: 4
+  menu if: proc { current_admin_user.can_access?( I18n.t('activerecord.models.report') ) rescue false }, label: 'Convites/Confirmados', parent: 'Relatório', priority: 5
 
   batch_action :destroy, false
 

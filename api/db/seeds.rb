@@ -14,3 +14,5 @@
     
     adm = AdminUserType.first
     Area.all.each{|area| adm.admin_user_type_areas.create(:area_id => area.code )  }
+    
+    
