@@ -5,12 +5,12 @@ require 'rqrcode-rails3/renderers/svg.rb'
 class LibQRCode
   
   def self.generate_qrcode(text, options)
-    size = options[:size] 
+    size = options[:size]
     level = options[:level] || :h
  
     qrcode = RQRCode::QRCode.new(text, :size => size, :level => level)
     svg = RQRCode::Renderers::SVG::render(qrcode, options)
-     
+    
     filename = SecureRandom.hex(12)+'.svg'
     directory = Rails.public_path.to_s + "/qrcodes"
     File.open(File.join(directory, filename), 'w') do |f|
@@ -21,6 +21,6 @@ class LibQRCode
     image.format 'jpeg'
     new_path = File.join(directory, filename).gsub('.svg', '.jpeg').to_s rescue nil
     image.write new_path
-    raise File.join(directory, filename).to_s
+    new_path
   end
 end

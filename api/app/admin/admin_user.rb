@@ -25,6 +25,7 @@ ActiveAdmin.register AdminUser do
     selectable_column
     column :email
     column :name
+    column :admin_user_type
     default_actions
   end
 
@@ -44,7 +45,8 @@ ActiveAdmin.register AdminUser do
       :unconfirmed_email,
       :current_sign_in_at,
       :last_sign_in_at,
-      :admin_user_type_id
+      :admin_user_type_id,
+      :generated_password
     ]
     
     if Rails.env.production?

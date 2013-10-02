@@ -23,7 +23,7 @@ class UserEventConfirmation < ActiveRecord::Base
                 # csv accessors
                 :le_revista, :revistas, :outra_revista,
                 :le_jornal, :jornais,
-                :ouve_radio, :radios, :tipo_musica, :outra_radio,
+                :ouve_radio, :radios, :tipo_musica, :outra_radio, :tipo_musica_other,
                 :assisti_tv, :frequencia_tv, :canais, :canais_fechados, :outros_canais, :programas_preferidos, :outro_preferido,
                 :envia_recebe_sms,
                 :usa_internet, :tipo_internet, :frequencia_internet, :locais_internet, :o_que_ve_internet, :outros_sites_noticias, :outros_sites,
@@ -104,11 +104,13 @@ class UserEventConfirmation < ActiveRecord::Base
   end
 
   def other_keys
-    %{Libera uso de imagem?/Libera envio de SMS?/Libera envio de e-mails?/Lê revistas?/Quais?/Outras/Lê Jornais?/Quais?/Acre/Outro/Alagoas/Outro/Amazonas/Outro/Bahia/Outro/Ceará/Outro/Distrito Federal/Outro/Espírito Santo/Outro/Goiás/Outro/Goiânia/Outro/Maranhão/Outro/Mato Grosso do Sul/Outro/Minas Gerais/Outro/Paraná/Outro/Paraíba/Outro/Pará/Outro/Pernambuco/Outro/Piauí/Outro/Rio Grande do Norte/Outro/Rio Grande do Sul/Outro/Rio De Janeiro/Outro/Rondônia/Outro/Roraima/Outro/Santa Catarina/Outro/São Paulo/Outro/Sergipe/Outro/Ouve Rádio?/O que ouve no rádio?/Que tipo de música ouve?/Outro/Assiste TV?/Com qual frequência?/Quais canais gosta de ver na TV?/Outros/Qual(is) o(s) programa(s) preferido(s)?/Envia ou Recebe SMS?/Usa internet?/Com qual frequência usa a internet?/Locais onde acessa a internet:/O que costuma olhar na internet?/Quais redes sociais acessa?/Blogs/Outros/Visita algum site especializado em caminhões?/Quais sites?/Outro?}.split('/')
+    #%{Libera uso de imagem?/Libera envio de SMS?/Libera envio de e-mails?/Lê revistas?/Quais?/Outras/Lê Jornais?/Quais?/Acre/Outro/Alagoas/Outro/Amazonas/Outro/Bahia/Outro/Ceará/Outro/Distrito Federal/Outro/Espírito Santo/Outro/Goiás/Outro/Goiânia/Outro/Maranhão/Outro/Mato Grosso do Sul/Outro/Minas Gerais/Outro/Paraná/Outro/Paraíba/Outro/Pará/Outro/Pernambuco/Outro/Piauí/Outro/Rio Grande do Norte/Outro/Rio Grande do Sul/Outro/Rio De Janeiro/Outro/Rondônia/Outro/Roraima/Outro/Santa Catarina/Outro/São Paulo/Outro/Sergipe/Outro/Ouve Rádio?/O que ouve no rádio?/Que tipo de música ouve?/Outro/Assiste TV?/Com qual frequência?/Quais canais gosta de ver na TV?/Outros/Qual(is) o(s) programa(s) preferido(s)?/Envia ou Recebe SMS?/Usa internet?/Com qual frequência usa a internet?/Locais onde acessa a internet:/O que costuma olhar na internet?/Quais redes sociais acessa?/Blogs/Outros/Visita algum site especializado em caminhões?/Quais sites?/Outro?}.split('/')
+    %{Lê revistas?/Quais?/Outras/Lê Jornais?/Quais?/Acre/Outro/Alagoas/Outro/Amazonas/Outro/Bahia/Outro/Ceará/Outro/Distrito Federal/Outro/Espírito Santo/Outro/Goiás/Outro/Goiânia/Outro/Maranhão/Outro/Mato Grosso do Sul/Outro/Minas Gerais/Outro/Paraná/Outro/Paraíba/Outro/Pará/Outro/Pernambuco/Outro/Piauí/Outro/Rio Grande do Norte/Outro/Rio Grande do Sul/Outro/Rio De Janeiro/Outro/Rondônia/Outro/Roraima/Outro/Santa Catarina/Outro/São Paulo/Outro/Sergipe/Outro/Ouve Rádio?/O que ouve no rádio?/Que tipo de música ouve?/Outro/Assiste TV?/Com qual frequência?/Quais canais gosta de ver na TV?/Outros/Qual(is) o(s) programa(s) preferido(s)?/Envia ou Recebe SMS?/Usa internet?/Com qual frequência usa a internet?/Locais onde acessa a internet:/O que costuma olhar na internet?/Quais redes sociais acessa?/Blogs/Outros/Visita algum site especializado em caminhões?/Quais sites?/Outro?}.split('/')
   end
   
   def csv_methods
-    [image_usage, sms_usage, email_usage, le_revista, revistas, outra_revista, le_jornal, jornais,
+    #[image_usage, sms_usage, email_usage, le_revista, revistas, outra_revista, le_jornal, jornais,
+    [le_revista, revistas, outra_revista, le_jornal, jornais,
       jornais_acres,                jornais_acres_other,
       jornais_alagoass,             jornais_alagoass_other,
       jornais_amazonass,            jornais_amazonass_other, 		

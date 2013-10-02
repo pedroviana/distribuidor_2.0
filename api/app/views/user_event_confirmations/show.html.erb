@@ -78,7 +78,7 @@ jQuery.fn.outerHTML = function(s) {
         : jQuery("<p>").append(this.eq(0).clone()).html();
 };
 
-var input_ids = ['name', 'company', 'function', 'address', 'number','state','city','celnumber','smartphone'];
+var input_ids = ['name', 'company', 'function', 'address', 'number', 'cep', 'state','city','celnumber','smartphone'];
 //$('#user_event_confirmation_quais_outra').parent().after($('#user_event_confirmation_celnumber').outerHTML())
 
 var ids_to_insert_other_input_text = [
@@ -257,35 +257,30 @@ function validates(){
 			if ($(e).is(':checked') ){
 				some_checked = true
 			}
+		});
+
+		var input_texts = $('fieldset.inputs:last').find('input[type=text]');
+		var some_text = false;
+		$.each(input_texts, function(i, e){
+			if($(e).val() != ''){
+				some_text = true;
+			}
+		})
+		
+		var input_radios = $('fieldset.inputs:last').find('input[type=radio]');
+		var some_radio = false;
+		$.each(input_radios, function(i, e){
+			if ($(e).is(':checked') ){
+				some_radio = true;
+			}
 		})
 
-		if(!some_checked){
-
-			var input_texts = $('fieldset.inputs:last').find('input[type=text]');
-			var some_text = false;
-			$.each(input_texts, function(i, e){
-				if($(e).val() != ''){
-					some_text = true;
-				}
-			})
-		
-			if(!some_text){
-				var input_texts = $('fieldset.inputs:last').find('input[type=radio]');
-				var some_radio = false;
-				$.each(checkboxes, function(i, e){
-					if ($(e).is(':checked') ){
-						some_radio = true;
-					}
-				})
-			
-				if (!some_radio){
-					success = confirm('Você esqueceu de preencher sua pesquisa de Hábitos de Mídia ? \nOK para continuar \nCancelar para preencher');
-					if (success){
-						$('#user_event_confirmation_blank_midia_attachment').val('1');
-					} else {
-						$('#user_event_confirmation_blank_midia_attachment').val('0');						
-					}
-				}			
+		if (!some_checked && !some_text && !some_radio){
+			success = confirm('Você esqueceu de preencher sua pesquisa de Hábitos de Mídia ? \nOK para continuar \nCancelar para preencher');
+			if (success){
+				$('#user_event_confirmation_blank_midia_attachment').val('1');
+			} else {
+				$('#user_event_confirmation_blank_midia_attachment').val('0');						
 			}
 		}
 	}
@@ -297,7 +292,7 @@ function validates(){
 function mask_fields(){
 	$("#user_event_confirmation_number").mask("9?999999999",{placeholder:"", numericInput: true});
 	$("#user_event_confirmation_cep").mask("99999-999",{placeholder:"", numericInput: true});
-	$("#user_event_confirmation_celnumber").mask("99999-999?9",{placeholder:"", numericInput: true});
+	$("#user_event_confirmation_celnumber").mask("(99) 99999-999?9",{placeholder:"", numericInput: true});
 }
 
 $(document).ready(function(){

@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+
+  <title>Distribuidor 2.0 Conta | Distribuidor 2.0</title>
+
+    <link href="/assets/active_admin.css?body=1" media="screen" rel="stylesheet" />
+    <link href="/assets/active_admin/print.css?body=1" media="print" rel="stylesheet" />
+    <script src="/assets/jquery.js?body=1"></script>
+<script src="/assets/jquery.ui.core.js?body=1"></script>
+<script src="/assets/jquery.ui.widget.js?body=1"></script>
+<script src="/assets/jquery.ui.accordion.js?body=1"></script>
+<script src="/assets/jquery.ui.position.js?body=1"></script>
+<script src="/assets/jquery.ui.menu.js?body=1"></script>
+<script src="/assets/jquery.ui.autocomplete.js?body=1"></script>
+<script src="/assets/jquery.ui.button.js?body=1"></script>
+<script src="/assets/jquery.ui.datepicker.js?body=1"></script>
+<script src="/assets/jquery.ui.mouse.js?body=1"></script>
+<script src="/assets/jquery.ui.draggable.js?body=1"></script>
+<script src="/assets/jquery.ui.resizable.js?body=1"></script>
+<script src="/assets/jquery.ui.dialog.js?body=1"></script>
+<script src="/assets/jquery.ui.droppable.js?body=1"></script>
+<script src="/assets/jquery.ui.effect.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-blind.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-bounce.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-clip.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-drop.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-explode.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-fade.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-fold.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-highlight.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-pulsate.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-scale.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-shake.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-slide.js?body=1"></script>
+<script src="/assets/jquery.ui.effect-transfer.js?body=1"></script>
+<script src="/assets/jquery.ui.progressbar.js?body=1"></script>
+<script src="/assets/jquery.ui.selectable.js?body=1"></script>
+<script src="/assets/jquery.ui.slider.js?body=1"></script>
+<script src="/assets/jquery.ui.sortable.js?body=1"></script>
+<script src="/assets/jquery.ui.spinner.js?body=1"></script>
+<script src="/assets/jquery.ui.tabs.js?body=1"></script>
+<script src="/assets/jquery.ui.tooltip.js?body=1"></script>
+<script src="/assets/jquery.ui.all.js?body=1"></script>
+<script src="/assets/jquery_ujs.js?body=1"></script>
+<script src="/assets/active_admin/lib/namespace.js?body=1"></script>
+<script src="/assets/active_admin/components/jquery.aa.checkbox-toggler.js?body=1"></script>
+<script src="/assets/active_admin/components/jquery.aa.dropdown-menu.js?body=1"></script>
+<script src="/assets/active_admin/components/jquery.aa.popover.js?body=1"></script>
+<script src="/assets/active_admin/components/jquery.aa.table-checkbox-toggler.js?body=1"></script>
+<script src="/assets/active_admin/pages/application.js?body=1"></script>
+<script src="/assets/active_admin/pages/batch_actions.js?body=1"></script>
+<script src="/assets/active_admin/application.js?body=1"></script>
+<script src="/assets/active_admin/base.js?body=1"></script>
+<script src="/assets/noty/jquery.noty.js?body=1"></script>
+<script src="/assets/noty/layouts/top.js?body=1"></script>
+<script src="/assets/noty/layouts/center.js?body=1"></script>
+<script src="/assets/noty/layouts/inline.js?body=1"></script>
+<script src="/assets/noty/themes/default.js?body=1"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.base.js?body=1"></script>
+<script src="/assets/gmaps4rails/gmaps4rails.googlemaps.js?body=1"></script>
+<script src="/assets/active_admin.js?body=1"></script>
+  
+  
+
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="FBHwWsstS98CEZynnboJMMAvchkONbkQY7DdYkuT9nI=" name="csrf-token" />
+</head>
+<body class="active_admin logged_out new">
+<div id="wrapper">
+
+  <div id="content_wrapper">
+    <div id="active_admin_content">
+      <div id="login">
+  <h2>Distribuidor 2.0 Conta</h2>
+
+  <form accept-charset="UTF-8" action="/admin/login" class="formtastic admin_user" id="session_new" method="post" novalidate="novalidate"><div style="margin:0;padding:0;display:inline"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="FBHwWsstS98CEZynnboJMMAvchkONbkQY7DdYkuT9nI=" /></div><fieldset class="inputs"><ol><li class="email input required autofocus stringish" id="admin_user_email_input"><label class="label" for="admin_user_email">E-mail<abbr title="required">*</abbr></label><input autofocus="autofocus" id="admin_user_email" maxlength="255" name="admin_user[email]" type="email" value="" />
+
+</li><li class="password input required stringish" id="admin_user_password_input"><label class="label" for="admin_user_password">Senha<abbr title="required">*</abbr></label><input id="admin_user_password" maxlength="128" name="admin_user[password]" type="password" />
+
+</li><li class="boolean input optional" id="admin_user_remember_me_input"><input name="admin_user[remember_me]" type="hidden" value="0" /><label class="" for="admin_user_remember_me"><input id="admin_user_remember_me" name="admin_user[remember_me]" type="checkbox" value="1" />Lembrar da senha</label>
+
+</li></ol></fieldset><fieldset class="actions"><ol><li class="action input_action " id="admin_user_submit_action"><input name="commit" type="submit" value="Entrar" /></li></ol></fieldset></form>
+
+  
+
+  <a href="/admin/password/new">Esqueceu sua senha?</a><br />
+
+  <a href="/admin/confirmation/new">Reenviar instruções de confirmação</a><br />
+
+
+
+</div>
+
+    </div>
+  </div>
+  <div id="footer">
+    
+  </div>
+</div>
+</body>
+</html>

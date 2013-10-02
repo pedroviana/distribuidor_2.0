@@ -25,7 +25,7 @@ ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
   end
 
   form do |f|
-    f.inputs do
+    f.inputs current_admin_user.admin_user_type.title do
       f.input :name
       f.input :password
       f.input :password_confirmation

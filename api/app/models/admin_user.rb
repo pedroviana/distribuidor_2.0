@@ -37,11 +37,11 @@ class AdminUser < ActiveRecord::Base
     end
   end
 
-  after_create do 
+  after_create do
     if can_valid?
       if event?
         # Create a event with the name given by the form and link this user with the event
-        create_event unless self.event_name_shortcut.to_s.empty?
+        # create_event unless self.event_name_shortcut.to_s.empty?
       end 
       
       if administrator?
@@ -92,6 +92,10 @@ class AdminUser < ActiveRecord::Base
   
   def event?
     admin_user_type.title.upcase == AppSettings.event_creator.upcase
+  end
+  
+  def inviter?
+    admin_user_type.title.upcase == AppSettings.invite_creator.upcase    
   end
   
   private

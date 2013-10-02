@@ -1,4 +1,17 @@
 class UserEventConfirmationsController < ApplicationController
+=begin
+  layout :layout_by_action
+  
+  def layout_by_action
+    if self.action_name == 'show'
+      'application'
+    else
+      raise 'client'
+      'client'
+    end
+  end
+=end
+  
   def invalid_token
   end
   
@@ -22,6 +35,7 @@ class UserEventConfirmationsController < ApplicationController
         @user_event.build_user_event_confirmation(permitted_params)
         
         if @user_event.confirm and @user_event.save
+          @user_event.user_event_confirmation.send_qr
           redirect_to thanks_user_event_confirmations_path and return          
         else
           redirect_to invalid_token_user_event_confirmations_path and return
@@ -38,12 +52,12 @@ class UserEventConfirmationsController < ApplicationController
 
     if @user_event
       if !@user_event.event.is_late_for_confirmation?
-      @user_event_confirmation=nil
-      if @user_event.user_event_confirmation.nil?
-        @user_event_confirmation = @user_event.build_user_event_confirmation
-      else
-        redirect_to already_confirmed_user_event_confirmations_path and return
-      end
+        @user_event_confirmation=nil
+        if @user_event.user_event_confirmation.nil?
+          @user_event_confirmation = @user_event.build_user_event_confirmation
+        else
+          redirect_to already_confirmed_user_event_confirmations_path and return
+        end
       else
         flash.now[:notice] = "Confirmações foram encerradas"
         redirect_to confirmations_closed_user_event_confirmations_path and return
@@ -61,6 +75,7 @@ class UserEventConfirmationsController < ApplicationController
     # with per-user checking of permissible attributes.
     def permitted_params
       params.require(:user_event_confirmation).permit(
+                      :tipo_musica_other, :outras_redes, :outro_site_especializado,
                       :blank_midia_attachment,
                       :name,
                       :company,

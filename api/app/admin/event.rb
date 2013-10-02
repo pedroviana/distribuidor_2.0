@@ -24,7 +24,7 @@ ActiveAdmin.register Event do
 
   batch_action :destroy, false
   
-  batch_action 'Excluir ', :if => proc { !controller.current_admin_user.sync_event? }, :confirm => "Tem certeza de que deseja deletar?" do |selected_ids|
+  batch_action 'Excluir ', :if => proc { !controller.current_admin_user.sync_event? and !controller.current_admin_user.inviter?}, :confirm => "Tem certeza de que deseja deletar?" do |selected_ids|
     Event.find(selected_ids).each { |r| r.destroy }
 
     redirect_to active_admin_config.route_collection_path(params),
@@ -56,6 +56,10 @@ ActiveAdmin.register Event do
     column :datetime        
     column :created_at           
     column :updated_at 
+
+    column 'Gerenciar' do |event|
+      link_to 'Enviar Convites', send_invites_admin_event_path(event) if event.user_events.without_token.count > 0 and !current_admin_user.sync_event?
+    end
     
     default_actions                   
   end
@@ -73,9 +77,9 @@ ActiveAdmin.register Event do
     attributes_table(*attrs.flatten)
     
     panels = [
-      {label: 'Clientes sem convite', users: event.user_events.without_token}, 
-      {label: 'Clientes convidados', users: event.user_events.invited}, 
-      {label: 'Clientes confirmados', users: event.user_events.confirmed}
+      {label: 'Clientes não convidados', users: event.user_events.without_token}, 
+      {label: 'Clientes convidados e não confirmados', users: event.user_events.invited - event.user_events.confirmed}, 
+      {label: 'Clientes convidados e confirmados', users: event.user_events.confirmed}
     ]
 
     panels.each do |p|
@@ -137,6 +141,23 @@ ActiveAdmin.register Event do
   end
 
   controller do
+    def action_methods
+      return super if current_admin_user.administrator? || current_admin_user.event?
+      return ['index', 'batch_action'] if current_admin_user.sync_event?
+      return super - ['edit', 'destroy'] if current_admin_user.inviter?
+      return super
+    end
+    
+    def create
+      super 
+      
+      if !@event.new_record?
+        if current_admin_user.event?
+          current_admin_user.admin_user_events.create(:event => @event)
+        end
+      end
+    end
+    
 		def destroy
 			@resource = Event.find params[:id] rescue nil
 			
