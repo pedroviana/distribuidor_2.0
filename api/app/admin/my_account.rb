@@ -1,7 +1,13 @@
 ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
-  actions :edit, :update
+#  actions :edit, :update
+
+  menu :if => proc{false}
 
   controller do
+    def action_methods
+      ['edit', 'update']
+    end
+    
     def redirect_to_edit
       redirect_to edit_admin_minha_contum_path(current_admin_user), :flash => flash and return
     end

@@ -1,0 +1,2 @@
+module UserEventConfirmationsHelper
+end

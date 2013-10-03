@@ -49,5 +49,7 @@ module Api
     config.encoding = "utf-8"
     
     config.autoload_paths += %W(#{config.root}/lib)
+    
+#    config.active_record.whitelist_attributes = false
   end
 end

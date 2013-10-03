@@ -144,26 +144,7 @@ ActiveAdmin.setup do |config|
     end
 
     return unless current_admin_user
-
-=begin
-    if current_admin_user.should_change_password and !controller.params.include?(:confirmation_token)
-      if controller.controller_name == 'admin_users' and controller.action_name == 'change_password'
-        # true if the user is trying to update their password HTML
-        return true
-      elsif controller.controller_name == 'admin_users' and controller.action_name == 'update' and controller.params.include?(:change_password)
-        # true if the user is trying to update their password HTML
-        return true
-      end
-      # user still needs to change their password
-      redirect_to change_password_admin_admin_user_path(current_admin_user), :alert => 'Você precisa definir uma nova senha.' and return
-    elsif current_admin_user.ios?
-      # ios user dont have access to the panel
-      redirect_to static_index_path and return
-    else
-      #proceed access
-    end
-=end
-
+    
     model_name            = controller.controller_name.to_s.singularize
     translated_model_name = I18n.t("activerecord.models.#{model_name}")
 

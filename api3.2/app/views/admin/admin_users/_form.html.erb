@@ -1,0 +1,101 @@
+<%# @admin_user.hidden_update = true %>
+
+<%= semantic_form_for  [:admin, @admin_user] do |f| %>
+	<%= f.inputs "Detalhes" do %>
+		<%= f.input :name %>
+	
+		<%= f.input :email, :input_html => {:disabled => @admin_user.new_record? ? false : true} %>
+
+		<%= f.input :admin_user_type, :as => :select, :collection => AdminUserType.all, :input_html => { :onchange => "admin_user_type_did_change($(this));" } %>
+		
+		<%#= f.input :event_name_shortcut, :as => :string, :wrapper_html => { :style => "display:none;" } %>
+		<%#= f.input :events_form_sync, :as => :check_boxes, :collection => Event.all, :wrapper_html => { :style => "display:none;" } %>
+	<% end -%>
+	
+	<%= f.inputs 'Eventos' do %>
+		<%# if !@admin_user.new_record? %>
+			<%#= f.input 'events', :as => :check_with_select_all %>
+			<%#= f.input :events,  :as => :check_boxes, :collection => Event.order(:title), :input_html => {:onchange => "act_on_one_check_events(this)"} %>
+			<%= f.input :events,  :as => :check_boxes, :collection => Event.order(:title) %>
+		<%# end %>
+	<% end%>
+
+	<%= f.actions %>
+<% end %>
+
+<script type="text/javascript">
+
+var admin_user_type_event_creator_id = <%= AdminUserType.event_creator_id %>;
+var admin_user_type_sync_event_id = <%= AdminUserType.sync_event_id %>;
+
+function admin_user_type_did_change(p_input){
+	if(!<%= @admin_user.new_record? %>){
+//		$('#admin_user_event_name_shortcut').parent().hide();
+//		return;
+	}
+	
+	if(p_input.val() == admin_user_type_event_creator_id){
+//		$('#admin_user_event_name_shortcut').parent().show();
+	} else {
+//		$('#admin_user_event_name_shortcut').parent().hide();		
+	}
+	
+	if(p_input.val() == admin_user_type_sync_event_id){
+		$('#admin_user_events_form_sync_none').parent().parent().show();
+	} else {
+		$('#admin_user_events_form_sync_none').parent().parent().hide();		
+	}
+}
+
+$(document).ready(function(){
+	$('form').submit(function() {
+  		return validates();
+	});
+
+	if(<%= @admin_user.new_record? %>){
+		//hide_select_all( 'product' );
+		//uncheck_selects_all();
+		admin_user_type_did_change($('#admin_user_admin_user_type_id'));
+	}
+});
+
+var msgs = [];
+
+function validates(){
+	var success = true;
+
+	if ($('#admin_user_email').val() != '' && !is_valid_email($('#admin_user_email'))) {
+		success = false;
+		msgs.push("Email inválido.");
+	}
+
+	if (!success) show_alerts(msgs);
+
+	return success;
+}
+
+var admin_user_id = <%= @admin_user.code.nil? ? 0 : @admin_user.code %>;
+//var admin_user_products = <%#= @admin_user.user_company_products.map(&:id) %>;
+
+function load_products_with_company() {
+	var company_id = $('#admin_user_company_id').val();
+
+	if (company_id == '' || !company_id) {
+		clean_checks('product');
+		return;
+	}
+
+   $.ajax({
+		url: '<%#= company_products_admin_admin_users_path %>',
+		dataType: 'html',
+		type: 'post',
+		data: { company_id: company_id, admin_user_id: admin_user_id, authenticity_token: $('meta[name=csrf-token]').attr("content")},
+		success: function(data) {
+			current_choices_element('product').html(data);
+			//manage_select_all_with_element_and_resource(data, 'product');	
+			set_checked_produts_to_existed_records( admin_user_products );
+		}
+   });	
+}
+
+</script>

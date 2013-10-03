@@ -76,4 +76,6 @@ gem 'paperclip'
 # scheluder
 gem "rufus-scheduler", "~> 2.0.17"
 
+gem 'protected_attributes'
+
 gem 'paper_trail', '>= 3.0.0.beta1'
