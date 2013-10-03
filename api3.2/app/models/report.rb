@@ -6,7 +6,7 @@ class Report < ActiveRecord::Base
   has_one :event, through: :user_event
   has_one :user, through: :user_event
   
-  attr_accessible *column_names
+  attr_accessible *column_names, :admin_user
   
   scope :presences, -> {where(schema: AppSettings.k_presence_report_schema)}
   scope :invites, -> {where(schema: AppSettings.k_invite_report_schema)}

@@ -1,7 +1,5 @@
 //= require active_admin/base
 
-//= require active_admin/base
-
 //= require noty/jquery.noty
 //= require noty/layouts/top
 //= require noty/layouts/center
