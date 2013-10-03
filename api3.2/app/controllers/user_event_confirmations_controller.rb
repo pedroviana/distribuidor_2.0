@@ -34,7 +34,8 @@ class UserEventConfirmationsController < ApplicationController
     @user_event = UserEvent.find_by_token params[:user_event_confirmation][:token] rescue nil
     if @user_event
       UserEvent.transaction do
-        @user_event.build_user_event_confirmation(params)
+        params[:user_event_confirmation].delete(:token)
+        @user_event.build_user_event_confirmation(params[:user_event_confirmation])
         
         if @user_event.confirm and @user_event.save
           @user_event.user_event_confirmation.send_qr

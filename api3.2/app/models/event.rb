@@ -68,11 +68,17 @@ class Event < ActiveRecord::Base
 	end
 
   def send_invites(current_admin_user)
-    user_events.without_token.includes(:user).each do |u|
-      if u.generate_token and u.send_invite
-        u.invites.create(schema: AppSettings.k_invite_report_schema, admin_user: current_admin_user)
+    begin
+      user_events.without_token.includes(:user).each do |u|
+        if u.generate_token and u.send_invite
+          u.invites.create(schema: AppSettings.k_invite_report_schema, admin_user: current_admin_user)
+        end
       end
+    rescue Exception => e
+      return false
     end
+    
+    true
   end
 
   def check_datetime

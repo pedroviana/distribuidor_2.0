@@ -1,8 +1,14 @@
-<p>Olá <%= @record.user.name %>!</p>
-<p><%= link_to "Clique aqui para confirmar sua presença no Evento #{@record.event.title}!", user_event_confirmation_url(@record.token) %></p>
-<p>O Evento ocorre em <%= @record.event.datetime_formatted %></p>
-<p>Onde?</p>
-<p><%= link_to @record.event.address, "https://maps.google.com/?ll=#{@record.event.latitude},#{@record.event.longitude}" %></p>
-
-<br>
-<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=@record.event.latitude%>,<%=@record.event.longitude%>&zoom=14&size=400x400&sensor=false&markers=color:blue%7Clabel:F%7C<%=@record.event.latitude%>,<%=@record.event.longitude%>">
+<div style="text-align:center">
+	<img src="<%= @logo_image %>">
+	<br>
+	<img src="<%= @line_image %>">
+	<p>Olá <%= @record.user.name %>!</p>
+	<p><%= link_to "Clique aqui para confirmar sua presença no Evento #{@record.event.title}!", user_event_confirmation_url(@record.token) %></p>
+	<p>O Evento ocorre em <%= @record.event.datetime_formatted %></p>
+	<p>Onde?</p>
+	<p><%= link_to @record.event.address, "https://maps.google.com/?ll=#{@record.event.latitude},#{@record.event.longitude}" %></p>
+	<br>
+	<img src="http://maps.googleapis.com/maps/api/staticmap?center=<%=@record.event.latitude%>,<%=@record.event.longitude%>&zoom=14&size=320x280&sensor=false&markers=color:blue%7Clabel:F%7C<%=@record.event.latitude%>,<%=@record.event.longitude%>">
+	<br><br><br>
+	<img src="<%= @line_image %>">
+</div>
