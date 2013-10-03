@@ -11,15 +11,15 @@ class AdminUser < ActiveRecord::Base
          
   attr_accessible *column_names, :password, :password_confirmation, :skip_all_callbacks
 
-  #scope :administrators, -> { where(admin_user_type_id: AdminUserType.administrator_id) }
-  #scope :promoters, -> { where(admin_user_type_id: AdminUserType.event_creator_id) }
-  #scope :inviters, -> { where(admin_user_type_id: AdminUserType.invitor_id) }
-  #scope :sync_eventors, -> { where(admin_user_type_id: AdminUserType.sync_event_id) }
+  scope :administrators, -> { where(admin_user_type_id: AdminUserType.administrator_id) }
+  scope :promoters, -> { where(admin_user_type_id: AdminUserType.event_creator_id) }
+  scope :inviters, -> { where(admin_user_type_id: AdminUserType.invitor_id) }
+  scope :sync_eventors, -> { where(admin_user_type_id: AdminUserType.sync_event_id) }
   
-  #scope :administradores, -> { administrators }
-  #scope :gerenciadores_de_convites, -> { inviters }
-  #scope :gerenciadores_de_eventos, -> { promoters }
-  #scope :sincronizadores, -> { sync_eventors }
+  scope :administradores, -> { administrators }
+  scope :gerenciadores_de_convites, -> { inviters }
+  scope :gerenciadores_de_eventos, -> { promoters }
+  scope :sincronizadores, -> { sync_eventors }
 
   belongs_to :admin_user_type
   has_many :areas, :through => :admin_user_type

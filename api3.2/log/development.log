@@ -2234,3 +2234,4 @@ Served asset /active_admin/components/jquery.aa.dropdown-menu.js - 304 Not Modif
 Started GET "/assets/active_admin/base.js?body=1" for 192.168.1.105 at 2013-10-03 14:54:29 -0300
 Served asset /active_admin/base.js - 304 Not Modified (4ms)
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml

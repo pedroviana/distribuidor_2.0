@@ -2717,3 +2717,301 @@ Completed 200 OK in 49ms (Views: 40.4ms | ActiveRecord: 3.7ms)
 
 Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:11:59 -0300
 Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (0ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/admin/events/new" for 192.168.1.105 at 2013-10-03 15:41:04 -0300
+Processing by Admin::EventsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (142.8ms)
+Completed 200 OK in 461ms (Views: 179.3ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/admin/events/new" for 192.168.1.105 at 2013-10-03 15:41:04 -0300
+Processing by Admin::EventsController#new as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (38.5ms)
+Completed 200 OK in 46ms (Views: 37.7ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/assets/active_admin-ff7e3523c0797517c5cd55ce326e1115.js" for 192.168.1.105 at 2013-10-03 15:41:04 -0300
+Served asset /active_admin-ff7e3523c0797517c5cd55ce326e1115.js - 304 Not Modified (17ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:41:04 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/active_admin/nested_menu_arrow.gif" for 192.168.1.105 at 2013-10-03 15:41:05 -0300
+Served asset /active_admin/nested_menu_arrow.gif - 200 OK (2ms)
+
+
+Started GET "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:06 -0300
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (149.1ms)
+Completed 200 OK in 156ms (Views: 148.9ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:07 -0300
+Processing by Admin::EventsController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (111.8ms)
+Completed 200 OK in 117ms (Views: 108.2ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/active_admin-ff7e3523c0797517c5cd55ce326e1115.js" for 192.168.1.105 at 2013-10-03 15:41:07 -0300
+Served asset /active_admin-ff7e3523c0797517c5cd55ce326e1115.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:41:07 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-input-icon.png" for 192.168.1.105 at 2013-10-03 15:41:07 -0300
+Served asset /active_admin/datepicker/datepicker-input-icon.png - 304 Not Modified (1ms)
+
+
+Started GET "/admin/events/new" for 192.168.1.105 at 2013-10-03 15:41:08 -0300
+Processing by Admin::EventsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (36.5ms)
+Completed 200 OK in 42ms (Views: 36.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/admin/events/new" for 192.168.1.105 at 2013-10-03 15:41:08 -0300
+Processing by Admin::EventsController#new as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (81.0ms)
+Completed 200 OK in 86ms (Views: 74.4ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/assets/active_admin-ff7e3523c0797517c5cd55ce326e1115.js" for 192.168.1.105 at 2013-10-03 15:41:08 -0300
+Served asset /active_admin-ff7e3523c0797517c5cd55ce326e1115.js - 304 Not Modified (0ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:41:08 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-nipple.png" for 192.168.1.105 at 2013-10-03 15:41:16 -0300
+Served asset /active_admin/datepicker/datepicker-nipple.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-header-bg.png" for 192.168.1.105 at 2013-10-03 15:41:16 -0300
+Served asset /active_admin/datepicker/datepicker-header-bg.png - 304 Not Modified (3ms)
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-prev-link-icon.png" for 192.168.1.105 at 2013-10-03 15:41:16 -0300
+Served asset /active_admin/datepicker/datepicker-prev-link-icon.png - 304 Not Modified (1ms)
+
+
+Started GET "/assets/active_admin/datepicker/datepicker-next-link-icon.png" for 192.168.1.105 at 2013-10-03 15:41:16 -0300
+Served asset /active_admin/datepicker/datepicker-next-link-icon.png - 304 Not Modified (1ms)
+
+
+Started POST "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:18 -0300
+Processing by Admin::EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KICGW5RapIbkGG8AcyY5b7cSmjeGISNzSY9hihCJ4MA=", "event"=>{"title"=>"Lançamento Focus 2014", "address"=>"R. José Gomes Falcão 304", "datetime_date"=>"2013-10-03", "datetime_time_hour"=>"00", "datetime_time_minute"=>"00"}, "commit"=>"Criar Evento"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (41.5ms)
+Completed 200 OK in 628ms (Views: 41.2ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:18 -0300
+Processing by Admin::EventsController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (108.7ms)
+Completed 200 OK in 114ms (Views: 105.1ms | ActiveRecord: 5.0ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:41:19 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (0ms)
+
+
+Started GET "/assets/active_admin-ff7e3523c0797517c5cd55ce326e1115.js" for 192.168.1.105 at 2013-10-03 15:41:19 -0300
+Served asset /active_admin-ff7e3523c0797517c5cd55ce326e1115.js - 304 Not Modified (0ms)
+
+
+Started POST "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:21 -0300
+Processing by Admin::EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KICGW5RapIbkGG8AcyY5b7cSmjeGISNzSY9hihCJ4MA=", "event"=>{"title"=>"Lançamento Focus 2014", "address"=>"R. José Gomes Falcão 304", "datetime_date"=>"2013-10-11", "datetime_time_hour"=>"00", "datetime_time_minute"=>"00"}, "commit"=>"Criar Evento"}
+Completed 500 Internal Server Error in 483ms
+
+NoMethodError (undefined method `administrators' for #<Class:0xb1d6d74>):
+  app/models/event.rb:119:in `link_administrators'
+  app/models/event.rb:24:in `block in <class:Event>'
+  app/admin/event.rb:154:in `create'
+
+
+
+
+Started GET "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:22 -0300
+Processing by Admin::EventsController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (116.4ms)
+Completed 200 OK in 126ms (Views: 115.6ms | ActiveRecord: 4.7ms)
+Connecting to database specified by database.yml
+
+
+Started POST "/admin/events" for 192.168.1.105 at 2013-10-03 15:41:45 -0300
+Processing by Admin::EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KICGW5RapIbkGG8AcyY5b7cSmjeGISNzSY9hihCJ4MA=", "event"=>{"title"=>"Lançamento Focus 2014", "address"=>"R. José Gomes Falcão 304", "datetime_date"=>"2013-10-11", "datetime_time_hour"=>"00", "datetime_time_minute"=>"00"}, "commit"=>"Criar Evento"}
+Redirected to http://192.168.1.108:3000/admin/events/2
+Completed 302 Found in 903ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/events/2" for 192.168.1.105 at 2013-10-03 15:41:46 -0300
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.0ms)
+  Rendered admin/events/_map.html.erb (36.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (111.7ms)
+Completed 200 OK in 122ms (Views: 112.1ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin/events/2" for 192.168.1.105 at 2013-10-03 15:41:46 -0300
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (0.9ms)
+  Rendered admin/events/_map.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (48.3ms)
+Completed 200 OK in 54ms (Views: 39.4ms | ActiveRecord: 10.5ms)
+
+
+Started GET "/assets/active_admin-ff7e3523c0797517c5cd55ce326e1115.js" for 192.168.1.105 at 2013-10-03 15:41:46 -0300
+Served asset /active_admin-ff7e3523c0797517c5cd55ce326e1115.js - 304 Not Modified (48ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:41:46 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (3ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/admin/events/2" for 192.168.1.105 at 2013-10-03 15:43:10 -0300
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.3ms)
+  Rendered admin/events/_map.html.erb (36.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (116.1ms)
+Completed 200 OK in 458ms (Views: 153.5ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/admin/events/2" for 192.168.1.105 at 2013-10-03 15:43:11 -0300
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (0.9ms)
+  Rendered admin/events/_map.html.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (43.1ms)
+Completed 200 OK in 56ms (Views: 41.5ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:43:11 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (2ms)
+
+
+Started GET "/assets/active_admin-ff7e3523c0797517c5cd55ce326e1115.js" for 192.168.1.105 at 2013-10-03 15:43:11 -0300
+Served asset /active_admin-ff7e3523c0797517c5cd55ce326e1115.js - 304 Not Modified (17ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Compiled jquery.js  (37ms)  (pid 4962)
+Compiled jquery-ui.js  (3ms)  (pid 4962)
+Compiled jquery_ujs.js  (0ms)  (pid 4962)
+Compiled active_admin/lib/namespace.js  (49ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.checkbox-toggler.js  (25ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.dropdown-menu.js  (25ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.popover.js  (23ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.table-checkbox-toggler.js  (5ms)  (pid 4962)
+Compiled active_admin/pages/application.js  (4ms)  (pid 4962)
+Compiled active_admin/pages/batch_actions.js  (5ms)  (pid 4962)
+Compiled active_admin/application.js  (165ms)  (pid 4962)
+Compiled active_admin/base.js  (284ms)  (pid 4962)
+Compiled noty/jquery.noty.js  (0ms)  (pid 4962)
+Compiled noty/layouts/top.js  (0ms)  (pid 4962)
+Compiled noty/layouts/center.js  (0ms)  (pid 4962)
+Compiled noty/layouts/inline.js  (0ms)  (pid 4962)
+Compiled noty/themes/default.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.base.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.googlemaps.js  (0ms)  (pid 4962)
+Compiled active_admin.js  (319ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.base.js  (93ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.bing.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.bing.js  (31ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.googlemaps.js  (62ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.mapquest.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.mapquest.js  (25ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.openlayers.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.openlayers.js  (48ms)  (pid 4962)
+Compiled jquery.maskedinput.min.js  (0ms)  (pid 4962)
+Compiled jquery.spin.js  (0ms)  (pid 4962)
+Compiled user_event_confirmations.js  (2ms)  (pid 4962)
+Compiled application.js  (325ms)  (pid 4962)
+Compiled gmaps4rails.css  (0ms)  (pid 4962)
+Compiled just_datetime_picker/base.css  (0ms)  (pid 4962)
+Compiled active_admin.css  (1338ms)  (pid 4962)
+Compiled user_event_confirmations.css  (1ms)  (pid 4962)
+Compiled application.css  (5ms)  (pid 4962)
+Compiled just_datetime_picker/nested_form_workaround.js  (0ms)  (pid 4962)
+Compiled active_admin/print.css  (50ms)  (pid 4962)
+Connecting to database specified by database.yml
+Compiled jquery.js  (29ms)  (pid 4962)
+Compiled jquery-ui.js  (2ms)  (pid 4962)
+Compiled jquery_ujs.js  (0ms)  (pid 4962)
+Compiled active_admin/lib/namespace.js  (47ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.checkbox-toggler.js  (25ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.dropdown-menu.js  (25ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.popover.js  (23ms)  (pid 4962)
+Compiled active_admin/components/jquery.aa.table-checkbox-toggler.js  (5ms)  (pid 4962)
+Compiled active_admin/pages/application.js  (5ms)  (pid 4962)
+Compiled active_admin/pages/batch_actions.js  (6ms)  (pid 4962)
+Compiled active_admin/application.js  (162ms)  (pid 4962)
+Compiled active_admin/base.js  (237ms)  (pid 4962)
+Compiled noty/jquery.noty.js  (0ms)  (pid 4962)
+Compiled noty/layouts/top.js  (0ms)  (pid 4962)
+Compiled noty/layouts/center.js  (0ms)  (pid 4962)
+Compiled noty/layouts/inline.js  (0ms)  (pid 4962)
+Compiled noty/themes/default.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.base.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.googlemaps.js  (0ms)  (pid 4962)
+Compiled active_admin.js  (295ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.base.js  (95ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.bing.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.bing.js  (32ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.googlemaps.js  (63ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.mapquest.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.mapquest.js  (25ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.openlayers.js  (0ms)  (pid 4962)
+Compiled gmaps4rails/gmaps4rails.openlayers.js  (46ms)  (pid 4962)
+Compiled jquery.maskedinput.min.js  (0ms)  (pid 4962)
+Compiled jquery.spin.js  (0ms)  (pid 4962)
+Compiled user_event_confirmations.js  (2ms)  (pid 4962)
+Compiled application.js  (325ms)  (pid 4962)
+Compiled gmaps4rails.css  (0ms)  (pid 4962)
+Compiled just_datetime_picker/base.css  (0ms)  (pid 4962)
+Compiled active_admin.css  (1301ms)  (pid 4962)
+Compiled user_event_confirmations.css  (1ms)  (pid 4962)
+Compiled application.css  (5ms)  (pid 4962)
+Compiled just_datetime_picker/nested_form_workaround.js  (0ms)  (pid 4962)
+Compiled active_admin/print.css  (50ms)  (pid 4962)
+Connecting to database specified by database.yml
+
+
+Started GET "/admin/events/2" for 192.168.1.105 at 2013-10-03 15:48:04 -0300
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.1ms)
+  Rendered admin/events/_map.html.erb (36.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (118.0ms)
+Completed 200 OK in 440ms (Views: 155.1ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/assets/active_admin-e320ae567030e4932c6ac99ea9c59ec6.js" for 192.168.1.105 at 2013-10-03 15:48:04 -0300
+Served asset /active_admin-e320ae567030e4932c6ac99ea9c59ec6.js - 200 OK (24ms)
+
+
+Started GET "/admin/events/2" for 192.168.1.105 at 2013-10-03 15:48:04 -0300
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.5ms)
+  Rendered admin/events/_map.html.erb (2.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (59.4ms)
+Completed 200 OK in 94ms (Views: 53.6ms | ActiveRecord: 35.9ms)
+
+
+Started GET "/assets/active_admin-02571ccbc10cfbadd2883b1a8752b6b2.css" for 192.168.1.105 at 2013-10-03 15:48:04 -0300
+Served asset /active_admin-02571ccbc10cfbadd2883b1a8752b6b2.css - 304 Not Modified (18ms)
+
+
+Started GET "/assets/active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css" for 192.168.1.105 at 2013-10-03 15:48:04 -0300
+Served asset /active_admin/print-e76c40d9f910ddb61c02f8cc58e6ad84.css - 304 Not Modified (2ms)
