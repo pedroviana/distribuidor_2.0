@@ -6,7 +6,7 @@ class MidiaAttachment < ActiveRecord::Base
   has_one :user, through: :user_event
   has_one :event, through: :user_event
   
-  #attr_accessible *column_names, :file
+  attr_accessible *column_names, :file
   
   has_attached_file :file,
     :path => ":rails_root/public/#{Rails.env}/:attachment/:id/:filename",

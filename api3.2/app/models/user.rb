@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
   has_paper_trail ignore: [:id, :created_at, :updated_at]
   
-  #attr_accessible *column_names, :dont_valid, :event_ids, :user_events_attributes
+  attr_accessible *column_names, :dont_valid, :event_ids, :user_events_attributes
   
   attr_accessor :dont_valid
   
