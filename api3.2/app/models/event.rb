@@ -3,7 +3,7 @@
 class Event < ActiveRecord::Base
   has_paper_trail ignore: [:latitude, :longitude, :id, :created_at, :updated_at]
   
-  #attr_accessible *column_names
+  attr_accessible *column_names
   
   geocoded_by :address
 
