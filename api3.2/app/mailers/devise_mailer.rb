@@ -16,23 +16,9 @@ class DeviseMailer < Devise::Mailer
   def confirmation_instructions(record, token, opts={})
     headers["Custom-header"] = "Bar"
     @record = record
+    @token = token
+    @logo_image = "#{AppSettings.public_url}/logo_ford_mail.jpg"
+    @line_image = "#{AppSettings.public_url}/barra_mail.jpg"
 	 	mail(:to => record.email, :subject => "Sua conta no Distribuidor 2.0 foi criada" )
   end
-  
-  def confirmation_instructions_manual(record)
-    headers["Custom-header"] = "Bar"
-    @email = record.email
-    @resource = record
-	 	mail(:to => @email, :subject => eval("AppSettings::EmailTranslate.welcome_#{record.language}"))
-  end
-  
-  def send_new_password(record, pass = nil)
-    @email = record.email
-    @password = pass
-	 	mail(:to => @email, :subject => eval("AppSettings::EmailTranslate.new_password_#{record.language}"))
-  end
-
-  #def reset_password_instructions(record)
-  #  super
-  #end
 end

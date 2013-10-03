@@ -73,6 +73,16 @@ ActiveAdmin.register User do
   end
   
   controller do
+    def create
+      super
+      @user.user_events.build
+    end
+    
+    def update
+      super
+      @user.user_events.build
+    end
+    
 #    def permitted_params
 #      params.permit user: [:name, :email, :company, :event_ids => []]
 #    end

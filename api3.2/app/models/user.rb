@@ -3,7 +3,7 @@
 class User < ActiveRecord::Base
   has_paper_trail ignore: [:id, :created_at, :updated_at]
   
-  attr_accessible *column_names, :dont_valid
+  #attr_accessible *column_names, :dont_valid, :event_ids, :user_events_attributes
   
   attr_accessor :dont_valid
   
@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   has_many :reports, :through => :user_events
   has_many :invites, :through => :user_events
   has_many :presences, :through => :user_events
+  accepts_nested_attributes_for :user_events
   
   has_many :events, :through => :user_events
   

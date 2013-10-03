@@ -8,14 +8,9 @@
 		<%= f.input :company, :as => :string %>
 	<% end -%>
 	
-	<%= f.inputs :name => "Eventos", :for => :user_events do |events_form| %>
-		<% @events = Event.active_events_for_users %>
-		<% if @events.count == 0 %>
-			<%= "&nbsp;&nbsp;&nbsp;&nbsp;Não existe Eventos disponíveis".html_safe %>
-		<% else %>
-			<%= f.input :events, :as => :check_boxes, :collection => @events %>
-			<%#= f.input :admin_user_type, :as => :select, :collection => AdminUserType.all, :input_html => { :onchange => "admin_user_type_did_change($(this));" } %>
-		<% end%>
+	<% @events = Event.active_events_for_users %>
+	<%= f.inputs :name => "Eventos", :for => :events do |events_form| %>
+		<%= f.input :events, :as => :check_boxes, :collection => @events %>
     <% end %>
 
 	<%= f.actions %>
