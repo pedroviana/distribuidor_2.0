@@ -9,7 +9,7 @@ class UserEventConfirmation < ActiveRecord::Base
   has_one :event, through: :user_event
   has_one :midia_attachment
 
-  #attr_accessible *column_names, :blank_midia_attachment
+  attr_accessible *column_names, :blank_midia_attachment
 
 #  validates_presence_of :function, :address, :number, :complement, :cep, :state, :city, :celnumber, :smartphone, :image_usage, :sms_usage, :email_usage, :unless => valid_presence.nil?
 #  attr_accessor :valid_presence

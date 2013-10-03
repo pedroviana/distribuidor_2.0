@@ -9,7 +9,7 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
-  #attr_accessible *column_names, :password, :password_confirmation, :skip_all_callbacks
+  attr_accessible *column_names, :password, :password_confirmation, :skip_all_callbacks
 
   #scope :administrators, -> { where(admin_user_type_id: AdminUserType.administrator_id) }
   #scope :promoters, -> { where(admin_user_type_id: AdminUserType.event_creator_id) }
