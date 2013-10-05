@@ -15,7 +15,7 @@ ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
     end
      
     def update
-      if current_admin_user.update_attributes(params[:minha_conta].permit(:name, :password, :password_confirmation))
+      if current_admin_user.update_attributes(params[:minha_conta])
         sign_in current_admin_user, :bypass => true
         redirect_to admin_minha_conta_path, notice: "Senha atualizada com sucesso!" and return
       else
