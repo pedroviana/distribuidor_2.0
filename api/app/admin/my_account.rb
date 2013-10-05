@@ -1,14 +1,11 @@
 # encoding: UTF-8
 
 ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
-#  actions :edit, :update
+  actions :edit, :update
 
-  menu :if => proc{false}
+  menu :if => proc{true}
 
   controller do
-    def action_methods
-      ['edit', 'update']
-    end
     
     def redirect_to_edit
       redirect_to edit_admin_minha_contum_path(current_admin_user), :flash => flash and return
@@ -23,7 +20,7 @@ ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
         current_admin_user.errors.messages.each do |key, value|
           message << I18n.t("activerecord.attributes.admin_user.#{key}") + " #{value.first}"
         end
-        
+        raise '2'        
         redirect_to edit_admin_minha_contum_path(current_admin_user), :alert => message.first and return
       end
     end
