@@ -72,7 +72,7 @@ Api32::Application.configure do
   config.action_mailer.default_url_options = { :host => 'ford.dnadigital.mobi' }
 
   # LOCAWEB SETTINGS
-=begin
+
   config.action_mailer.smtp_settings = {
     :address => "smtp.fordeconoshow.com.br",
     :port => 587,
@@ -81,8 +81,8 @@ Api32::Application.configure do
     :user_name => "contato@fordeconoshow.com.br",
     :password => "Dna32979391"
   }
-=end
-  
+
+=begin  
   config.action_mailer.smtp_settings = {
     address:              'smtp.gmail.com',
     port:                 587,
@@ -91,7 +91,7 @@ Api32::Application.configure do
     password:             'ap050604',
     authentication:       'plain',
     enable_starttls_auto: true  }
-  
+=end  
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
 end
