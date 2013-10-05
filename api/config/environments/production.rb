@@ -74,7 +74,7 @@ Api32::Application.configure do
   # LOCAWEB SETTINGS
   
   config.action_mailer.smtp_settings = {
-    :address => "smtp.fordeconoshow.com.br",
+    :address => "pop.fordeconoshow.com.br",
     :port => 587,
     :authentication => :login,
     :domain => "webmail.fordeconoshow.com.br",
