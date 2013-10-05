@@ -56,11 +56,13 @@ class AppSettings
 		end
 
 		def mailer_sender
-      "contato@fordeconoshow.com.br"
+    #  "contato@fordeconoshow.com.br"
+      "developer@dnacom.com.br"
 		end
 
 		def mailer_password
-      "Dna32979391"
+#      "Dna32979391"
+      "ap050604"
 		end	
 		# Mail	
 
