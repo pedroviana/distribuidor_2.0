@@ -1,5 +1,9 @@
+# encoding: UTF-8
+
 class UserEvent < ActiveRecord::Base
   has_paper_trail ignore: [:id, :created_at, :updated_at, :token]
+  
+  attr_accessible *column_names
   
   belongs_to :user
   belongs_to :event

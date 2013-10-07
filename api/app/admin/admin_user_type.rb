@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 ActiveAdmin.register AdminUserType do
   menu parent: 'Usuário', :if => proc {!Rails.env.production?}
  
@@ -38,8 +40,8 @@ ActiveAdmin.register AdminUserType do
       # just a good pattern since you'll be able to reuse the same permit
       # list between create and update. Also, you can specialize this method
       # with per-user checking of permissible attributes.
-      def permitted_params
-        params.permit(:admin_user_type => [:title, :area_ids => []])
-      end
+#      def permitted_params
+#        params.permit(:admin_user_type => [:title, :area_ids => []])
+#      end
   end
 end

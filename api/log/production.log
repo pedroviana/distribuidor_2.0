@@ -1,0 +1,717 @@
+Connecting to database specified by database.yml
+Migrating to DeviseCreateAdminUsers (20130905135044)
+Migrating to CreateActiveAdminComments (20130905135046)
+Migrating to CreateAdminUserTypes (20130905135311)
+Migrating to CreateAdminUserTypeAreas (20130905135326)
+Migrating to CreateAreas (20130905135338)
+Migrating to CreateUsers (20130905140011)
+Migrating to CreateEvents (20130905181928)
+Migrating to CreateUserEvents (20130905181952)
+Migrating to AddLatitudeAndLongitudeToEvent (20130906190334)
+Migrating to CreateAdminUserEvents (20130909155255)
+Migrating to CreateUserEventConfirmations (20130911162623)
+Migrating to CreateMidiaAttachments (20130913210238)
+Migrating to AddAttachmentToMidiaAttachments (20130913210517)
+Migrating to AddQrSentAtUserEventConfirmation (20130916165252)
+Migrating to AddQrPathToUserEventConfirmation (20130916185418)
+Migrating to CreateReports (20130919131727)
+Migrating to CreateVersions (20130919190207)
+Migrating to AddObjectChangesColumnToVersions (20130919190208)
+Migrating to AddGeneratedPasswordToAdminUsers (20130926182824)
+Connecting to database specified by database.yml
+  Rendered devise_mailer/confirmation_instructions.html.erb (91.9ms)
+
+Sent mail to admin@example.com (30248ms)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 182.73.165.90 at 2013-10-04 02:42:57 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 6ms
+
+
+Started GET "/admin/login" for 182.73.165.90 at 2013-10-04 02:42:57 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (325.5ms)
+Completed 200 OK in 448ms (Views: 408.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 02:58:00 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 2ms
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 02:58:00 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (1.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (31.3ms)
+Completed 200 OK in 38ms (Views: 35.7ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 02:58:01 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (1.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (22.7ms)
+Completed 200 OK in 28ms (Views: 26.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 02:58:18 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 02:58:19 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (0.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (16.6ms)
+Completed 200 OK in 21ms (Views: 19.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 03:01:06 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 03:01:07 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (1.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (19.2ms)
+Completed 200 OK in 24ms (Views: 22.5ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 201.52.232.107 at 2013-10-04 03:01:46 +0400
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"UIWEXsp7ldR/YN74TEwFZTy/KE55BmwicosgT1vu5IM=", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"1"}, "commit"=>"Entrar"}
+Redirected to http://ford.dnadigital.mobi/
+Completed 302 Found in 3500ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 03:01:51 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (138.7ms)
+Completed 200 OK in 734ms (Views: 239.0ms | ActiveRecord: 93.5ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 03:06:38 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 1ms
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 03:06:39 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (96.8ms)
+Completed 200 OK in 103ms (Views: 101.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 03:06:40 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (1.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (21.0ms)
+Completed 200 OK in 26ms (Views: 24.3ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 16:40:45 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 74ms
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 16:40:45 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (4.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (376.4ms)
+Completed 200 OK in 504ms (Views: 441.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-04 16:40:46 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (1.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (24.1ms)
+Completed 200 OK in 30ms (Views: 28.4ms | ActiveRecord: 0.0ms)
+
+
+Started POST "/admin/login" for 201.52.232.107 at 2013-10-04 16:40:51 +0400
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"P/Yyz9/WudDsQD4mokl+tsw23VFXTNVo2vD29a9VTqw=", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+Redirected to http://ford.dnadigital.mobi/
+Completed 302 Found in 365ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 16:40:52 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (270.5ms)
+Completed 200 OK in 509ms (Views: 269.2ms | ActiveRecord: 9.5ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 16:40:53 +0400
+Processing by Admin::DashboardController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (77.6ms)
+Completed 200 OK in 178ms (Views: 164.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-04 16:40:55 +0400
+Processing by Admin::AdminUsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (1651.7ms)
+Completed 200 OK in 1799ms (Views: 1690.5ms | ActiveRecord: 25.1ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-04 16:40:57 +0400
+Processing by Admin::AdminUsersController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (267.9ms)
+Completed 200 OK in 281ms (Views: 264.8ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/admin/admin_users/new" for 201.52.232.107 at 2013-10-04 16:41:04 +0400
+Processing by Admin::AdminUsersController#new as HTML
+  Rendered admin/admin_users/_form.html.erb (279.8ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (495.8ms)
+Completed 200 OK in 605ms (Views: 476.9ms | ActiveRecord: 110.0ms)
+
+
+Started GET "/admin/admin_users/new" for 201.52.232.107 at 2013-10-04 16:41:05 +0400
+Processing by Admin::AdminUsersController#new as */*
+  Rendered admin/admin_users/_form.html.erb (39.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (122.9ms)
+Completed 200 OK in 160ms (Views: 121.3ms | ActiveRecord: 4.1ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-04 16:41:16 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (308.9ms)
+Completed 200 OK in 330ms (Views: 311.3ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-04 16:41:17 +0400
+Processing by Admin::EventsController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (304.6ms)
+Completed 200 OK in 318ms (Views: 303.7ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/admin/admin_users" for 201.52.232.107 at 2013-10-04 16:41:18 +0400
+Processing by Admin::AdminUsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KJTDYLjg3NGd5AiRJI04S6oTdvhHYB2eNmoey+N5KyI=", "admin_user"=>{"name"=>"Daniel Erichsen", "email"=>"d.e@dnacom.com.br", "admin_user_type_id"=>"1", "event_ids"=>[""]}, "commit"=>"Criar Usuário"}
+  Rendered devise_mailer/confirmation_instructions.html.erb (2.7ms)
+
+Sent mail to d.e@dnacom.com.br (30386ms)
+Redirected to http://ford.dnadigital.mobi/admin/admin_users/2
+Completed 302 Found in 33710ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/admin_users/2" for 201.52.232.107 at 2013-10-04 16:41:52 +0400
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (99.5ms)
+Completed 200 OK in 129ms (Views: 103.2ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/admin/admin_users/2" for 201.52.232.107 at 2013-10-04 16:41:53 +0400
+Processing by Admin::AdminUsersController#show as */*
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (71.4ms)
+Completed 200 OK in 81ms (Views: 70.3ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-04 16:41:57 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (319.3ms)
+Completed 200 OK in 338ms (Views: 318.6ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-04 16:41:58 +0400
+Processing by Admin::EventsController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (337.4ms)
+Completed 200 OK in 365ms (Views: 327.4ms | ActiveRecord: 21.7ms)
+
+
+Started GET "/admin/users" for 201.52.232.107 at 2013-10-04 16:41:58 +0400
+Processing by Admin::UsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (421.5ms)
+Completed 200 OK in 436ms (Views: 423.4ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/admin/users" for 201.52.232.107 at 2013-10-04 16:41:59 +0400
+Processing by Admin::UsersController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (506.2ms)
+Completed 200 OK in 518ms (Views: 505.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-04 16:42:00 +0400
+Processing by Admin::AdminUsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (262.3ms)
+Completed 200 OK in 271ms (Views: 258.1ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-04 16:42:01 +0400
+Processing by Admin::AdminUsersController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (379.8ms)
+Completed 200 OK in 394ms (Views: 350.7ms | ActiveRecord: 31.7ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 16:45:35 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (53.7ms)
+Completed 200 OK in 61ms (Views: 53.1ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-04 16:45:35 +0400
+Processing by Admin::DashboardController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (72.4ms)
+Completed 200 OK in 82ms (Views: 71.4ms | ActiveRecord: 3.4ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 00:47:15 +0400
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 00:47:15 +0400
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 6ms
+Processing by Admin::DashboardController#index as HTML
+Completed 401 Unauthorized in 13ms
+
+
+Started GET "/admin/login" for 201.52.232.107 at 2013-10-08 00:47:16 +0400
+Processing by ActiveAdmin::Devise::SessionsController#new as HTML
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 00:47:16 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/shared/_links.erb (4.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/devise/sessions/new.html.erb within layouts/active_admin_logged_out (442.0ms)
+Completed 200 OK in 625ms (Views: 573.0ms | ActiveRecord: 0.0ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (101.1ms)
+Completed 200 OK in 819ms (Views: 322.1ms | ActiveRecord: 47.9ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 00:47:17 +0400
+Processing by Admin::DashboardController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (76.1ms)
+Completed 200 OK in 106ms (Views: 96.2ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/admin/login" for 201.52.232.107 at 2013-10-08 00:47:49 +0400
+Processing by ActiveAdmin::Devise::SessionsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"wrdSsitAe+0SOAJNwOeWoimAhLhGRFNxjvzG9EJ+cbM=", "admin_user"=>{"email"=>"admin@example.com", "password"=>"[FILTERED]", "remember_me"=>"0"}, "commit"=>"Entrar"}
+Redirected to http://ford.dnadigital.mobi/
+Completed 302 Found in 503ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 00:47:50 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (80.3ms)
+Completed 200 OK in 90ms (Views: 79.6ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-08 00:47:56 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (617.8ms)
+Completed 200 OK in 779ms (Views: 626.9ms | ActiveRecord: 6.8ms)
+
+
+Started GET "/admin/users" for 201.52.232.107 at 2013-10-08 00:48:02 +0400
+Processing by Admin::UsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (804.7ms)
+Completed 200 OK in 827ms (Views: 807.3ms | ActiveRecord: 3.5ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-08 00:48:05 +0400
+Processing by Admin::AdminUsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (459.1ms)
+Completed 200 OK in 485ms (Views: 419.5ms | ActiveRecord: 46.5ms)
+
+
+Started GET "/admin/log_cliente" for 201.52.232.107 at 2013-10-08 00:48:16 +0400
+Processing by Admin::LogClienteController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (161.5ms)
+Completed 200 OK in 181ms (Views: 164.6ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/admin/log_cliente_evento" for 201.52.232.107 at 2013-10-08 00:48:22 +0400
+Processing by Admin::LogClienteEventoController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (117.3ms)
+Completed 200 OK in 141ms (Views: 126.2ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-08 00:48:26 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (354.4ms)
+Completed 200 OK in 368ms (Views: 353.4ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-08 00:48:34 +0400
+Processing by Admin::AdminUsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (406.7ms)
+Completed 200 OK in 420ms (Views: 401.8ms | ActiveRecord: 7.7ms)
+
+
+Started GET "/admin/admin_users/new" for 201.52.232.107 at 2013-10-08 00:48:38 +0400
+Processing by Admin::AdminUsersController#new as HTML
+  Rendered admin/admin_users/_form.html.erb (273.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (366.0ms)
+Completed 200 OK in 393ms (Views: 375.0ms | ActiveRecord: 6.1ms)
+
+
+Started POST "/admin/admin_users" for 201.52.232.107 at 2013-10-08 00:51:07 +0400
+Processing by Admin::AdminUsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "admin_user"=>{"name"=>"Fabio Marques", "email"=>"f.m@dnacom.com.br", "admin_user_type_id"=>"2", "event_ids"=>[""]}, "commit"=>"Criar Usuário"}
+  Rendered devise_mailer/confirmation_instructions.html.erb (1.8ms)
+
+Sent mail to f.m@dnacom.com.br (30246ms)
+Redirected to http://ford.dnadigital.mobi/admin/admin_users/3
+Completed 302 Found in 33091ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/admin_users/3" for 201.52.232.107 at 2013-10-08 00:51:41 +0400
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (128.4ms)
+Completed 200 OK in 166ms (Views: 131.4ms | ActiveRecord: 5.8ms)
+
+
+Started GET "/admin/admin_users/3" for 201.52.232.107 at 2013-10-08 01:00:02 +0400
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (1699.5ms)
+Completed 200 OK in 1768ms (Views: 1689.5ms | ActiveRecord: 20.9ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-08 01:01:09 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (343.7ms)
+Completed 200 OK in 376ms (Views: 344.1ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/admin/events/new" for 201.52.232.107 at 2013-10-08 01:01:21 +0400
+Processing by Admin::EventsController#new as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (150.9ms)
+Completed 200 OK in 289ms (Views: 149.6ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/admin/events" for 201.52.232.107 at 2013-10-08 01:02:17 +0400
+Processing by Admin::EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "event"=>{"title"=>"Teste 18h01", "address"=>"Rua coronel oscar porto 813 cj 23", "datetime_date"=>"2013-10-07", "datetime_time_hour"=>"17", "datetime_time_minute"=>"00"}, "commit"=>"Criar Evento"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (159.3ms)
+Completed 200 OK in 629ms (Views: 159.2ms | ActiveRecord: 24.2ms)
+
+
+Started POST "/admin/events" for 201.52.232.107 at 2013-10-08 01:02:26 +0400
+Processing by Admin::EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "event"=>{"title"=>"Teste 18h01", "address"=>"Rua coronel oscar porto 813 cj 23", "datetime_date"=>"2013-10-07", "datetime_time_hour"=>"18", "datetime_time_minute"=>"00"}, "commit"=>"Criar Evento"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (132.6ms)
+Completed 200 OK in 307ms (Views: 131.1ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/admin/events" for 201.52.232.107 at 2013-10-08 01:02:35 +0400
+Processing by Admin::EventsController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "event"=>{"title"=>"Teste 18h01", "address"=>"Rua coronel oscar porto 813 cj 23", "datetime_date"=>"2013-10-07", "datetime_time_hour"=>"19", "datetime_time_minute"=>"00"}, "commit"=>"Criar Evento"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (185.2ms)
+Completed 200 OK in 912ms (Views: 94.4ms | ActiveRecord: 528.5ms)
+
+
+Started PUT "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:03:09 +0400
+Processing by Admin::EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "event"=>{"title"=>"Teste 18h01", "address"=>"Rua coronel oscar porto 813 cj 23", "datetime_date"=>"2013-10-10", "datetime_time_hour"=>"19", "datetime_time_minute"=>"00"}, "commit"=>"Atualizar Evento", "id"=>"1"}
+Redirected to http://ford.dnadigital.mobi/admin/events/1
+Completed 302 Found in 1182ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:03:11 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (305.5ms)
+Completed 200 OK in 337ms (Views: 302.4ms | ActiveRecord: 6.5ms)
+
+
+Started GET "/admin/events/1/edit" for 201.52.232.107 at 2013-10-08 01:04:26 +0400
+Processing by Admin::EventsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/edit.html.arb (59.6ms)
+Completed 200 OK in 77ms (Views: 66.7ms | ActiveRecord: 2.3ms)
+
+
+Started PUT "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:04:32 +0400
+Processing by Admin::EventsController#update as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "event"=>{"title"=>"Teste 18h01", "address"=>"Rua coronel oscar porto 813", "datetime_date"=>"2013-10-10", "datetime_time_hour"=>"19", "datetime_time_minute"=>"00"}, "commit"=>"Atualizar Evento", "id"=>"1"}
+Redirected to http://ford.dnadigital.mobi/admin/events/1
+Completed 302 Found in 242ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:04:34 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (7.2ms)
+  Rendered admin/events/_map.html.erb (100.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (192.0ms)
+Completed 200 OK in 202ms (Views: 190.5ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/admin/users" for 201.52.232.107 at 2013-10-08 01:05:16 +0400
+Processing by Admin::UsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (365.2ms)
+Completed 200 OK in 376ms (Views: 364.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/admin/users/new" for 201.52.232.107 at 2013-10-08 01:05:23 +0400
+Processing by Admin::UsersController#new as HTML
+  Rendered admin/users/_form.html.erb (52.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (126.1ms)
+Completed 200 OK in 233ms (Views: 124.8ms | ActiveRecord: 3.1ms)
+
+
+Started POST "/admin/users" for 201.52.232.107 at 2013-10-08 01:05:59 +0400
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"ntqgSN1mHYoSbtZIYmq9Rvp/qqoeqYpmhy1MeSzoQIU=", "user"=>{"name"=>"Fabio Cliente", "email"=>"f.m@dnacom.com.br", "company"=>"DNA", "event_ids"=>["", "1"]}, "commit"=>"Criar Cliente"}
+Redirected to http://ford.dnadigital.mobi/admin/users/1
+Completed 302 Found in 128ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/users/1" for 201.52.232.107 at 2013-10-08 01:05:59 +0400
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (126.2ms)
+Completed 200 OK in 147ms (Views: 123.4ms | ActiveRecord: 5.6ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-08 01:06:19 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (258.8ms)
+Completed 200 OK in 336ms (Views: 257.2ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/admin/events/1/send_invites" for 201.52.232.107 at 2013-10-08 01:07:22 +0400
+Processing by Admin::EventsController#send_invites as HTML
+  Parameters: {"id"=>"1"}
+  Rendered user_event_mailer/event_invite.html.erb (2.5ms)
+
+Sent mail to f.m@dnacom.com.br (30015ms)
+Redirected to http://ford.dnadigital.mobi/admin/events/1
+Completed 302 Found in 30356ms (ActiveRecord: 42.0ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:07:54 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.6ms)
+  Rendered admin/events/_map.html.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (83.3ms)
+Completed 200 OK in 94ms (Views: 81.3ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 01:12:10 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (97.8ms)
+Completed 200 OK in 116ms (Views: 98.0ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 01:12:11 +0400
+Processing by Admin::DashboardController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (89.3ms)
+Completed 200 OK in 106ms (Views: 88.0ms | ActiveRecord: 4.2ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 01:18:11 +0400
+Processing by Admin::DashboardController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (62.3ms)
+Completed 200 OK in 841ms (Views: 135.1ms | ActiveRecord: 8.0ms)
+
+
+Started GET "/" for 201.52.232.107 at 2013-10-08 01:18:12 +0400
+Processing by Admin::DashboardController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/page/index.html.arb (54.3ms)
+Completed 200 OK in 74ms (Views: 66.0ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-08 01:18:17 +0400
+Processing by Admin::EventsController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (500.8ms)
+Completed 200 OK in 604ms (Views: 516.6ms | ActiveRecord: 6.4ms)
+
+
+Started GET "/admin/events" for 201.52.232.107 at 2013-10-08 01:18:18 +0400
+Processing by Admin::EventsController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (242.2ms)
+Completed 200 OK in 250ms (Views: 240.8ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:18:19 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.8ms)
+  Rendered admin/events/_map.html.erb (77.2ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (190.4ms)
+Completed 200 OK in 212ms (Views: 193.9ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:18:20 +0400
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.3ms)
+  Rendered admin/events/_map.html.erb (1.9ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (64.6ms)
+Completed 200 OK in 74ms (Views: 63.2ms | ActiveRecord: 3.6ms)
+Connecting to database specified by database.yml
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:22:41 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (3.2ms)
+  Rendered admin/events/_map.html.erb (94.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (412.4ms)
+Completed 200 OK in 1353ms (Views: 510.8ms | ActiveRecord: 17.6ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:22:43 +0400
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.5ms)
+  Rendered admin/events/_map.html.erb (2.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (98.1ms)
+Completed 200 OK in 112ms (Views: 95.5ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/admin/users" for 201.52.232.107 at 2013-10-08 01:23:08 +0400
+Processing by Admin::UsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (630.8ms)
+Completed 200 OK in 654ms (Views: 633.8ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/admin/users" for 201.52.232.107 at 2013-10-08 01:23:09 +0400
+Processing by Admin::UsersController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (328.5ms)
+Completed 200 OK in 338ms (Views: 327.1ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/admin/users/new" for 201.52.232.107 at 2013-10-08 01:23:11 +0400
+Processing by Admin::UsersController#new as HTML
+  Rendered admin/users/_form.html.erb (190.3ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (373.5ms)
+Completed 200 OK in 402ms (Views: 388.0ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/admin/users/new" for 201.52.232.107 at 2013-10-08 01:23:11 +0400
+Processing by Admin::UsersController#new as */*
+  Rendered admin/users/_form.html.erb (91.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (199.6ms)
+Completed 200 OK in 207ms (Views: 197.8ms | ActiveRecord: 3.6ms)
+
+
+Started POST "/admin/users" for 201.52.232.107 at 2013-10-08 01:23:15 +0400
+Processing by Admin::UsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KJTDYLjg3NGd5AiRJI04S6oTdvhHYB2eNmoey+N5KyI=", "user"=>{"name"=>"Pedro", "email"=>"p.v@dnacom.com.br", "company"=>"DNA", "event_ids"=>["", "1"]}, "commit"=>"Criar Cliente"}
+Redirected to http://ford.dnadigital.mobi/admin/users/2
+Completed 302 Found in 303ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/users/2" for 201.52.232.107 at 2013-10-08 01:23:16 +0400
+Processing by Admin::UsersController#show as HTML
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (161.9ms)
+Completed 200 OK in 176ms (Views: 161.0ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/admin/users/2" for 201.52.232.107 at 2013-10-08 01:23:16 +0400
+Processing by Admin::UsersController#show as */*
+  Parameters: {"id"=>"2"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (134.7ms)
+Completed 200 OK in 148ms (Views: 133.8ms | ActiveRecord: 3.4ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:24:31 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.8ms)
+  Rendered admin/events/_map.html.erb (3.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (118.4ms)
+Completed 200 OK in 142ms (Views: 116.6ms | ActiveRecord: 5.7ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:24:32 +0400
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.8ms)
+  Rendered admin/events/_map.html.erb (2.6ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (94.9ms)
+Completed 200 OK in 105ms (Views: 92.0ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/admin/events/1/send_invites" for 201.52.232.107 at 2013-10-08 01:24:34 +0400
+Processing by Admin::EventsController#send_invites as HTML
+  Parameters: {"id"=>"1"}
+  Rendered user_event_mailer/event_invite.html.erb (2.4ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-08 01:24:47 +0400
+Processing by Admin::AdminUsersController#index as HTML
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (374.6ms)
+Completed 200 OK in 832ms (Views: 441.5ms | ActiveRecord: 10.4ms)
+
+
+Started GET "/admin/admin_users" for 201.52.232.107 at 2013-10-08 01:24:49 +0400
+Processing by Admin::AdminUsersController#index as */*
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/index.html.arb (178.9ms)
+Completed 200 OK in 187ms (Views: 176.0ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/admin/admin_users/new" for 201.52.232.107 at 2013-10-08 01:24:50 +0400
+Processing by Admin::AdminUsersController#new as HTML
+  Rendered admin/admin_users/_form.html.erb (287.5ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (353.8ms)
+Completed 200 OK in 400ms (Views: 386.6ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/admin/admin_users/new" for 201.52.232.107 at 2013-10-08 01:24:51 +0400
+Processing by Admin::AdminUsersController#new as */*
+  Rendered admin/admin_users/_form.html.erb (46.7ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/new.html.arb (120.4ms)
+Completed 200 OK in 128ms (Views: 118.3ms | ActiveRecord: 4.0ms)
+
+
+Started POST "/admin/admin_users" for 201.52.232.107 at 2013-10-08 01:25:04 +0400
+Processing by Admin::AdminUsersController#create as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"KJTDYLjg3NGd5AiRJI04S6oTdvhHYB2eNmoey+N5KyI=", "admin_user"=>{"name"=>"Pedro", "email"=>"p.v@dnacom.com.br", "admin_user_type_id"=>"2", "event_ids"=>[""]}, "commit"=>"Criar Usuário"}
+
+Sent mail to p.v@dnacom.com.br (30129ms)
+Redirected to http://ford.dnadigital.mobi/admin/events/1
+Completed 302 Found in 31037ms (ActiveRecord: 285.6ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:25:06 +0400
+Processing by Admin::EventsController#show as HTML
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (1.8ms)
+  Rendered admin/events/_map.html.erb (111.1ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (201.3ms)
+Completed 200 OK in 241ms (Views: 226.8ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/admin/events/1" for 201.52.232.107 at 2013-10-08 01:25:06 +0400
+Processing by Admin::EventsController#show as */*
+  Parameters: {"id"=>"1"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/gmaps4rails-1.5.6/app/views/gmaps4rails/_gmaps4rails.html.erb (2.2ms)
+  Rendered admin/events/_map.html.erb (40.4ms)
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (222.1ms)
+Completed 200 OK in 312ms (Views: 285.4ms | ActiveRecord: 10.2ms)
+  Rendered devise_mailer/confirmation_instructions.html.erb (1.8ms)
+
+Sent mail to p.v@dnacom.com.br (30163ms)
+Redirected to http://ford.dnadigital.mobi/admin/admin_users/4
+Completed 302 Found in 32758ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/admin/admin_users/4" for 201.52.232.107 at 2013-10-08 01:25:37 +0400
+Processing by Admin::AdminUsersController#show as HTML
+  Parameters: {"id"=>"4"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (115.3ms)
+Completed 200 OK in 135ms (Views: 115.2ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/admin/admin_users/4" for 201.52.232.107 at 2013-10-08 01:25:38 +0400
+Processing by Admin::AdminUsersController#show as */*
+  Parameters: {"id"=>"4"}
+  Rendered /usr/local/rvm/gems/ruby-1.9.3-p448/gems/activeadmin-0.6.1/app/views/active_admin/resource/show.html.arb (72.0ms)
+Completed 200 OK in 83ms (Views: 70.7ms | ActiveRecord: 3.4ms)

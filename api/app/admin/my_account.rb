@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
 #  actions :edit, :update
 

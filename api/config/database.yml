@@ -1,5 +1,5 @@
 # MySQL.  Versions 4.1 and 5.0 are recommended.
-#
+# 
 # Install the MYSQL driver
 #   gem install mysql2
 #
@@ -11,8 +11,9 @@
 development:
   adapter: mysql2
   encoding: utf8
-  database: api_development
-  pool: 20
+  reconnect: false
+  database: api3.2_development
+  pool: 5
   username: root
   password: senha
   socket: /var/run/mysqld/mysqld.sock
@@ -23,8 +24,9 @@ development:
 test:
   adapter: mysql2
   encoding: utf8
-  database: api_test
-  pool: 20
+  reconnect: false
+  database: api3.2_test
+  pool: 5
   username: root
   password: senha
   socket: /var/run/mysqld/mysqld.sock
@@ -32,8 +34,9 @@ test:
 production:
   adapter: mysql2
   encoding: utf8
-  database: api_production
-  pool: 20
+  reconnect: false
+  database: api3.2_production
+  pool: 5
   username: root
-  password: senha
+  password: ap050604
   socket: /var/run/mysqld/mysqld.sock

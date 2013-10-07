@@ -1,6 +1,10 @@
+# encoding: UTF-8
+
 class AdminUserType < ActiveRecord::Base
   has_many :admin_user_type_areas
   has_many :areas, :through => :admin_user_type_areas
+  
+  attr_accessible *column_names
   
   accepts_nested_attributes_for :admin_user_type_areas
 

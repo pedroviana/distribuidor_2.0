@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class UserEventConfirmationsController < ApplicationController
 =begin
   layout :layout_by_action
@@ -32,7 +34,8 @@ class UserEventConfirmationsController < ApplicationController
     @user_event = UserEvent.find_by_token params[:user_event_confirmation][:token] rescue nil
     if @user_event
       UserEvent.transaction do
-        @user_event.build_user_event_confirmation(permitted_params)
+        params[:user_event_confirmation].delete(:token)
+        @user_event.build_user_event_confirmation(params[:user_event_confirmation])
         
         if @user_event.confirm and @user_event.save
           @user_event.user_event_confirmation.send_qr
@@ -73,6 +76,7 @@ class UserEventConfirmationsController < ApplicationController
     # just a good pattern since you'll be able to reuse the same permit
     # list between create and update. Also, you can specialize this method
     # with per-user checking of permissible attributes.
+=begin
     def permitted_params
       params.require(:user_event_confirmation).permit(
                       :tipo_musica_other, :outras_redes, :outro_site_especializado,
@@ -174,4 +178,5 @@ class UserEventConfirmationsController < ApplicationController
                       :outras_redes => []
                     )
     end
+=end
 end

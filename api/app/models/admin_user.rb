@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class AdminUser < ActiveRecord::Base
   has_paper_trail ignore: [:id, :created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :unconfirmed_email, :created_at, :updated_at]
   
@@ -6,6 +8,8 @@ class AdminUser < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+         
+  attr_accessible *column_names, :password, :password_confirmation, :skip_all_callbacks, :event_ids
 
   scope :administrators, -> { where(admin_user_type_id: AdminUserType.administrator_id) }
   scope :promoters, -> { where(admin_user_type_id: AdminUserType.event_creator_id) }
@@ -26,7 +30,7 @@ class AdminUser < ActiveRecord::Base
 
   cattr_accessor :event_name_shortcut, :skip_all_callbacks, :events_form_sync
 
-  validates_presence_of :email, :name, :admin_user_type
+  validates_presence_of :email, :name, :admin_user_type_id
   validate :password_complexity, :if => lambda { Rails.env.production? }
   
   before_validation :define_password, on: :create, if: :can_valid?

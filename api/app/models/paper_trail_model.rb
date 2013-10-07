@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 class PaperTrailModel
   def self.paper_trail_user( p )
     AdminUser.find(p.whodunnit) rescue p.whodunnit

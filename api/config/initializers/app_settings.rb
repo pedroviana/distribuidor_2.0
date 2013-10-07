@@ -41,6 +41,11 @@ class AppSettings
 			@mail_schedules
 		end
 
+    def public_url
+      "http://ford.dnadigital.mobi"
+    end
+      
+
 		# Mail
 		def failure_notification
 			"Delivery Status Notification (Failure)"

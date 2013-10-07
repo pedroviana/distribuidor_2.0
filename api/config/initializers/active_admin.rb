@@ -28,6 +28,7 @@ ActiveAdmin.setup do |config|
   # Note: Recommended image height is 21px to properly fit in the header
   #
   # config.site_title_image = "/images/logo.png"
+  config.site_title_image = "/ford.png"
 
   # == Default Namespace
   #
@@ -67,6 +68,23 @@ ActiveAdmin.setup do |config|
   # within the controller.
   config.authentication_method = :authenticate_admin_user!
 
+  # == User Authorization
+  #
+  # Active Admin will automatically call an authorization
+  # method in a before filter of all controller actions to
+  # ensure that there is a user with proper rights. You can use
+  # CanCanAdapter or make your own. Please refer to documentation.
+  # config.authorization_adapter = ActiveAdmin::CanCanAdapter
+
+  # You can customize your CanCan Ability class name here.
+  # config.cancan_ability_class = "Ability"
+
+  # You can specify a method to be called on unauthorized access.
+  # This is necessary in order to prevent a redirect loop which happens
+  # because, by default, user gets redirected to Dashboard. If user
+  # doesn't have access to Dashboard, he'll end up in a redirect loop.
+  # Method provided here should be defined in application_controller.rb.
+  # config.on_unauthorized_access = :access_denied
 
   # == Current User
   #
@@ -133,18 +151,16 @@ ActiveAdmin.setup do |config|
   # Active Admin resources and pages from here.
   #
   # config.before_filter :do_something_awesome
-
+  
   config.before_filter do |controller|
     return true if controller.controller_name == 'sessions' and ( controller.action_name == 'create' or controller.action_name == 'new' )
-
-
 
     if current_admin_user.nil?
       redirect_to new_admin_user_session_path and return
     end
 
     return unless current_admin_user
-    
+
     model_name            = controller.controller_name.to_s.singularize
     translated_model_name = I18n.t("activerecord.models.#{model_name}")
 
@@ -154,32 +170,8 @@ ActiveAdmin.setup do |config|
 
     return true if ( translated_model_name == 'Painel'  )
 
-    return false
-
-=begin
-    # true if the Area is not created in DB
-    area = Area.find_by_title(translated_model_name)
-    unless area.nil?
-      # root_path if the user dont have the access of the area
-
-      if controller.action_name == 'password' || (controller.controller_name == 'admin_users' and controller.action_name == 'update') || (controller.controller_name == 'admin_users' and controller.action_name == 'update_my_password')
-        return true
-      end
-#      raise translated_model_name.inspect
-#      raise current_admin_user.can_access?(translated_model_name).inspect
-
-      unless (current_admin_user.can_access?(translated_model_name) rescue false)
-        redirect_to root_path and return
-      end
-      
-      redirect_to current_admin_user.user_type_areas.first.url rescue root_path and return
-    end
-=end
+    false
   end
-
-
-
-  
   
   # == Setting a Favicon
   #

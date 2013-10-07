@@ -1,5 +1,9 @@
+# encoding: UTF-8
+
 class Event < ActiveRecord::Base
   has_paper_trail ignore: [:latitude, :longitude, :id, :created_at, :updated_at]
+  
+  attr_accessible *column_names
   
   geocoded_by :address
 
@@ -24,7 +28,7 @@ class Event < ActiveRecord::Base
 	
 	acts_as_gmappable :process_geocoding => false
 	
-	just_define_datetime_picker :datetime#, :add_to_attr_accessible => true
+	just_define_datetime_picker :datetime, :add_to_attr_accessible => true
 
   class << self
     # Get all the events that will happen
@@ -64,11 +68,17 @@ class Event < ActiveRecord::Base
 	end
 
   def send_invites(current_admin_user)
-    user_events.without_token.includes(:user).each do |u|
-      if u.generate_token and u.send_invite
-        u.invites.create(schema: AppSettings.k_invite_report_schema, admin_user: current_admin_user)
+    begin
+      user_events.without_token.includes(:user).each do |u|
+        if u.generate_token and u.send_invite
+          u.invites.create(schema: AppSettings.k_invite_report_schema, admin_user: current_admin_user)
+        end
       end
+    rescue Exception => e
+      return false
     end
+    
+    true
   end
 
   def check_datetime

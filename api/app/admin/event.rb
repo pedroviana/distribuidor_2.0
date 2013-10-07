@@ -1,7 +1,9 @@
+# encoding: UTF-8
+
 ActiveAdmin.register Event do
   menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.event') ) rescue false }, priority: 2
   
-  scope_to :current_admin_user
+  #scope_to :current_admin_user
   
   filter :title
   filter :address
@@ -87,7 +89,7 @@ ActiveAdmin.register Event do
         if p[:users].count > 0
           table_for p[:users].map(&:user) do |user|
             column 'Nome' do |user| 
-              user.name
+              link_to user.name, admin_user_path(user)
             end
 
             column 'Email' do |user| 
@@ -179,8 +181,8 @@ ActiveAdmin.register Event do
       # just a good pattern since you'll be able to reuse the same permit
       # list between create and update. Also, you can specialize this method
       # with per-user checking of permissible attributes.
-      def permitted_params
-        params.permit(:event => [:title, :address, :datetime, :datetime_date, :datetime_time_hour, :datetime_time_minute])
-      end
+#      def permitted_params
+#        params.permit(:event => [:title, :address, :datetime, :datetime_date, :datetime_time_hour, :datetime_time_minute])
+#      end
   end  
 end

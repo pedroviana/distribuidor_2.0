@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 ActiveAdmin.register_page "Dashboard" do
   menu :label => proc{ I18n.t("active_admin.dashboard") }, priority: 1
 

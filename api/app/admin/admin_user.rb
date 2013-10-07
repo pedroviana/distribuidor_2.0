@@ -1,3 +1,5 @@
+# encoding: UTF-8
+
 ActiveAdmin.register AdminUser do
   #menu parent: 'Usuário', :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.admin_user') ) rescue false }
   menu :if => proc { current_admin_user.can_access?( I18n.t('activerecord.models.admin_user') ) rescue false }, priority: 4
@@ -81,8 +83,8 @@ ActiveAdmin.register AdminUser do
   end
   
   controller do
-    def permitted_params
-      params.permit admin_user: [:name, :email, :admin_user_type_id, :event_name_shortcut, :events_form_sync => [], :event_ids => []]
-    end
+#    def permitted_params
+#      params.permit admin_user: [:name, :email, :admin_user_type_id, :event_name_shortcut, :events_form_sync => [], :event_ids => []]
+#    end
   end
 end
