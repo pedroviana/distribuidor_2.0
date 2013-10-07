@@ -89,7 +89,7 @@ ActiveAdmin.register Event do
         if p[:users].count > 0
           table_for p[:users].map(&:user) do |user|
             column 'Nome' do |user| 
-              user.name
+              link_to user.name, admin_user_path(user)
             end
 
             column 'Email' do |user| 
