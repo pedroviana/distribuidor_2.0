@@ -20,7 +20,6 @@ ActiveAdmin.register AdminUserFake, as: 'Minha Conta' do
         current_admin_user.errors.messages.each do |key, value|
           message << I18n.t("activerecord.attributes.admin_user.#{key}") + " #{value.first}"
         end
-        raise '2'        
         redirect_to edit_admin_minha_contum_path(current_admin_user), :alert => message.first and return
       end
     end

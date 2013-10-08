@@ -47,9 +47,11 @@ function admin_user_type_did_change(p_input){
 	}
 }
 
+
+
 $(document).ready(function(){
 	$('form').submit(function() {
-  		return validates();
+  		return validates();;
 	});
 
 	if(<%= @admin_user.new_record? %>){
