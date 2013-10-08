@@ -48,6 +48,8 @@ ActiveAdmin.register Event do
     end
     
     send_file path
+    
+    redirect_to admin_events_path and return
   end
   
   index do |event|
