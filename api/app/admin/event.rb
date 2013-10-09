@@ -121,10 +121,11 @@ ActiveAdmin.register Event do
   end
   
   form do |f| 
+
     f.inputs "Detalhes" do
       f.input :title
       f.input :address
-      f.input :datetime, :as => :just_datetime_picker
+      f.input :datetime, :as => :just_datetime_picker, :input_html => {:disabled => ( event.new_record? ? false : true ) }
     end
     f.actions
   end

@@ -16,6 +16,7 @@ ActiveAdmin.register AdminUser do
     revived_record = PaperTrail::Version.find(params[:id]).reify
     if (revived_record.save rescue false)
       PaperTrail::Version.find(params[:id]).destroy
+      DeviseMailer.confirmation_instructions(revived_record, revived_record.generated_password, opts={}).deliver
       redirect_to admin_admin_user_path(revived_record), notice: 'Recadastramento realizado com sucesso!' and return
     else
       errors = revived_record.errors.messages.to_a.map!{|x| "#{x.first} #{x.last.first}" }.join('')

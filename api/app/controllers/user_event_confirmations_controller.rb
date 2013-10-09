@@ -31,6 +31,7 @@ class UserEventConfirmationsController < ApplicationController
   end
 
   def create
+    raise 'ae'
     @user_event = UserEvent.find_by_token params[:user_event_confirmation][:token] rescue nil
     if @user_event
       UserEvent.transaction do

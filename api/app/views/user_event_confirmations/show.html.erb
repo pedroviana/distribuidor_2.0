@@ -285,6 +285,10 @@ function validates(){
 		}
 	}
 	if (success == false && msgs.length > 0) alert(msgs.join("\n"));
+	
+	if (success == false){
+		remove_spin_and_blockUI_from_form($('form'));
+	}
 
 	return success;
 }

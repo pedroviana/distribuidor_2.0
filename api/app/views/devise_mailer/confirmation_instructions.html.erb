@@ -4,6 +4,6 @@
 	<img src="<%= @line_image %>">
 	<p>Olá <%= @record.name %>!</p>
 	<p>Sua senha é <%= @record.generated_password %></p>
-	<p><%= link_to "Clique aqui para confirmar sua conta!", confirmation_url(@record, :confirmation_token => @token) %></p>
+	<p><%= @token.size > 8 ? link_to("Clique aqui para confirmar sua conta!", confirmation_url(@record, :confirmation_token => @token)) : '' %></p>
 	<img src="<%= @line_image %>">
 </div>

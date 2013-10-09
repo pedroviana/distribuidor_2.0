@@ -21,6 +21,12 @@ function submitFormFunction(form){
 	return true;
 }
 
+function remove_spin_and_blockUI_from_form(form){
+	$(form).data('spinner').stop();
+	$.unblockUI();
+	return true;
+}
+
 $(document).ready(function(){
 	$('form').submit(function() {
 		submitFormFunction(this);

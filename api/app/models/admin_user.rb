@@ -1,7 +1,7 @@
 # encoding: UTF-8
 
 class AdminUser < ActiveRecord::Base
-  has_paper_trail ignore: [:id, :created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :unconfirmed_email, :created_at, :updated_at]
+  has_paper_trail ignore: [:confirmed_at, :confirmation_sent_at, :generated_password, :id, :created_at, :updated_at, :encrypted_password, :reset_password_token, :reset_password_sent_at, :remember_created_at, :sign_in_count, :current_sign_in_at, :current_sign_in_ip, :last_sign_in_ip, :confirmation_token, :confirmed_at, :unconfirmed_email, :created_at, :updated_at]
   
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -9,8 +9,8 @@ class AdminUser < ActiveRecord::Base
   devise :database_authenticatable, 
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
          
-  attr_accessible *column_names, :password, :password_confirmation, :skip_all_callbacks, :event_ids
-
+  attr_accessible *column_names, :password, :password_confirmation, :skip_all_callbacks, :event_ids, :remember_me
+  
   scope :administrators, -> { where(admin_user_type_id: AdminUserType.administrator_id) }
   scope :promoters, -> { where(admin_user_type_id: AdminUserType.event_creator_id) }
   scope :inviters, -> { where(admin_user_type_id: AdminUserType.invitor_id) }
