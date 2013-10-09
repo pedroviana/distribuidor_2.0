@@ -293,6 +293,13 @@ pt-BR:
           image_file_size: "String"
           image_updated_at: "Time"
     attributes:
+      import:
+        admin_user_id: "Código do usuário que criou"
+        admin_user: "Usuário que criou"
+        parsed: "Importação OK?"
+        parsed_html: "Importação OK?"
+        created_at: "Criado em"
+        updated_at: "Alterado em"
       report:
         admin_user_id: "Código do usuário que criou"
         admin_user: "Usuário que criou"
