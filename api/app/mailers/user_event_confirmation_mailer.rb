@@ -14,8 +14,13 @@ class UserEventConfirmationMailer < ActionMailer::Base
     @longitude  = record.event.longitude
     
     partial = render_to_string(:partial => 'invite', :layout => false)
-
-    attachments["convite.pdf"] = PDFKit.new(partial).to_pdf
+    
+    path = "public/temp_pdf_invite_#{Time.now.to_i}.pdf"
+    PDFKit.new(partial).to_file( path )
+    @record.create_pdf_invite(invite: File.new( path ))
+    return false if @record.pdf_invite.new_record?
+    
+    @pdf_link = "#{AppSettings.public_url}#{@record.pdf_invite.file_url}"
 
     @logo_image = "#{AppSettings.public_url}/logo_ford_mail.jpg"
     @line_image = "#{AppSettings.public_url}/barra_mail.jpg"

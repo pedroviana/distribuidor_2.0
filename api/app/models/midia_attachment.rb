@@ -14,5 +14,5 @@ class MidiaAttachment < ActiveRecord::Base
     
   def file_url
     file.url
-  end
+  end  
 end
