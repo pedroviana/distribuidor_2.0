@@ -2,3 +2,51 @@ Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
 Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+Migrating to DeviseCreateAdminUsers (20130514205011)
+Migrating to CreateAdminNotes (20130514205032)
+Migrating to MoveAdminNotesToComments (20130514205033)
+Migrating to CreateUsers (20130514210230)
+Migrating to CreateReports (20130514212158)
+Migrating to AddAttachmentToReports (20130514212216)
+Migrating to CreateDriverQueues (20130514214121)
+Migrating to CreatePremiations (20130514215718)
+Migrating to InstallAudited (20130514220352)
+Migrating to CreateWhats (20130515012901)
+Migrating to CreateImports (20130924102345)
+Migrating to AddAttachmentToImports (20130924102434)
+Migrating to CreateEvents (20130924151415)
+Migrating to CreateUserEvents (20130924151459)
+Migrating to CreateUserEventConfirmations (20130924151747)
+Migrating to CreateMidiaAttachments (20130924151818)
+Migrating to AddAttachmentToMidiaAttachment (20130924151840)
+Migrating to AddServerIdToUsers (20130924153543)
+Migrating to AddBooleanParsedToImports (20130924160355)
+Migrating to AddImportReferencesInEvents (20130924162443)
+Migrating to AddReferencesUserEventConfirmationInReports (20130924181955)
+Migrating to CreateSettings (20130924194846)
+Migrating to AddQrCodeScannedBooleanToUserEvents (20130926132931)
+Migrating to AddServerIdOnUserEventsAndChilds (20130926203643)
+Migrating to AddBooleanClosedAtEvents (20130930131730)
+Migrating to AddIntergerServerIdAtEvents (20130930134154)
+Migrating to RemoveUserReferencesAndAddUserEventReferencesToReports (20131001022944)
+Connecting to database specified by database.yml
+Connecting to database specified by database.yml
+
+
+Started GET "/api/events" for 192.168.1.142 at 2013-10-05 02:00:31 -0300
+Processing by ApiController#events as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 57ms (Views: 29.9ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/events" for 192.168.1.142 at 2013-10-05 02:00:34 -0300
+Processing by ApiController#events as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/events" for 192.168.1.142 at 2013-10-05 02:00:39 -0300
+Processing by ApiController#events as HTML
+  Rendered text template (0.0ms)
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.1ms)

@@ -114,6 +114,7 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.0)
       mime-types
+    pdfkit (0.5.4)
     polyamorous (0.5.0)
       activerecord (~> 3.0)
     polyglot (0.3.3)
@@ -178,6 +179,7 @@ GEM
     unicode_utils (1.4.0)
     warden (1.2.3)
       rack (>= 1.0)
+    wkhtmltopdf-binary (0.9.9.1)
 
 PLATFORMS
   ruby
@@ -196,6 +198,7 @@ DEPENDENCIES
   noty-rails
   paper_trail (>= 3.0.0.beta1)
   paperclip
+  pdfkit
   rails (= 3.2.8)
   rqrcode-rails3
   rufus-scheduler (~> 2.0.17)
@@ -204,3 +207,4 @@ DEPENDENCIES
   tlsmail
   uglifier (>= 1.0.3)
   unicode_utils
+  wkhtmltopdf-binary (~> 0.9.9.1)

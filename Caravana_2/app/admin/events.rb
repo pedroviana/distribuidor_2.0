@@ -2,9 +2,6 @@
 
 ActiveAdmin.register Event do
 
-  scope :abertos
-  scope :fechados
-
   action_item :only => :show do
     link_to("Relatório", report_consolidate_admin_event_path(event))
   end
@@ -16,6 +13,7 @@ ActiveAdmin.register Event do
 
   batch_action :destroy, false
 
+=begin
   batch_action "Iniciar Evento" do |selection|
     Event.open_events(selection)
     redirect_to admin_events_path, :notice => "Eventos iniciados com sucesso!"
@@ -25,7 +23,8 @@ ActiveAdmin.register Event do
     Event.close_events(selection)
     redirect_to admin_events_path, :notice => "Eventos encerrados com sucesso!"
   end
-  
+=end
+
   batch_action "Exportar Evento" do |selection|
     path = "public/temp_event_#{Time.now}.json"
     begin

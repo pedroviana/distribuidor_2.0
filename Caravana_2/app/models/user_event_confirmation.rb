@@ -30,7 +30,7 @@ class UserEventConfirmation < ActiveRecord::Base
       File.open(temp_path,"w") do |f|
         f.write open(url).read.force_encoding('UTF-8')
       end 
-    rescue Excepetion => e
+    rescue Exception => e
       file_success = false
     end
 

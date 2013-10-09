@@ -6,4 +6,4 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Settings.create(:key => 'K_PREFIX_URL', :value => 'http://192.168.1.133:3000')
+Settings.create(:key => 'K_PREFIX_URL', :value => 'http://ford.dnadigital.mobi')

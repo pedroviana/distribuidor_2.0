@@ -1,11 +1,11 @@
 # encoding: UTF-8
 class Event < ActiveRecord::Base
-  attr_accessible :address, :datetime, :title, :id, :created_at, :updated_at, :latitude, :longitude, :user_events, :closed, :server_id
+  attr_accessible :address, :datetime, :title, :id, :created_at, :updated_at, :latitude, :longitude, :user_events, :server_id
   attr_accessor :user_events
   
-  scope :abertos, lambda {where :closed => false }
+#  scope :abertos, lambda {where :closed => false }
   
-  scope :fechados, lambda {where :closed => true }
+#  scope :fechados, lambda {where :closed => true }
   
   belongs_to :import
   has_many :user_events_relationships, :class_name => "UserEvent", :foreign_key => :event_id, :dependent => :destroy
@@ -14,7 +14,7 @@ class Event < ActiveRecord::Base
   after_save :create_user_events
   
   before_create do
-    self.closed = true
+#    self.closed = true
   end
   
   def self.pending_users(event_id)
@@ -25,13 +25,13 @@ class Event < ActiveRecord::Base
     Event.find(event_id).user_relationships.select{|x| x.reports.count == 0 }
   end
   
-  def self.open_events(event_ids)
-    find(event_ids).each{|event| event.update_column(:closed, false) }
-  end
+#  def self.open_events(event_ids)
+#    find(event_ids).each{|event| event.update_column(:closed, false) }
+#  end
   
-  def self.close_events(event_ids)
-    find(event_ids).each{|event| event.update_column(:closed, true) }
-  end
+#  def self.close_events(event_ids)
+#    find(event_ids).each{|event| event.update_column(:closed, true) }
+#  end
   
   def self.export_events( event_ids )
     where("id IN(?)",event_ids).to_json(:include => [:user_events_relationships => {:include => [:user_relationship, :user_event_confirmation_relationship => {:include => [:report_relationship => {:methods => :file_url}] } ] } ] )

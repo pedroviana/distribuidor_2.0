@@ -38,5 +38,5 @@ production:
   database: api3.2_production
   pool: 5
   username: root
-  password: ap050604
+  password: senha
   socket: /var/run/mysqld/mysqld.sock
