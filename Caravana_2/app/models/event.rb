@@ -103,14 +103,17 @@ class Event < ActiveRecord::Base
 #  end
 
   def consolidate_midia
-    users = user_relationships.reject{|x| !(x.reports.count > 0)}
+    users = user_relationships#.reject{|x| !(x.reports.count > 0)}
 
     return nil if users.empty?
 
-    keys = users.first.attributes.keys.map!(&:to_sym) - [:updated_at, :id, :report_not_done, :server_id]
+    keys = users.first.attributes.keys.map!(&:to_sym) - [:created_at, :updated_at, :id, :report_not_done, :server_id]
     keys.map!{|x| I18n.t("activerecord.attributes.user.#{x.to_s}") }
 
     user_header = keys
+    
+    user_header << ["Presença", "QRCode ou E-mail"]
+    user_header.flatten!
 
     file = "public/consolidate_midia.csv"
     begin
@@ -138,6 +141,16 @@ class Event < ActiveRecord::Base
           answers = csv_survey.last
         end
 
+        x_event = x.user_events.where("event_id = ?", self.code).first
+  
+        if x_event.email_search
+          email_or_qr_code_string = "E-mail"
+        elsif x_event.qr_code_scanned
+          email_or_qr_code_string = "QRCode"
+        else
+          email_or_qr_code_string = nil        
+        end
+
         array = [
           x.name, 
           x.company, 
@@ -154,7 +167,8 @@ class Event < ActiveRecord::Base
           x.image_usage_description, 
           x.sms_alert_description, 
           x.email_alert_description, 
-          x.formated_created_at(self.code), 
+          (email_or_qr_code_string ? "Sim" : "Não"),
+          email_or_qr_code_string,
           answers.flatten
         ].flatten
 

@@ -105,22 +105,27 @@ class User < ActiveRecord::Base
   end
 
   def report_not_done_description
+    return "" if self.report_not_done.nil?
     self.report_not_done ? "Sim" : "Não"
   end
 
   def image_usage_description
+    return "" if self.image_usage.nil?
     self.image_usage ? "Sim" : "Não"
   end
 
   def sms_alert_description
+    return "" if self.sms_alert.nil?
     self.sms_alert ? "Sim" : "Não"
   end
 
   def email_alert_description
+    return "" if self.email_alert.nil?
     self.email_alert ? "Sim" : "Não"
   end
   
   def smartphone_description
+    return "" if self.smartphone.nil?
     self.smartphone ? "Sim" : "Não"    
   end
   

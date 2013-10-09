@@ -6,6 +6,10 @@ class Import < ActiveRecord::Base
 	has_attached_file :sync, :url => "/:attachment/:id/:filename", :path => ":rails_root/public/:attachment/:id/:filename"
 	
 #	validates_uniqueness_of :sync_file_name
+
+  def parsed_html
+    parsed ? '&#x2714;'.html_safe : '&#x2717;'.html_safe
+  end
   
   def parse_file
     return true if parsed

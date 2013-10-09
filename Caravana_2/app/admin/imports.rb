@@ -1,17 +1,26 @@
 ActiveAdmin.register Import do  
   config.comments = false
 
+  index do
+  end
+  
   show do
     if import.parse_file
-      flash.now[:notice] = 'Aeeeeeeeee'
-    else
-      flash.now[:notice] = 'neeeem'      
     end
     
     unavailable_fields = [
+      :admin_user_id,
+      :updated_at,
+      :sync_file_name,
+      :sync_content_type,
+      :sync_file_size,
+      :sync_updated_at,
+      :parsed
     ]
 
     new_fields = [
+      :admin_user,
+      :parsed_html
     ]
 
     attrs = import.attributes.keys.map(&:to_sym) - unavailable_fields

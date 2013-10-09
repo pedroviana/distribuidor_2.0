@@ -18,7 +18,9 @@ class ApiController < ApplicationController
       user_event = UserEvent.find_by_user_id_and_event_id(user.code , params[:event_id] )
       if user_event
         if params[:from_qr_code].to_s == '1'
-          user_event.update_column(:qr_code_scanned, true)
+          user_event.update_attributes(qr_code_scanned: true, email_search: false)
+        else
+          user_event.update_attributes(qr_code_scanned: false, email_search: true)          
         end
       end
 
