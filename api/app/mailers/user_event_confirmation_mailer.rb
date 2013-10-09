@@ -18,6 +18,7 @@ class UserEventConfirmationMailer < ActionMailer::Base
     path = "public/temp_pdf_invite_#{Time.now.to_i}.pdf"
     PDFKit.new(partial).to_file( path )
     @record.create_pdf_invite(invite: File.new( path ))
+    File.delete(path)
     return false if @record.pdf_invite.new_record?
     
     @pdf_link = "#{AppSettings.public_url}#{@record.pdf_invite.file_url}"
