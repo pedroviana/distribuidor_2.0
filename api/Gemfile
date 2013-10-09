@@ -64,3 +64,7 @@ gem 'paperclip'
 gem "rufus-scheduler", "~> 2.0.17"
 
 gem 'paper_trail', '>= 3.0.0.beta1'
+
+gem 'pdfkit'
+
+gem "wkhtmltopdf-binary", "~> 0.9.9.1"
