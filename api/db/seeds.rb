@@ -18,11 +18,11 @@
     Area.all.each{|area| adm.admin_user_type_areas.create(:area_id => area.code )  }
     
     event_manager = AdminUserType.find_by_title("Criador de Eventos")
-    can_access = ["Evento", "Cliente"]
+    can_access = ["Evento", "Cliente", "Relatório"]
     can_access.each {|x| event_manager.admin_user_type_areas.create(:area_id => Area.find_by_title(x).code)  }
     
     invite_manager = AdminUserType.find_by_title("Criador de Convites")
-    can_access = ["Evento", "Cliente"]
+    can_access = ["Evento", "Cliente", "Relatório"]
     can_access.each {|x| invite_manager.admin_user_type_areas.create(:area_id => Area.find_by_title(x).code)  }
     
     sync_manager = AdminUserType.find_by_title("Sincronizador de Eventos")
