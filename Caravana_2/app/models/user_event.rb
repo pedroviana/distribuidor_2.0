@@ -1,5 +1,5 @@
 class UserEvent < ActiveRecord::Base
-  attr_accessible :id, :user_id, :event_id, :created_at, :updated_at, :presence, :status, :token, :user, :user_event_confirmation, :qr_code_scanned, :server_id, :event
+  attr_accessible :id, :user_id, :event_id, :created_at, :updated_at, :presence, :status, :token, :user, :user_event_confirmation, :qr_code_scanned, :server_id, :event, :email_search
   attr_accessor :user, :user_event_confirmation
   
   belongs_to :event
