@@ -35,7 +35,7 @@ class Import < ActiveRecord::Base
       Import.transaction do
         Event.transaction do
 
-#          begin
+          begin
             e.delete('latitude')
             e.delete('longitude')
             e['server_id'] = e['id']
@@ -54,10 +54,10 @@ class Import < ActiveRecord::Base
             else
               raise event.errors.messages.inspect
             end
-#          rescue Exception => e
-#            raise e.inspect
-            #return false
-#          end
+          rescue Exception => e
+            raise e.inspect
+            return false
+          end
         end
       end      
       #return true
