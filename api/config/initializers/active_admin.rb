@@ -154,7 +154,7 @@ ActiveAdmin.setup do |config|
   
   config.before_filter do |controller|
     return true if controller.controller_name == 'sessions' and ( controller.action_name == 'create' or controller.action_name == 'new' )
-    return true if controller.controller_name == 'passwords' and ( controller.action_name == 'create' or controller.action_name == 'new' )
+    return true if controller.controller_name == 'passwords' and ( controller.action_name == 'create' or controller.action_name == 'new' or controller.action_name == 'edit' or controller.action_name == 'update')
 
     if current_admin_user.nil?
       redirect_to new_admin_user_session_path and return
