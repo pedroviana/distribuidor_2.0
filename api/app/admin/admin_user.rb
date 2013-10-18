@@ -24,11 +24,33 @@ ActiveAdmin.register AdminUser do
     end
   end
   
+  member_action :resend_confirmation_instructions do
+    user = AdminUser.find(params[:id]) rescue nil
+    if user
+      if DeviseMailer.confirmation_instructions(user, user.confirmation_token).deliver
+        redirect_to admin_admin_users_path, :notice => "E-mail enviado com sucesso" and return      
+      else
+        redirect_to :back, :alert => "Não foi possível enviar o e-mail" and return      
+      end
+    else
+      redirect_to :back, :alert => "Usuário não encontrado" and return      
+    end
+  end
+  
   index do
+
     selectable_column
     column :email
     column :name
     column :admin_user_type
+    column 'Ações' do |admin_user|
+      if admin_user.confirmed?
+        "Já confirmada"
+      else
+        link_to "Reenviar instruções de confirmação", resend_confirmation_instructions_admin_admin_user_path(admin_user) 
+      end
+
+    end
     default_actions
   end
 
