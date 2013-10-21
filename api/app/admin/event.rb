@@ -147,7 +147,7 @@ ActiveAdmin.register Event do
     def action_methods
       return super if current_admin_user.administrator? || current_admin_user.event?
       return ['index', 'batch_action'] if current_admin_user.sync_event?
-      return super - ['edit', 'destroy'] if current_admin_user.inviter?
+      return super - ['new', 'create', 'edit', 'destroy'] if current_admin_user.inviter?
       return super
     end
     
