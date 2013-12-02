@@ -107,7 +107,7 @@ class Event < ActiveRecord::Base
 
     return nil if users.empty?
 
-    keys = users.first.attributes.keys.map!(&:to_sym) - [:created_at, :updated_at, :id, :report_not_done, :server_id]
+    keys = users.first.attributes.keys.map!(&:to_sym) - [:created_at, :updated_at, :id, :report_not_done, :server_id] + [:created_at]
     keys.map!{|x| I18n.t("activerecord.attributes.user.#{x.to_s}") }
 
     user_header = keys
@@ -167,6 +167,7 @@ class Event < ActiveRecord::Base
           x.image_usage_description, 
           x.sms_alert_description, 
           x.email_alert_description, 
+          x.created_at.strftime("%d/%m/%Y"),
           (email_or_qr_code_string ? "Sim" : "Não"),
           email_or_qr_code_string,
           answers.flatten
